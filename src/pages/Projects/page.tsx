@@ -5,7 +5,8 @@ import codekori from "@/assets/projects/codekori.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "@/provider/page";
 import PortfolioCard from "@/components/PortfolioCard";
-import {SiGraphql, SiMongodb, SiPostgresql} from "react-icons/si";
+import {SiGraphql, SiMongodb, SiPostgresql, SiPython, SiRedux} from "react-icons/si";
+import {FaWordpress} from "react-icons/fa";
 
 const MacOsButtons = () => (
   <div className="flex gap-2 mb-4">
@@ -21,11 +22,32 @@ const ProjectShowcase = () => {
 
   const projects = [
     {
-      icon: Laptop,
+      icon: Code2,
       title: "Profili",
       description:
-          "",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+          "Is a web plateform to generate website portfolio automatically with resume parser and a drag and drop system",
+      tags: [
+        {
+          name: "Node.js",
+          icon: <Server className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Flask",
+          icon: <SiPython className="w-4 h-4 text-[#4584b6]" />,
+        },
+        {
+          name: "MongoDB",
+          icon: <SiMongodb className="w-4 h-4 text-[#47A248]" />,
+        },
+        {
+          name: "REST APIs",
+          icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
+        },
+        {
+          name: "React JS",
+          icon: <SiRedux className="w-4 h-4 text-[#764ABC]" />,
+        },
+      ],
       links: {
         github: "https://github.com/olovajs/olova",
         demo: "#",
@@ -33,7 +55,8 @@ const ProjectShowcase = () => {
       image: olova,
       featured: true,
       category: 1,
-      color: 'red'
+      color: 'text-purple-400',
+      cms:''
     },
     {
       icon: Code2,
@@ -48,10 +71,11 @@ const ProjectShowcase = () => {
       image: olova,
       featured: true,
       category: 1,
-      color: 'text-blue-400'
+      color: 'text-blue-400',
+      cms:''
     },
     {
-      icon: TabletSmartphoneIcon,
+      icon: Code2,
       title:
         "Wellbeing",
       description:
@@ -64,7 +88,8 @@ const ProjectShowcase = () => {
       image: portfolio,
       featured: true,
       category: 1,
-      color: 'text-blue-400'
+      color: 'text-blue-400',
+      cms:''
     },
     {
       icon: Code2,
@@ -104,7 +129,8 @@ const ProjectShowcase = () => {
       image: codekori,
       featured: true,
       category: 1,
-      color: 'text-purple-400'
+      color: 'text-purple-400',
+      cms:''
     },
     {
       icon: Code2,
@@ -119,11 +145,12 @@ const ProjectShowcase = () => {
       },
       image: codekori,
       featured: true,
-      category: 2,
-      color: 'red'
+      category: 1,
+      color: 'text-purple-400',
+      cms:''
     },
     {
-      icon: Code2,
+      icon:'' ,
       title:
           "Optique distribution",
       description:
@@ -136,10 +163,11 @@ const ProjectShowcase = () => {
       image: codekori,
       featured: true,
       category: 2,
-      color: 'text-purple-400'
+      color: 'text-purple-400',
+      cms: <FaWordpress className="w-4 h-4 text-[#E10098]" />
     },
     {
-      icon: Code2,
+      icon: '',
       title:
           "Lascensoriste",
       description:
@@ -152,7 +180,8 @@ const ProjectShowcase = () => {
       image: codekori,
       featured: true,
       category: 2,
-      color: 'text-purple-400'
+      color: 'text-purple-400',
+      cms: <FaWordpress className="w-4 h-4 text-[#E10098]" />
     },
     {
       icon: Code2,
@@ -168,7 +197,8 @@ const ProjectShowcase = () => {
       image: codekori,
       featured: true,
       category: 1,
-      color: 'text-purple-400'
+      color: 'text-purple-400',
+      cms:''
     },
     {
       icon: Code2,
@@ -183,10 +213,13 @@ const ProjectShowcase = () => {
       },
       image: codekori,
       featured: true,
-      color: 'text-purple-400'
+      color: 'text-purple-400',
+      category: 1,
+      cms:''
     },
   ];
-
+// TODO
+  //FIX DESCRIPTIONS AND LINKS AND IMAGES AND ICONS
   return (
       <div
           className={`pt-40 min-h-screen p-8 ${
@@ -210,6 +243,9 @@ const ProjectShowcase = () => {
                         image={project.image}
                         icon={project.icon}
                         color={project.color}
+                        cms={project.cms}
+                        category={project.category}
+                        links={project.links}
                     >
                       {/* optional children */}
                     </PortfolioCard>

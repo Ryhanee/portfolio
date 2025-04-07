@@ -17,7 +17,7 @@ import {
     FileCode,
     Figma,
     Github,
-    CloudCog, Tags,
+    CloudCog, Tags, ExternalLink,
 } from "lucide-react";
 
 import { FaDocker, FaLinux } from "react-icons/fa";
@@ -38,15 +38,18 @@ import {
 import { BsFileEarmarkCode } from "react-icons/bs";
 import { TbBrandVscode } from "react-icons/tb";
 
+//TODO
+// FIX LINKS
 interface Project {
     name: string;
     icon: React.ReactNode;
 }
 
-interface ProjectCategory {
-    title: string;
-    Key: number;
+interface Links {
+    demo: string;
+    github: string;
 }
+
 
 interface PortfolioCardProps {
     icon: React.ComponentType<{ className?: string }>;
@@ -56,6 +59,7 @@ interface PortfolioCardProps {
     isDark: boolean;
     description: string;
     image: string;
+    links: Links
 }
 
 const PortfolioCard = ({
@@ -65,7 +69,9 @@ const PortfolioCard = ({
                        color,
                        isDark,
                        description,
-                        image
+                        image,
+    category,
+    links
                    }: PortfolioCardProps) => (
     <Card
         className={`group relative overflow-hidden ${
@@ -75,15 +81,23 @@ const PortfolioCard = ({
         }`}
     >
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer"></div>
+        <img src={image}
+             alt={title}
+             className="aspect-3/2 w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75" />
+
         <CardContent className="p-6 relative z-10">
+
             <div className="flex items-center gap-4 mb-6">
+
                 <div
                     className={`p-3 rounded-xl ${
                         isDark ? "bg-gray-800/50" : "bg-gray-100"
                     } ${color} group-hover:scale-110 transition-transform duration-300`}
                 >
-                   <Icon className="w-8 h-8" />
-                </div>
+
+
+                        <Icon className="w-8 h-8" />
+                                 </div>
                 <h3
                     className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
                         isDark ? "from-white to-gray-400" : "from-gray-900 to-gray-600"
@@ -111,8 +125,27 @@ const PortfolioCard = ({
                         <span className="font-medium">{skill.name}</span>
                     </Badge>
                 ))}
+                <div className="text-white line-clamp-3">{description}</div>
             </div>
         </CardContent>
+        <div className="flex gap-4">
+            {/*  <a
+                href={links.github}
+                className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <Github size={22} />
+            </a>
+            <a
+                href={links.demo}
+                className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <ExternalLink size={22} />
+            </a> */}
+        </div>
     </Card>
 );
 
