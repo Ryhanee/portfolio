@@ -121,22 +121,28 @@ const PortfolioCard = ({
             </div>
         </CardContent>
         <div className="flex gap-4">
-              <a
-                href={(links?.github || "#")}
-                className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <Github size={22} />
-            </a>
-            <a
-                href={(links?.github || "#")}
-                className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <ExternalLink size={22} />
-            </a>
+            {
+                links?.github != '' && <a
+                    href={(links?.github || "#")}
+                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Github size={22} />
+                </a>
+            }
+
+            {
+                links?.demo && <a
+                    href={(links?.github || "#")}
+                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <ExternalLink size={22} />
+                </a>
+            }
+
         </div>
     </Card>
 );
