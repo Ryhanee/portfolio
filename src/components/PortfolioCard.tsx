@@ -45,7 +45,7 @@ interface Project {
     icon: React.ReactNode;
 }
 
-interface Links {
+interface Link {
     demo: string;
     github: string;
 }
@@ -59,19 +59,11 @@ interface PortfolioCardProps {
     isDark: boolean;
     description: string;
     image: string;
-    links: Links
+    links: Link
 }
 
 const PortfolioCard = ({
-                       icon: Icon,
-                       title,
-                       skills,
-                       color,
-                       isDark,
-                       description,
-                        image,
-    category,
-    links
+                       icon: Icon, title, skills, color, isDark, description, image, links
                    }: PortfolioCardProps) => (
     <Card
         className={`group relative overflow-hidden ${
@@ -129,8 +121,8 @@ const PortfolioCard = ({
             </div>
         </CardContent>
         <div className="flex gap-4">
-            {/*  <a
-                href={links.github}
+              <a
+                href={(links?.github || "#")}
                 className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -138,13 +130,13 @@ const PortfolioCard = ({
                 <Github size={22} />
             </a>
             <a
-                href={links.demo}
+                href={(links?.github || "#")}
                 className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 <ExternalLink size={22} />
-            </a> */}
+            </a>
         </div>
     </Card>
 );
