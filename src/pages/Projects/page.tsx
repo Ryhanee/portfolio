@@ -1,11 +1,32 @@
-import {Github, ExternalLink, Cpu, Server, FileCode, Code2, TabletSmartphoneIcon, Laptop} from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  Cpu,
+  Server,
+  FileCode,
+  Code2,
+  TabletSmartphoneIcon,
+  Laptop,
+  ServerIcon
+} from "lucide-react";
 import olova from "@/assets/projects/olova-B0FjVVEL.png";
 import portfolio from "@/assets/projects/Annotation 2025-03-20 155334.png";
 import codekori from "@/assets/projects/codekori.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "@/provider/page";
 import PortfolioCard from "@/components/PortfolioCard";
-import {SiGraphql, SiMongodb, SiPostgresql, SiPython, SiRedux} from "react-icons/si";
+import {
+  SiGraphql,
+  SiJquery,
+  SiMongodb,
+  SiMysql, SiNodedotjs,
+  SiPhp,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiRedux,
+  SiServerfault, SiServerless
+} from "react-icons/si";
 import {FaWordpress} from "react-icons/fa";
 
 const MacOsButtons = () => (
@@ -63,7 +84,28 @@ const ProjectShowcase = () => {
       title: "EQUIMONDO",
       description:
         "Olova.js is a lightweight JavaScript library for building modern, reactive, and dynamic web applications. It features a simple, component-based architecture, enabling developers to create reusable and interactive UI elements with minimal code and overhead.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      tags: [
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <SiJquery className="w-4 h-4 text-[#4584b6]" />,
+        },
+        {
+          name: "Ajax",
+          icon: <SiJquery className="w-4 h-4 text-[#47A248]" />,
+        },
+        {
+          name: "REST APIs",
+          icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
+        },
+        {
+          name: "MySQL",
+          icon: <SiMysql className="w-4 h-4 text-[#764ABC]" />,
+        },
+      ],
       links: {
         github: "https://github.com/olovajs/olova",
         demo: "https://olova.js.org/",
@@ -80,7 +122,28 @@ const ProjectShowcase = () => {
         "Wellbeing",
       description:
         "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      tags: [
+        {
+          name: "React Native",
+          icon: <SiReact className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "MongoDB",
+          icon: <SiMongodb className="w-4 h-4 text-[#4584b6]" />,
+        },
+        {
+          name: "REST APIs",
+          icon: <SiServerless className="w-4 h-4 text-[#FF6C37]" />,
+        },
+        {
+          name: "Node JS",
+          icon: <SiNodedotjs className="w-4 h-4 text-[#764ABC]" />,
+        },
+        {
+          name: "Amazon EC2",
+          icon: <Server className="w-4 h-4 text-[#764ABC]" />,
+        },
+      ],
       links: {
         github: "https://github.com/seraprogrammer/portfolio",
         demo: "#",
@@ -99,20 +162,16 @@ const ProjectShowcase = () => {
         "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
       tags: [
         {
-          name: "Node.js",
+          name: "Laravel",
           icon: <Server className="w-4 h-4 text-[#339933]" />,
         },
         {
-          name: "Python",
+          name: "Angular",
           icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
         },
         {
-          name: "PostgreSQL",
+          name: "MySQL",
           icon: <SiPostgresql className="w-4 h-4 text-[#336791]" />,
-        },
-        {
-          name: "MongoDB",
-          icon: <SiMongodb className="w-4 h-4 text-[#47A248]" />,
         },
         {
           name: "REST APIs",
@@ -121,7 +180,9 @@ const ProjectShowcase = () => {
         {
           name: "GraphQL",
           icon: <SiGraphql className="w-4 h-4 text-[#E10098]" />,
-        },      ],
+        },
+      ]
+      ,
       links: {
         github: "https://github.com/seraprogrammer/CodeKori",
         demo: "https://codekori.js.org/",
@@ -138,7 +199,24 @@ const ProjectShowcase = () => {
           "Cromdn",
       description:
           "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: ["React", "Tailwind CSS", "Portfolio", "Typescript"],
+      tags: [
+        {
+          name: "Laravel",
+          icon: <Server className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Angular",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "MySQL",
+          icon: <SiPostgresql className="w-4 h-4 text-[#336791]" />,
+        },
+        {
+          name: "REST APIs",
+          icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
+        },
+      ],
       links: {
         github: "https://github.com/seraprogrammer/CodeKori",
         demo: "https://codekori.js.org/",
@@ -186,7 +264,7 @@ const ProjectShowcase = () => {
     {
       icon: Code2,
       title:
-          "SmartHR",
+          "Marship",
       description:
           "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
       tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
@@ -203,7 +281,7 @@ const ProjectShowcase = () => {
     {
       icon: Code2,
       title:
-          "Nutislab",
+          "Botanical",
       description:
           "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
       tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
@@ -217,6 +295,77 @@ const ProjectShowcase = () => {
       category: 1,
       cms:''
     },
+    {
+      icon: Code2,
+      title:
+          "Atelier la fabrique",
+      description:
+          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
+      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      links: {
+        github: "https://github.com/seraprogrammer/CodeKori",
+        demo: "https://codekori.js.org/",
+      },
+      image: codekori,
+      featured: true,
+      color: 'text-purple-400',
+      category: 1,
+      cms:''
+    },
+
+    {
+      icon: Code2,
+      title:
+          "CRAFTECH",
+      description:
+          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
+      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      links: {
+        github: "https://github.com/seraprogrammer/CodeKori",
+        demo: "https://codekori.js.org/",
+      },
+      image: codekori,
+      featured: true,
+      color: 'text-purple-400',
+      category: 1,
+      cms:''
+    },
+
+    {
+      icon: Code2,
+      title:
+          "Simulateur",
+      description:
+          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
+      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      links: {
+        github: "https://github.com/seraprogrammer/CodeKori",
+        demo: "https://codekori.js.org/",
+      },
+      image: codekori,
+      featured: true,
+      color: 'text-purple-400',
+      category: 1,
+      cms:''
+    },
+    {
+      icon: Code2,
+      title:
+          "Eyeverda",
+      description:
+          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
+      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      links: {
+        github: "https://github.com/seraprogrammer/CodeKori",
+        demo: "https://codekori.js.org/",
+      },
+      image: codekori,
+      featured: true,
+      color: 'text-purple-400',
+      category: 1,
+      cms:''
+    },
+
   ];
 // TODO
   //FIX DESCRIPTIONS AND LINKS AND IMAGES AND ICONS

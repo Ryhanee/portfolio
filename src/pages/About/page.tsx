@@ -1,6 +1,7 @@
 import HeroImg from "../../assets/rihane.jpg";
 import { useTheme } from "../../provider/page";
 import OlovaLogo from "../../assets/olova.png";
+import SkillsSection from "../Skills/page";
 
 export default function About() {
   const { theme } = useTheme();
@@ -105,17 +106,17 @@ export default function About() {
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      Nazmul Hossain, Creator of
+                      Ryhane Dalhoum, Creator of
                     </cite>
                     <div className="flex items-center gap-2">
                       <img
                         className={`h-5 w-fit ${theme === "dark" ? "" : ""}`}
                         src={OlovaLogo}
-                        alt="Olova Logo"
+                        alt="Craftech Logo"
                         height="20"
                         width="auto"
                       />
-                      <span>OlovaJS</span>
+                      <span>Craftech</span>
                     </div>
                   </div>
                 </blockquote>
@@ -124,6 +125,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
     </>
   );
 }
