@@ -10,6 +10,16 @@ import {
   ServerIcon
 } from "lucide-react";
 import olova from "@/assets/projects/olova-B0FjVVEL.png";
+import equimondo from "@/assets/projects/equimondo.png";
+import wellbeing from "@/assets/projects/wellbeing.png";
+import cromdn from "@/assets/projects/cromdn.png";
+import nutislab from "@/assets/projects/nutislab.png";
+import lascensoriste from "@/assets/projects/nutislab.png";
+import botanical from "@/assets/projects/botanical.png";
+import parcus from "@/assets/projects/parcus.png";
+import linkaura from "@/assets/projects/linkaura.jpg";
+
+
 import portfolio from "@/assets/projects/Annotation 2025-03-20 155334.png";
 import codekori from "@/assets/projects/codekori.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,6 +38,7 @@ import {
   SiServerfault, SiServerless
 } from "react-icons/si";
 import {FaWordpress} from "react-icons/fa";
+import {BiLogoJavascript} from "react-icons/bi";
 
 const MacOsButtons = () => (
   <div className="flex gap-2 mb-4">
@@ -42,11 +53,11 @@ const ProjectShowcase = () => {
   const isDarkMode = theme === "dark";
 
   const projects = [
-    {
+   /* {
       icon: Code2,
       title: "Profili",
       description:
-          "Is a web plateform to generate website portfolio automatically with resume parser and a drag and drop system",
+          "Is a web plateform to generate website portfolio with resume parser and a drag and drop system",
       tags: [
         {
           name: "Node.js",
@@ -78,7 +89,7 @@ const ProjectShowcase = () => {
       category: 1,
       color: 'text-purple-400',
       cms:''
-    },
+    },*/
     {
       icon: Code2,
       title: "EQUIMONDO",
@@ -96,21 +107,23 @@ const ProjectShowcase = () => {
         {
           name: "Ajax",
           icon: <SiJquery className="w-4 h-4 text-[#47A248]" />,
+
         },
         {
           name: "REST APIs",
           icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
         },
+
         {
           name: "MySQL",
           icon: <SiMysql className="w-4 h-4 text-[#764ABC]" />,
         },
       ],
       links: {
-        github: "https://github.com/olovajs/olova",
-        demo: "https://olova.js.org/",
+        github: "https://github.com/equimondo1/",
+        demo: "https://alpha.equimondo.fr/",
       },
-      image: olova,
+      image: equimondo,
       featured: true,
       category: 1,
       color: 'text-blue-400',
@@ -148,7 +161,7 @@ const ProjectShowcase = () => {
         github: "https://github.com/seraprogrammer/portfolio",
         demo: "#",
       },
-      image: portfolio,
+      image: wellbeing,
       featured: true,
       category: 1,
       color: 'text-blue-400',
@@ -167,6 +180,10 @@ const ProjectShowcase = () => {
         },
         {
           name: "Angular",
+            icon: <Server className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Laravel",
           icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
         },
         {
@@ -183,11 +200,12 @@ const ProjectShowcase = () => {
         },
       ]
       ,
+
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "https://github.com/FarahKa/nutislabFront",
+        demo: "https://dashboad.nutislab.com/",
       },
-      image: codekori,
+      image: nutislab,
       featured: true,
       category: 1,
       color: 'text-purple-400',
@@ -205,7 +223,11 @@ const ProjectShowcase = () => {
           icon: <Server className="w-4 h-4 text-[#339933]" />,
         },
         {
-          name: "Angular",
+          name: "Html",
+          icon: <Server className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "CSS",
           icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
         },
         {
@@ -213,15 +235,15 @@ const ProjectShowcase = () => {
           icon: <SiPostgresql className="w-4 h-4 text-[#336791]" />,
         },
         {
-          name: "REST APIs",
+          name: "Laravel",
           icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
         },
       ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "https://github.com/Ryhanee/CROMDN",
+        demo: "https://cromdn.business-mania.services/",
       },
-      image: codekori,
+      image: cromdn,
       featured: true,
       category: 1,
       color: 'text-purple-400',
@@ -230,15 +252,32 @@ const ProjectShowcase = () => {
     {
       icon:'' ,
       title:
-          "Optique distribution",
+          "Linkaura",
       description:
           "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: ["React", "Tailwind CSS", "Portfolio", "Typescript"],
+      tags: [
+        {
+          name: "Html",
+          icon: <Server className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "Flask",
+          icon: <SiPostgresql className="w-4 h-4 text-[#336791]" />,
+        },
+        {
+          name: "Machine learning",
+          icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
+        },
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "#",
+        demo: "#",
       },
-      image: codekori,
+      image: linkaura,
       featured: true,
       category: 2,
       color: 'text-purple-400',
@@ -250,12 +289,25 @@ const ProjectShowcase = () => {
           "Lascensoriste",
       description:
           "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "#",
+        demo: "https://lascensoriste.tn/",
       },
-      image: codekori,
+      image: lascensoriste,
       featured: true,
       category: 2,
       color: 'text-purple-400',

@@ -45,7 +45,7 @@ interface Project {
     icon: React.ReactNode;
 }
 
-interface Links {
+interface Link {
     demo: string;
     github: string;
 }
@@ -59,10 +59,11 @@ interface PortfolioCardProps {
     isDark: boolean;
     description: string;
     image: string;
-    links: Links
+    links: Link
 }
 
 const PortfolioCard = ({
+<<<<<<< HEAD
                        icon: Icon,
                        title,
                        skills,
@@ -72,6 +73,9 @@ const PortfolioCard = ({
                         image,
                         category,
                         links
+=======
+                       icon: Icon, title, skills, color, isDark, description, image, links
+>>>>>>> 319e6215707166f89e55e40cb6c24433e79e12d1
                    }: PortfolioCardProps) => (
     <Card
         className={`group relative overflow-hidden ${
@@ -129,6 +133,7 @@ const PortfolioCard = ({
             </div>
         </CardContent>
         <div className="flex gap-4">
+<<<<<<< HEAD
               <a
                 href={links?.github}
                 className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
@@ -145,6 +150,30 @@ const PortfolioCard = ({
             >
                 <ExternalLink size={22} />
             </a>
+=======
+            {
+                links?.github != '' && <a
+                    href={(links?.github || "#")}
+                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Github size={22} />
+                </a>
+            }
+
+            {
+                links?.demo && <a
+                    href={(links?.github || "#")}
+                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <ExternalLink size={22} />
+                </a>
+            }
+
+>>>>>>> 319e6215707166f89e55e40cb6c24433e79e12d1
         </div>
     </Card>
 );
