@@ -126,7 +126,11 @@ const PortfolioCard = ({
                         <span className="font-medium">{skill.name}</span>
                     </Badge>
                 ))}
-                <div className="text-white line-clamp-3">{description}</div>
+                <div className="text-white line-clamp-3"><p
+                    className={`border-l-2 border-teal-500 pl-3 ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
+                >{description}</p></div>
             </div>
         </CardContent>
         <div className="flex gap-4">

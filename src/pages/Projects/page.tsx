@@ -7,18 +7,23 @@ import {
   Code2,
   TabletSmartphoneIcon,
   Laptop,
-  ServerIcon
+  ServerIcon,
+
 } from "lucide-react";
+
 import olova from "@/assets/projects/olova-B0FjVVEL.png";
 import equimondo from "@/assets/projects/equimondo.png";
 import wellbeing from "@/assets/projects/wellbeing.png";
 import cromdn from "@/assets/projects/cromdn.png";
 import nutislab from "@/assets/projects/nutislab.png";
-import lascensoriste from "@/assets/projects/nutislab.png";
+import lascensoriste from "@/assets/projects/lascensoriste-1.jpg.jpg";
 import botanical from "@/assets/projects/botanical.png";
 import parcus from "@/assets/projects/parcus.png";
 import linkaura from "@/assets/projects/linkaura.jpg";
-
+import optic from "@/assets/projects/optique-distibution.jpg";
+import eyeverda from "@/assets/projects/eyeverda.jpg";
+import marship from "@/assets/projects/marship.jpg";
+import craftech from "@/assets/projects/craftech.jpg";
 
 import portfolio from "@/assets/projects/Annotation 2025-03-20 155334.png";
 import codekori from "@/assets/projects/codekori.png";
@@ -27,7 +32,7 @@ import { useTheme } from "@/provider/page";
 import PortfolioCard from "@/components/PortfolioCard";
 import {
   SiGraphql,
-  SiJquery,
+  SiJquery, SiLaravel,
   SiMongodb,
   SiMysql, SiNodedotjs,
   SiPhp,
@@ -184,7 +189,7 @@ const ProjectShowcase = () => {
       title:
         "Nutislab",
       description:
-        "Web application dedicated to manage orthodontists. Built with Laravel, Angular and MySQL as database.",
+        "Web application dedicated to manage orthodontists and their clients needs. Built with Laravel, Angular and MySQL as database.",
       tags: [
         {
           name: "Laravel",
@@ -193,10 +198,6 @@ const ProjectShowcase = () => {
         {
           name: "Angular",
             icon: <Server className="w-4 h-4 text-[#339933]" />,
-        },
-        {
-          name: "Laravel",
-          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
         },
         {
           name: "MySQL",
@@ -262,20 +263,12 @@ const ProjectShowcase = () => {
       cms:''
     },
     {
-      icon:'' ,
+      icon:Code2,
       title:
           "Linkaura",
       description:
           "An API of an intelligent instagram influencers based on specific inputs. Built with Flask, ML models and mongodb as database",
       tags: [
-        {
-          name: "Html",
-          icon: <Server className="w-4 h-4 text-[#339933]" />,
-        },
-        {
-          name: "CSS",
-          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
-        },
         {
           name: "Flask",
           icon: <SiPostgresql className="w-4 h-4 text-[#336791]" />,
@@ -284,27 +277,35 @@ const ProjectShowcase = () => {
           name: "Machine learning",
           icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
         },
+        {
+          name: "Mongo DB",
+          icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
+        },
       ],
       links: {
-        github: "#",
+        github: "https://github.com/Ryhanee/linkaura",
         demo: "#",
       },
       image: linkaura,
       featured: true,
-      category: 2,
+      category: 1,
       color: 'text-purple-400',
-      cms: ''
+      cms:''
     },
     {
-      icon: '',
+      icon: FaWordpress,
       title:
           "Lascensoriste",
       description:
-          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
+          "E-commerce website to sell elevators elements.",
       tags: [
         {
           name: "Wordpress",
           icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
         },
         {
           name: "CSS",
@@ -330,13 +331,30 @@ const ProjectShowcase = () => {
       title:
           "Marship",
       description:
-          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+          "Website of MARSHIP a freight forwarding company based in Morocco.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "#",
+        demo: "https://marship.parcus.fr/en/home/",
       },
-      image: codekori,
+      image: marship,
       featured: true,
       category: 2,
       color: 'text-purple-400',
@@ -346,14 +364,30 @@ const ProjectShowcase = () => {
       icon: Code2,
       title:
           "Botanical",
-      description:
-          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      description: "E-commerce website for a tunisian brand to sell natural based products.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "#",
+        demo: "https://botanical-collection.com/",
       },
-      image: codekori,
+      image: botanical,
       featured: true,
       color: 'text-purple-400',
       category: 2,
@@ -364,11 +398,28 @@ const ProjectShowcase = () => {
       title:
           "Atelier la fabrique",
       description:
-          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+          "Website for an architecture to present his services",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "#",
+        demo: "https://atelierlafabrique.fr/",
       },
       image: codekori,
       featured: true,
@@ -382,13 +433,64 @@ const ProjectShowcase = () => {
       title:
           "CRAFTECH",
       description:
-          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+          "A website of a digital agency that represent's it's services.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "#",
+        demo: "http://craftech-digital.com/",
       },
-      image: codekori,
+      image: craftech,
+      featured: true,
+      color: 'text-purple-400',
+      category: 2,
+      cms:''
+    },
+    {
+      icon: Code2,
+      title:
+          "Optic distribution",
+      description:
+          "A website to represent a company which sell ophtalmological materials.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
+      links: {
+        github: "#",
+        demo: "https://optiquedistribution.net/",
+      },
+      image: optic,
       featured: true,
       color: 'text-purple-400',
       category: 2,
@@ -401,10 +503,31 @@ const ProjectShowcase = () => {
           "Simulateur",
       description:
           "Web tool to calculate the cost of a digital service based on client choices with AI features to analyse client extra services, Built with React JS and Laravel.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+      tags: [
+        {
+          name: "React JS",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Laravel",
+          icon: <SiLaravel className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "MySQL",
+          icon: <SiMysql className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "#",
+        demo: "#",
       },
       image: codekori,
       featured: true,
@@ -417,13 +540,30 @@ const ProjectShowcase = () => {
       title:
           "Eyeverda",
       description:
-          "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: [{"name":"React"}, {"name":"Node JS"}, {"name":"Mongo DB"}, {name:"Flask"} , {name: "NLP"}],
+          "A Tunisia's first digital hub dedicated to sustainable innovation and the green economy!",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
       links: {
         github: "https://github.com/seraprogrammer/CodeKori",
         demo: "https://codekori.js.org/",
       },
-      image: codekori,
+      image: eyeverda,
       featured: true,
       color: 'text-purple-400',
       category: 2,
