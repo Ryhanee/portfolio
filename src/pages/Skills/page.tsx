@@ -4,7 +4,6 @@ import { useTheme } from "@/provider/page";
 import { Marquee } from "@/components/magicui/marquee";
 import {
   Code2,
-  Paintbrush,
   Database,
   Layout,
   Cpu,
@@ -32,7 +31,6 @@ import {
   SiWebpack,
   SiRedux,
   SiFirebase,
-  SiVercel,
   SiVite,
 } from "react-icons/si";
 import { BsFileEarmarkCode } from "react-icons/bs";

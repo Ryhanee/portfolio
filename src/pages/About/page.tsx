@@ -76,10 +76,9 @@ export default function About() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                My focus is on making web development faster, easier, and
-                accessible to all developers. Currently, I'm expanding into
-                backend development to grow as a full-stack developer and create
-                seamless, robust web applications.
+                I’m passionate about emerging technologies, artificial intelligence,
+                and crafting code that’s clean, efficient, and future-ready.
+                That passion led me to create Craftech, a digital agency to create intelligent digital solutions..
               </p>
 
               <div className="pt-6">
@@ -93,11 +92,9 @@ export default function About() {
                       theme === "dark" ? "text-gray-300" : "text-gray-600"
                     }
                   >
-                    I'm a lifelong learner and innovator, driven by a desire to
-                    contribute to the developer community with new ideas and
-                    tools that deliver real value. As the creator of OlovaJS,
-                    I'm pushing the boundaries of JavaScript frameworks to
-                    empower developers worldwide.
+                    At the heart of my work is a simple belief — technology should empower,
+                    not overwhelm. And I’m here to keep building tools and experiences that
+                    make that happen.
                   </p>
 
                   <div className="mt-6 space-y-3">

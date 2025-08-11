@@ -1,33 +1,21 @@
 import {
-  Github,
-  ExternalLink,
-  Cpu,
   Server,
   FileCode,
-  Code2,
-  TabletSmartphoneIcon,
-  Laptop,
-  ServerIcon,
+  Code2 } from "lucide-react";
 
-} from "lucide-react";
-
-import olova from "@/assets/projects/olova-B0FjVVEL.png";
 import equimondo from "@/assets/projects/equimondo.png";
 import wellbeing from "@/assets/projects/wellbeing.png";
 import cromdn from "@/assets/projects/cromdn.png";
 import nutislab from "@/assets/projects/nutislab.png";
 import lascensoriste from "@/assets/projects/lascensoriste-1.jpg.jpg";
 import botanical from "@/assets/projects/botanical.png";
-import parcus from "@/assets/projects/parcus.png";
 import linkaura from "@/assets/projects/linkaura.jpg";
 import optic from "@/assets/projects/optique-distibution.jpg";
 import eyeverda from "@/assets/projects/eyeverda.jpg";
 import marship from "@/assets/projects/marship.jpg";
 import craftech from "@/assets/projects/craftech.jpg";
+import no_image from "@/assets/projects/Image-not-found.png"
 
-import portfolio from "@/assets/projects/Annotation 2025-03-20 155334.png";
-import codekori from "@/assets/projects/codekori.png";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "@/provider/page";
 import PortfolioCard from "@/components/PortfolioCard";
 import {
@@ -40,7 +28,7 @@ import {
   SiPython,
   SiReact,
   SiRedux,
-  SiServerfault, SiServerless
+  SiServerless
 } from "react-icons/si";
 import {FaWordpress} from "react-icons/fa";
 import {BiLogoJavascript} from "react-icons/bi";
@@ -99,10 +87,10 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "https://github.com/olovajs/olova",
+        github: "#",
         demo: "#",
       },
-      image: olova,
+      image: no_image,
       featured: true,
       category: 1,
       color: 'text-purple-400',
@@ -175,7 +163,7 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "https://github.com/seraprogrammer/portfolio",
+        github: "#",
         demo: "#",
       },
       image: wellbeing,
@@ -327,7 +315,7 @@ const ProjectShowcase = () => {
       cms: <FaWordpress className="w-4 h-4 text-[#E10098]" />
     },
     {
-      icon: Code2,
+      icon: FaWordpress,
       title:
           "Marship",
       description:
@@ -361,7 +349,7 @@ const ProjectShowcase = () => {
       cms:''
     },
     {
-      icon: Code2,
+      icon: FaWordpress,
       title:
           "Botanical",
       description: "E-commerce website for a tunisian brand to sell natural based products.",
@@ -394,7 +382,7 @@ const ProjectShowcase = () => {
       cms:''
     },
     {
-      icon: Code2,
+      icon: FaWordpress,
       title:
           "Atelier la fabrique",
       description:
@@ -421,7 +409,7 @@ const ProjectShowcase = () => {
         github: "#",
         demo: "https://atelierlafabrique.fr/",
       },
-      image: codekori,
+      image: no_image,
       featured: true,
       color: 'text-purple-400',
       category: 2,
@@ -429,7 +417,7 @@ const ProjectShowcase = () => {
     },
 
     {
-      icon: Code2,
+      icon: FaWordpress,
       title:
           "CRAFTECH",
       description:
@@ -463,7 +451,7 @@ const ProjectShowcase = () => {
       cms:''
     },
     {
-      icon: Code2,
+      icon: FaWordpress,
       title:
           "Optic distribution",
       description:
@@ -526,17 +514,17 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
+        github: "https://github.com/Ryhanee/simulateur-craftech",
         demo: "#",
       },
-      image: codekori,
+      image: no_image,
       featured: true,
       color: 'text-purple-400',
       category: 1,
       cms:''
     },
     {
-      icon: Code2,
+      icon: FaWordpress,
       title:
           "Eyeverda",
       description:
@@ -592,7 +580,7 @@ const ProjectShowcase = () => {
                       : "from-blue-600 via-purple-600 to-pink-600"
               }`}
           >
-            My Recent project
+            My Recent projects
           </h1>
         </div>
 
@@ -609,7 +597,7 @@ const ProjectShowcase = () => {
                   isDarkMode ? "text-blue-300" : "text-blue-600"
               }`}
           >
-            Technologies I work with
+            Projects of the year
           </span>
             <span
                 className={`inline-block w-1.5 h-1.5 rounded-full ${
@@ -662,11 +650,14 @@ const ProjectShowcase = () => {
                             key={index}
                             title={project.title}
                             skills={project?.tags}
-                            color="from-emerald-400 to-cyan-500"
+                            color={project.color}
                             isDark={isDarkMode}
                             description={project.description}
                             image={project.image}
-                            icon={Cpu}
+                            icon={project.icon}
+                            links={project.links}
+                            cms={project?.cms}
+
                         />
                     ))}
               </div>

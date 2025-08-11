@@ -1,42 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTheme } from "@/provider/page";
-import { Marquee } from "@/components/magicui/marquee";
-import {
-    Code2,
-    Paintbrush,
-    Database,
-    Layout,
-    Cpu,
-    Cloud,
-    Sparkles,
-    Layers,
-    GitBranch,
-    Server,
-    Globe,
-    FileCode,
-    Figma,
-    Github,
-    CloudCog, Tags, ExternalLink,
-} from "lucide-react";
 
-import { FaDocker, FaLinux } from "react-icons/fa";
-import { RiNextjsLine } from "react-icons/ri";
 import {
-    SiTypescript,
-    SiTailwindcss,
-    SiPostgresql,
-    SiMongodb,
-    SiGraphql,
-    SiJest,
-    SiWebpack,
-    SiRedux,
-    SiFirebase,
-    SiVercel,
-    SiVite,
-} from "react-icons/si";
-import { BsFileEarmarkCode } from "react-icons/bs";
-import { TbBrandVscode } from "react-icons/tb";
+
+    Github,
+    ExternalLink,
+} from "lucide-react";
 
 //TODO
 // FIX LINKS
