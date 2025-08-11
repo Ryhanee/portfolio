@@ -1,7 +1,7 @@
 import HeroImg from "../../assets/rihane.jpg";
 import { useTheme } from "../../provider/page";
-import OlovaLogo from "../../assets/olova.png";
-import SkillsSection from "../Skills/page";
+import CraftechLogo from "../../assets/craftech-c.png";
+//import SkillsSection from "../Skills/page";
 
 export default function About() {
   const { theme } = useTheme();
@@ -16,14 +16,8 @@ export default function About() {
             : "bg-white text-gray-900"
         }`}
       >
-        <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
-          <h2
-            className={`relative z-10 max-w-xl text-4xl font-medium lg:text-5xl ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
-          >
-            Developer, Designer, Creator, Innovator
-          </h2>
+        <div className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-16">
+
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
             <div className="relative mb-6 sm:mb-0">
               <div
@@ -53,6 +47,13 @@ export default function About() {
             </div>
 
             <div className="relative space-y-4">
+              <h2
+                  className={`relative z-10 max-w-xl text-4xl font-medium lg:text-5xl ${
+                      theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+              >
+                Developer, Designer, Creator, Innovator
+              </h2>
               <p
                 className={`${
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
@@ -108,7 +109,7 @@ export default function About() {
                     <div className="flex items-center gap-2">
                       <img
                         className={`h-5 w-fit ${theme === "dark" ? "" : ""}`}
-                        src={OlovaLogo}
+                        src={CraftechLogo}
                         alt="Craftech Logo"
                         height="20"
                         width="auto"

@@ -17,7 +17,8 @@ const EducationSection = () => {
       achievements: ["Subject: Data Science"],
       skills: ["Mathematics", "Machine Learning", "Deep learning", "Data analysis"],
       description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
+        "Learned data science through an engineering program combining theory and practice, from statistical foundations to advanced machine learning.\n" +
+          "Gained hands-on experience by solving real-world problems using data analysis, programming, and AI techniques.",
     },
     {
       degree: "Bachelor Multimedia & Web development",
@@ -27,7 +28,7 @@ const EducationSection = () => {
       achievements: ["Subject: Multimedia and web development"],
       skills: ["Web development", "Graphic design", "Video Editing"],
       description:
-        "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
+        "Learned multimedia and web development through a bachelor’s program that combined creative design, programming, and real-world projects, gaining experience in building complete digital solutions from concept to deployment.",
     },
   ];
 

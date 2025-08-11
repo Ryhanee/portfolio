@@ -3,7 +3,7 @@ import {
   FileCode,
   Code2 } from "lucide-react";
 
-import equimondo from "@/assets/projects/equimondo.png";
+import equimondo from "@/assets/projects/equimondo.jpg.jpg";
 import wellbeing from "@/assets/projects/wellbeing.png";
 import cromdn from "@/assets/projects/cromdn.png";
 import nutislab from "@/assets/projects/nutislab.png";
@@ -34,20 +34,20 @@ import {FaWordpress} from "react-icons/fa";
 import {BiLogoJavascript} from "react-icons/bi";
 import {useState} from "react";
 
-const MacOsButtons = () => (
-  <div className="flex gap-2 mb-4">
-    <div className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors shadow-md" />
-    <div className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors shadow-md" />
-    <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors shadow-md" />
-  </div>
-);
+// const MacOsButtons = () => (
+//   <div className="flex gap-2 mb-4">
+//     <div className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors shadow-md" />
+//     <div className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors shadow-md" />
+//     <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors shadow-md" />
+//   </div>
+// );
 
 const ProjectShowcase = () => {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
   const [activeTab, setActiveTab] = useState("apps"); // 'apps' or 'websites'
 
-  const tabClasses = (tab) =>
+  const tabClasses = (tab: string) =>
       `px-4 py-2 rounded-t-md text-sm font-medium transition ${
           activeTab === tab
               ? isDarkMode
@@ -87,7 +87,7 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
+        github: "https://github.com/Ryhanee/profili",
         demo: "#",
       },
       image: no_image,
@@ -163,7 +163,7 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
+        github: "https://github.com/Ryhanee/wellness-backend",
         demo: "#",
       },
       image: wellbeing,
@@ -272,7 +272,6 @@ const ProjectShowcase = () => {
       ],
       links: {
         github: "https://github.com/Ryhanee/linkaura",
-        demo: "#",
       },
       image: linkaura,
       featured: true,
@@ -305,7 +304,6 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
         demo: "https://lascensoriste.tn/",
       },
       image: lascensoriste,
@@ -339,7 +337,6 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
         demo: "https://marship.parcus.fr/en/home/",
       },
       image: marship,
@@ -372,7 +369,6 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
         demo: "https://botanical-collection.com/",
       },
       image: botanical,
@@ -406,7 +402,6 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
         demo: "https://atelierlafabrique.fr/",
       },
       image: no_image,
@@ -441,7 +436,6 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
         demo: "http://craftech-digital.com/",
       },
       image: craftech,
@@ -475,7 +469,6 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "#",
         demo: "https://optiquedistribution.net/",
       },
       image: optic,
@@ -515,7 +508,6 @@ const ProjectShowcase = () => {
       ],
       links: {
         github: "https://github.com/Ryhanee/simulateur-craftech",
-        demo: "#",
       },
       image: no_image,
       featured: true,
@@ -548,8 +540,7 @@ const ProjectShowcase = () => {
         },
       ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        demo: "https://eyeverda.com/",
       },
       image: eyeverda,
       featured: true,
@@ -607,7 +598,7 @@ const ProjectShowcase = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto space-y-12 my-2 md:my-0">
           {/* Tabs */}
           <div className="flex space-x-4 border-b border-slate-300 dark:border-slate-700">
             <button className={tabClasses("apps")} onClick={() => setActiveTab("apps")}>
@@ -633,8 +624,6 @@ const ProjectShowcase = () => {
                             image={project.image}
                             icon={project.icon}
                             color={project.color}
-                            cms={project.cms}
-                            category={project.category}
                             links={project.links}
                         />
                     ))}
@@ -656,8 +645,6 @@ const ProjectShowcase = () => {
                             image={project.image}
                             icon={project.icon}
                             links={project.links}
-                            cms={project?.cms}
-
                         />
                     ))}
               </div>

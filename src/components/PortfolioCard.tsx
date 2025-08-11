@@ -28,7 +28,7 @@ interface PortfolioCardProps {
     isDark: boolean;
     description: string;
     image: string;
-    links: Link
+    links: Link;
 }
 
 const PortfolioCard = ({
@@ -39,9 +39,7 @@ const PortfolioCard = ({
                        isDark,
                        description,
                         image,
-                        category,
-                        links
-
+                        links,
                    }: PortfolioCardProps) => (
     <Card
         className={`group relative overflow-hidden ${
@@ -102,7 +100,7 @@ const PortfolioCard = ({
                 >{description}</p></div>
             </div>
         </CardContent>
-        <div className="flex gap-4">
+        <div className="flex justify-end gap-4 space-y-4 m-4">
 
             {
                 links?.github != '' && <a
@@ -117,7 +115,7 @@ const PortfolioCard = ({
 
             {
                 links?.demo && <a
-                    href={(links?.github || "#")}
+                    href={(links?.demo || "#")}
                     className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
                     target="_blank"
                     rel="noopener noreferrer"

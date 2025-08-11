@@ -9,6 +9,7 @@ import { Button } from "../../components/ui/moving-border";
 import { ShootingStars } from "../../components/ui/shooting-stars";
 import config from "@/config/config";
 import { ArrowRightIcon } from "lucide-react";
+import my_resume from "../../assets/RIHANE DALHOUM cv dev.pdf";
 
 export default function Hero() {
   const { theme } = useTheme();
@@ -76,6 +77,8 @@ export default function Hero() {
                 <span className="text-teal-400">{config.information.name}</span>
               </h1>
 
+              <p className="mt-6 text-2xl">{config.information.title}</p>
+
               <div className="mt-8 inline-block">
                 <div
                   className={`py-3 px-6 rounded-md border ${
@@ -84,6 +87,7 @@ export default function Hero() {
                       : "border-gray-200 bg-gray-100"
                   }`}
                 >
+
                   <span className="font-medium text-2xl">
                     <FlipWords
                       words={config.flipWords}
@@ -96,18 +100,18 @@ export default function Hero() {
                 </div>
               </div>
 
-              <p className="mt-6 text-2xl">{config.information.title}</p>
 
-              <div className="mt-8 flex space-x-4">
+              <div className="mt-8 flex space-x-4 my-2 md:my-0">
+                {/*<a*/}
+                {/*  href="#"*/}
+                {/*  className="bg-transparent text-blue-400  hover:bg-opacity-30 transition duration-300 cursor-pointer"*/}
+                {/*>*/}
+                {/*  <Button className="cursor-pointer">Learn More</Button>*/}
+                {/*</a>*/}
                 <a
-                  href="#"
-                  className="bg-transparent text-blue-400  hover:bg-opacity-30 transition duration-300 cursor-pointer"
-                >
-                  <Button className="cursor-pointer">Learn More</Button>
-                </a>
-                <a
-                  href="#"
-                  className="bg-transparent border border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"
+                    target="_blank"
+                  href={my_resume}
+                  className="bg-transparent border border-gray-700 hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"
                 >
                   Get Resume
                 </a>
