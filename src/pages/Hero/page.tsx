@@ -5,11 +5,11 @@ import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { SparklesText } from "@/components/magicui/sparkles-text";
 import { FlipWords } from "../../components/ui/flip-words";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { Button } from "../../components/ui/moving-border";
 import { ShootingStars } from "../../components/ui/shooting-stars";
 import config from "@/config/config";
 import { ArrowRightIcon } from "lucide-react";
 import my_resume from "../../assets/RIHANE DALHOUM cv dev.pdf";
+import {Button} from "@/components/ui/moving-border";
 
 export default function Hero() {
   const { theme } = useTheme();
@@ -74,7 +74,7 @@ export default function Hero() {
                   sparklesCount={10}
                 />
                 I'm{" "}
-                <span className="text-teal-400">{config.information.name}</span>
+                <span className="text-[#0A409B]">{config.information.name}</span>
               </h1>
 
               <p className="mt-6 text-2xl">{config.information.title}</p>
@@ -101,20 +101,31 @@ export default function Hero() {
               </div>
 
 
-              <div className="mt-8 flex space-x-4 my-2 md:my-0">
-                {/*<a*/}
-                {/*  href="#"*/}
-                {/*  className="bg-transparent text-blue-400  hover:bg-opacity-30 transition duration-300 cursor-pointer"*/}
-                {/*>*/}
-                {/*  <Button className="cursor-pointer">Learn More</Button>*/}
-                {/*</a>*/}
+              <div className="mt-8 flex space-x-4 my-2 ">
+
                 <a
                     target="_blank"
-                  href={my_resume}
-                  className="bg-transparent border border-gray-700 hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"
+                    href={my_resume}
+                    className="bg-transparent text-blue-400 hover:bg-opacity-30 transition duration-300 cursor-pointer"
                 >
-                  Get Resume
+                  <Button className="cursor-pointer">Get Resume</Button>
+
                 </a>
+
+                <a
+                  href="#about"
+                  className="bg-transparent border border-[#0A409B] hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"
+                >
+                  Learn More
+                </a>
+
+                {/*<a*/}
+                {/*    target="_blank"*/}
+                {/*  href={my_resume}*/}
+                {/*  className="bg-transparent border border-gray-700 hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"*/}
+                {/*>*/}
+                {/*  Get Resume*/}
+                {/*</a>*/}
               </div>
             </div>
 

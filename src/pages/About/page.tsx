@@ -1,7 +1,10 @@
 import HeroImg from "../../assets/rihane.jpg";
 import { useTheme } from "../../provider/page";
-import CraftechLogo from "../../assets/craftech-c.png";
+import CraftechLogo from "../../assets/LOGO-craftech-f-630x230.png";
 //import SkillsSection from "../Skills/page";
+
+import elementbg3 from "../../assets/Graphic elements/shape-service.png";
+
 
 export default function About() {
   const { theme } = useTheme();
@@ -46,13 +49,15 @@ export default function About() {
               </div>
             </div>
 
-            <div className="relative space-y-4">
+            <div className="relative space-y-4 bg-bottom-right bg-no-repeat"
+                 style={{ backgroundImage: `url(${elementbg3})` }}
+            >
               <h2
                   className={`relative z-10 max-w-xl text-4xl font-medium lg:text-5xl ${
                       theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
               >
-                Developer, Designer, Creator, Innovator
+                Developer, Creator, Innovator
               </h2>
               <p
                 className={`${
@@ -98,24 +103,26 @@ export default function About() {
                     make that happen.
                   </p>
 
-                  <div className="mt-6 space-y-3">
+                  <div className="mt-6 space-y-3 flex items-center gap-2">
                     <cite
                       className={`block font-medium ${
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      Ryhane Dalhoum, Creator of
+                      Ryhane Dalhoum, Co-founder of
                     </cite>
-                    <div className="flex items-center gap-2">
+                    <a href="http://craftech-digital.com/" target="_blank">
+                    {/*<div className="flex items-center gap-2">*/}
+
                       <img
-                        className={`h-5 w-fit ${theme === "dark" ? "" : ""}`}
+                        className={`h-20 w-fit ${theme === "dark" ? "" : ""}`}
                         src={CraftechLogo}
                         alt="Craftech Logo"
-                        height="20"
-                        width="auto"
+                        height="100"
                       />
-                      <span>Craftech</span>
-                    </div>
+                      {/*<span>Craftech</span>*/}
+                    {/*</div>*/}
+                  </a>
                   </div>
                 </blockquote>
               </div>

@@ -1,5 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { Send, MapPin, Mail } from "lucide-react";
+import {Send, MapPin, Mail, Phone} from "lucide-react";
 import { useTheme } from "@/provider/page";
 
 interface FormData {
@@ -71,11 +71,12 @@ export default function Contact() {
 
     // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703"); // Replace with your Web3Forms access key
+    form.append("access_key", "f999c324-d5b0-4bd7-b4bc-f0e8696bb76d");
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("subject", formData.subject || "New Contact Form Submission");
     form.append("message", formData.message);
+    form.append("to", "dalhoumrihane@gmail.com");
 
     try {
       // Send form data to Web3Forms API
@@ -128,7 +129,13 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="space-y-8 backdrop-blur-sm p-8 rounded-3xl border border-white/10 shadow-lg bg-gradient-to-br from-white/5 to-white/10">
               <div>
-                <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                <h2 className={`text-4xl font-bold ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                } bg-clip-text text-transparent bg-gradient-to-r ${
+                    isDarkMode
+                        ? "from-[#0A409B] to-[#47088F]"
+                        : "from-[#0A409B] to-[#47088F]"
+                }`}>
                   Get in Touch
                 </h2>
                 <p
@@ -142,24 +149,42 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 p-4 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                  <div className="bg-gradient-to-br from-purple-500/30 to-pink-500/30 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-purple-400" />
+                  <div className="bg-gradient-to-br from-[#ECF2F6] to-[#47088F]/30 p-3 rounded-lg">
+                    <Mail className="w-6 h-6 text-[#0A409B]-400" />
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p
+                    <a
                       className={`${
                         isDarkMode ? "text-gray-400" : "text-gray-600"
                       }`}
+                      href="mailto:dalhoumrihane@gmail.com"
                     >
-                      olovajs@gmail.com
-                    </p>
+                      dalhoumrihane@gmail.com
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4 p-4 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                  <div className="bg-gradient-to-br from-pink-500/30 to-blue-500/30 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-pink-400" />
+                <div className="bg-gradient-to-br from-[#ECF2F6] to-[#47088F]/30 p-3 rounded-lg">
+                  <Phone className="w-6 h-6 text-[#0A409B]-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">Phone</h3>
+                  <a
+                      className={`${
+                          isDarkMode ? "text-gray-400" : "text-gray-600"
+                      }`}
+                      href="tel:+21655964195"
+                  >
+                    +216 55964195
+                  </a>
+                </div>
+              </div>
+
+                <div className="flex items-center space-x-4 p-4 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#ECF2F6] to-[#47088F]/30 p-3 rounded-lg">
+                    <MapPin className="w-6 h-6 text-[#0A409B]-400" />
                   </div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
@@ -168,7 +193,7 @@ export default function Contact() {
                         isDarkMode ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
-                      Laxmipure, Natore 6400
+                      Tunis, Tunisia
                     </p>
                   </div>
                 </div>

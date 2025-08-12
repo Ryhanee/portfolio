@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Briefcase, Calendar, Code } from "lucide-react";
+import { Calendar, Code } from "lucide-react";
 import { ReactNode } from "react";
 import { useTheme } from "../../provider/page";
 import { motion } from "framer-motion";
@@ -34,13 +34,17 @@ export default function ProfessionalJourney() {
 
       <div className="@container mx-auto max-w-5xl px-6 relative">
         <div className="text-center">
-          <h2
-            className={`text-balance text-4xl font-semibold lg:text-5xl ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
+          <h1
+              className={`text-4xl font-bold ${
+                  isDark ? "text-white" : "text-gray-900"
+              } bg-clip-text text-transparent bg-gradient-to-r ${
+                  isDark
+                      ? "from-[#0A409B] to-[#47088F]"
+                      : "from-[#0A409B] to-[#47088F]"
+              }`}
           >
             Professional Journey
-          </h2>
+          </h1>
           <p className={`mt-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
             "Transforming ideas into digital reality, one project at a time"
           </p>

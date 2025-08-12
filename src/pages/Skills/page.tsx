@@ -309,8 +309,8 @@ const SkillsSection = () => {
             isDark ? "text-white" : "text-gray-900"
           } bg-clip-text text-transparent bg-gradient-to-r ${
             isDark
-              ? "from-blue-400 via-purple-400 to-pink-400"
-              : "from-blue-600 via-purple-600 to-pink-600"
+              ? "from-[#0A409B] to-[#47088F]"
+              : "from-[#0A409B] to-[#47088F]"
           }`}
         >
           My Tech Stack

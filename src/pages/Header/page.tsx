@@ -58,7 +58,7 @@ export default function Header() {
       } backdrop-blur-md md:bg-transparent md:backdrop-blur-none`}
     >
       <div className="md:fixed md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-full md:w-auto">
-        <div className="p-[2px] md:rounded-full bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 animate-gradient-x">
+        <div className="p-[2px] md:rounded-full bg-gradient-to-r from-[#0A409B] via-[#ECF2F6] to-[#47088F] animate-gradient-x">
           <nav
             className={`${
               theme === "dark" ? "bg-[#090F1C]/90" : "bg-white/90"

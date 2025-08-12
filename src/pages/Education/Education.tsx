@@ -69,9 +69,15 @@ const EducationSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent mb-6">
+          <h1 className={`text-4xl font-bold ${
+              isDarkMode ? "text-white" : "text-gray-900"
+          } bg-clip-text text-transparent bg-gradient-to-r ${
+              isDarkMode
+                  ? "from-[#0A409B] to-[#47088F]"
+                  : "from-[#0A409B] to-[#47088F]"
+          }`}>
             Educational Journey
-          </h2>
+          </h1>
           <p
             className={`max-w-2xl mx-auto text-lg ${
               isDarkMode ? "text-gray-300" : "text-gray-700"
