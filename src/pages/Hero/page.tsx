@@ -1,171 +1,212 @@
 import { useTheme } from "@/provider/page";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
-import { SparklesText } from "@/components/magicui/sparkles-text";
-import { FlipWords } from "@/components/ui/flip-words";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import { useLang } from "@/provider/lang";
 import { ShootingStars } from "@/components/ui/shooting-stars";
+import { cn } from "@/lib/utils";
 import config from "@/config/config";
-import { ArrowRightIcon } from "lucide-react";
-import my_resume from "../../assets/Rihane_Dalhoum_FullStack_CV.pdf";
-import {Button} from "@/components/ui/moving-border";
+import { ArrowRight } from "lucide-react";
+import HeroImg from "@/assets/rihane.jpg";
+import my_resume from "@/assets/RIHANE DALHOUM cv dev.pdf";
+
+const translations = {
+  en: {
+    badge: "FULL-STACK DEVELOPER & DATA SCIENTIST",
+    headingLine1: "Architecting",
+    headingItalic: "Innovative",
+    headingLine2: "Digital Experiences.",
+    subtitle:
+      "Crafting the intersection of high-end engineering aesthetics and functional full-stack development. I build tools for the next generation of the web.",
+    cta1: "View Projects",
+    cta2: "Read the story",
+    resume: "Get Resume",
+    currentFocusLabel: "CURRENT FOCUS",
+    currentFocusValue: "AI & Web Dev",
+    basedInLabel: "BASED IN",
+    basedInValue: "Tunisia",
+  },
+  fr: {
+    badge: "DÉVELOPPEUR FULL-STACK & DATA SCIENTIST",
+    headingLine1: "Architecturer des",
+    headingItalic: "Expériences",
+    headingLine2: "Digitales Innovantes.",
+    subtitle:
+      "À l'intersection du design technique de haute qualité et du développement full-stack fonctionnel. Je construis des outils pour la prochaine génération du web.",
+    cta1: "Voir les projets",
+    cta2: "Lire mon histoire",
+    resume: "Mon CV",
+    currentFocusLabel: "FOCUS ACTUEL",
+    currentFocusValue: "IA & Développement",
+    basedInLabel: "BASÉ EN",
+    basedInValue: "Tunisie",
+  },
+} as const;
 
 export default function Hero() {
   const { theme } = useTheme();
+  const { lang } = useLang();
+  const isDark = theme === "dark";
+  const tx = translations[lang];
 
   return (
     <>
       <div
-        className={`hero min-h-screen pt-16 relative ${
-          theme === "dark"
-            ? "bg-[#090f1c] text-white"
-            : "bg-white text-gray-900"
-        }`}
+        className={cn(
+          "hero min-h-screen pt-24 relative overflow-hidden",
+          isDark ? "bg-[#090f1c] text-white" : "bg-white text-gray-900"
+        )}
       >
-        {/* Spotlight */}
-        <div className="pointer-events-none absolute inset-0 z-30 transition-all">
-          <div className="absolute left-[10%] top-[30%] h-[300px] w-[300px] bg-gradient-to-r from-purple-900 via-indigo-800 to-cyan-900 opacity-30 blur-[100px]" />
+        {/* Ambient glow */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <div className="absolute left-[5%] top-[20%] h-[400px] w-[400px] bg-gradient-to-r from-purple-900 via-indigo-800 to-cyan-900 opacity-20 blur-[120px]" />
+          <div className="absolute right-[10%] top-[10%] h-[300px] w-[300px] bg-gradient-to-r from-violet-800 to-purple-900 opacity-15 blur-[100px]" />
         </div>
 
-        {/* Grid Background */}
-        <div className="absolute inset-0 bg-grid-slate-200/[0.04] bg-[size:75px_75px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+        {/* Dot grid */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] opacity-10" />
 
-        {/* Dot Pattern */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] opacity-25" />
-        </div>
+        <div className="container mx-auto px-6 md:px-10 py-12 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-12 min-h-[85vh]">
 
-        <div className="container mx-auto px-10 py-12 relative">
-          <div className="flex flex-col md:flex-row justify-between items-center min-h-[80vh]">
-            {/* Left Section */}
-            <div className="md:w-1/2 w-full">
-              {/* Welcome Badge */}
-              <div className="inline-block mb-3">
-                <div className="rounded-full py-1 flex items-center">
-                  <div className="z-10 flex items-center justify-center">
-                    <div
-                      className={
-                        "group rounded-full border text-base transition-all ease-in hover:cursor-pointer " +
-                        (theme === "dark"
-                          ? "border-white/20 hover:bg-neutral-800 !text-white"
-                          : "border-black/20 hover:bg-neutral-200 text-black")
-                      }
-                    >
-                      <AnimatedShinyText
-                        className={
-                          "inline-flex items-center justify-center px-4 py-1 transition ease-out hover:duration-300 " +
-                          (theme === "dark"
-                            ? "text-white hover:text-neutral-300"
-                            : "text-black hover:text-neutral-600")
-                        }
-                      >
-                        <span>{config.information.welcomeText}</span>
-                        <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-                      </AnimatedShinyText>
+            {/* Left — Text content */}
+            <div className="md:w-1/2 w-full space-y-6">
+              {/* Badge */}
+              <div
+                className={cn(
+                  "inline-flex items-center border rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase",
+                  isDark
+                    ? "border-white/20 text-gray-300"
+                    : "border-gray-300 text-gray-500"
+                )}
+              >
+                {tx.badge}
+              </div>
+
+              {/* Heading */}
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+                <span>{tx.headingLine1}</span>
+                <br />
+                <em className="not-italic text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-400">
+                  {tx.headingItalic}
+                </em>
+                <br />
+                <span>{tx.headingLine2}</span>
+              </h1>
+
+              {/* Subtitle */}
+              <p
+                className={cn(
+                  "text-base md:text-lg max-w-md leading-relaxed",
+                  isDark ? "text-gray-400" : "text-gray-600"
+                )}
+              >
+                {tx.subtitle}
+              </p>
+
+              {/* CTAs */}
+              <div className="flex items-center gap-4 flex-wrap pt-2">
+                <a
+                  href="/projects"
+                  className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+                >
+                  {tx.cta1}
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={my_resume}
+                  className={cn(
+                    "inline-flex items-center gap-2 font-medium px-2 py-3 transition-colors duration-200",
+                    isDark
+                      ? "text-gray-300 hover:text-white"
+                      : "text-gray-600 hover:text-gray-900"
+                  )}
+                >
+                  {tx.cta2}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Right — Portrait card */}
+            <div className="md:w-5/12 w-full flex justify-center md:justify-end">
+              <div className="relative w-full max-w-sm">
+                {/* Glow ring */}
+                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 opacity-40 blur-sm" />
+
+                {/* Card */}
+                <div
+                  className={cn(
+                    "relative rounded-2xl overflow-hidden border",
+                    isDark
+                      ? "border-white/10 bg-gray-900"
+                      : "border-gray-200 bg-gray-50"
+                  )}
+                >
+                  <img
+                    src={HeroImg}
+                    alt={config.information.name}
+                    className="w-full object-cover aspect-[3/4]"
+                  />
+
+                  {/* Info overlay */}
+                  <div
+                    className={cn(
+                      "absolute bottom-0 left-0 right-0 p-4 backdrop-blur-md border-t",
+                      isDark
+                        ? "bg-black/60 border-white/10"
+                        : "bg-white/80 border-gray-200"
+                    )}
+                  >
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p
+                          className={cn(
+                            "text-[10px] font-semibold tracking-widest uppercase",
+                            isDark ? "text-gray-400" : "text-gray-500"
+                          )}
+                        >
+                          {tx.currentFocusLabel}
+                        </p>
+                        <p
+                          className={cn(
+                            "text-sm font-semibold mt-0.5",
+                            isDark ? "text-white" : "text-gray-900"
+                          )}
+                        >
+                          {tx.currentFocusValue}
+                        </p>
+                      </div>
+
+                      <div
+                        className={cn(
+                          "w-px h-8",
+                          isDark ? "bg-white/20" : "bg-gray-300"
+                        )}
+                      />
+
+                      <div>
+                        <p
+                          className={cn(
+                            "text-[10px] font-semibold tracking-widest uppercase",
+                            isDark ? "text-gray-400" : "text-gray-500"
+                          )}
+                        >
+                          {tx.basedInLabel}
+                        </p>
+                        <p
+                          className={cn(
+                            "text-sm font-semibold mt-0.5",
+                            isDark ? "text-white" : "text-gray-900"
+                          )}
+                        >
+                          {tx.basedInValue}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <h1 className="text-5xl md:text-7xl font-bold">
-                <SparklesText
-                  text={config.information.helloText}
-                  sparklesCount={10}
-                />
-                I'm{" "}
-                <span className="text-[#0A409B]">{config.information.name}</span>
-              </h1>
-
-              <p className="mt-6 text-2xl">{config.information.title}</p>
-
-              <div className="mt-8 inline-block">
-                <div
-                  className={`py-3 px-6 rounded-md border ${
-                    theme === "dark"
-                      ? "border-gray-700 bg-gray-800/30"
-                      : "border-gray-200 bg-gray-100"
-                  }`}
-                >
-
-                  <span className="font-medium text-2xl">
-                    <FlipWords
-                      words={config.flipWords}
-                      duration={3000}
-                      className={`font-medium ${
-                        theme === "dark" ? "text-gray-200" : "text-gray-800"
-                      }`}
-                    />
-                  </span>
-                </div>
-              </div>
-
-
-              <div className="mt-8 flex space-x-4 my-2 ">
-
-                <a
-                    target="_blank"
-                    href={my_resume}
-                    className="bg-transparent text-blue-400 hover:bg-opacity-30 transition duration-300 cursor-pointer"
-                >
-                  <Button className="cursor-pointer">Get Resume</Button>
-
-                </a>
-
-                <a
-                  href="#about"
-                  className="bg-transparent border border-[#0A409B] hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"
-                >
-                  Learn More
-                </a>
-
-                {/*<a*/}
-                {/*    target="_blank"*/}
-                {/*  href={my_resume}*/}
-                {/*  className="bg-transparent border border-gray-700 hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"*/}
-                {/*>*/}
-                {/*  Get Resume*/}
-                {/*</a>*/}
-              </div>
             </div>
 
-            {/* Right Section - Code Window */}
-            <div className="md:w-1/2 w-full rounded-lg overflow-hidden ">
-              <div className="code-window bg-gray-900 rounded-lg  shadow-lg relative before:absolute before:w-[200%] before:h-[200%] before:top-[-50%] before:left-[-50%] before:animate-[spin_4s_linear_infinite] before:bg-[conic-gradient(from_0deg,transparent_0_45deg,#3b82f6_45deg_135deg,transparent_135deg_180deg,transparent_180deg_225deg,#3b82f6_225deg_315deg,transparent_315deg)] before:opacity-30">
-                {/* Window Header */}
-                <div className="bg-gray-800 px-4 py-2 flex items-center relative z-10">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  </div>
-                  <div className="ml-4 text-sm text-gray-400">developer.js</div>
-                </div>
-
-                {/* Code Content */}
-                <div className="font-mono text-3xl relative z-20">
-                  <div className="relative z-20 ">
-                    <BackgroundBeamsWithCollision>
-                      <SyntaxHighlighter
-                        language="javascript"
-                        style={dracula}
-                        customStyle={{
-                          margin: 0,
-                          lineHeight: "1",
-                          padding: "1.5rem",
-                          background: "#0f1117",
-                          borderRadius: "0",
-                          fontSize: "clamp(0.7rem, 2vw, 1rem)",
-                        }}
-                        showLineNumbers={false}
-                      >
-                        {config.codeContent.code}
-                      </SyntaxHighlighter>
-                    </BackgroundBeamsWithCollision>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
