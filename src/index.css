@@ -159,4 +159,12 @@ body {
   animation: marquee-vertical var(--duration) linear infinite;
 }
 
+.glass-effect {
+  background: rgba(17, 20, 24, 0.7);
+  backdrop-filter: blur(20px);
+}
 
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(214, 186, 255, 0.3);
+  color: transparent;
+}

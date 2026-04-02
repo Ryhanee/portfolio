@@ -1,16 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router";
-import {
-  Home,
-  Laptop,
-  Briefcase,
-  GraduationCap,
-  Code,
-  Mail,
-  Menu,
-  Sun,
-  Moon,
-} from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
 import { cn } from "@/lib/utils";
@@ -28,19 +18,17 @@ export default function Header() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) setIsMenuOpen(false);
+      if (window.innerWidth >= 768) setIsMenuOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navLinks = [
-    { id: "home", icon: Home, text: lang === "en" ? "Home" : "Accueil", path: "/" },
-    { id: "skills", icon: Code, text: lang === "en" ? "Skills" : "Compétences", path: "/skills" },
-    { id: "experience", icon: Briefcase, text: lang === "en" ? "Experience" : "Expérience", path: "/experience" },
-    { id: "education", icon: GraduationCap, text: lang === "en" ? "Education" : "Formation", path: "/education" },
-    { id: "projects", icon: Laptop, text: lang === "en" ? "Projects" : "Projets", path: "/projects" },
-    { id: "contact", icon: Mail, text: "Contact", path: "/contact" },
+    { id: "home", text: lang === "en" ? "Home" : "Accueil", path: "/" },
+    { id: "projects", text: lang === "en" ? "Projects" : "Projets", path: "/projects" },
+    { id: "experience", text: lang === "en" ? "Experience" : "Expérience", path: "/experience" },
+    { id: "contact", text: "Contact", path: "/contact" },
   ];
 
   const hireMeLabel = lang === "en" ? "Hire Me" : "M'embaucher";
@@ -48,144 +36,151 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 w-full z-50 backdrop-blur-md md:bg-transparent md:backdrop-blur-none",
-        isDark ? "bg-[#090F1C]/95" : "bg-white/95"
+        "fixed top-0 w-full z-50 backdrop-blur-xl",
+        isDark
+          ? "bg-[#111418]/70 bg-gradient-to-b from-[#111418] to-transparent"
+          : "bg-white/80 border-b border-gray-100"
       )}
     >
-      <div className="md:fixed md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-full md:w-auto">
-        <div className="p-[2px] md:rounded-full bg-gradient-to-r from-[#0A409B] via-[#ECF2F6] to-[#47088F] animate-gradient-x">
-          <nav
+      <nav className="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+        {/* Brand */}
+        <Link
+          to="/"
+          onClick={() => setActiveLink("home")}
+          className={cn(
+            "text-2xl font-bold tracking-tighter font-['Space_Grotesk']",
+            isDark ? "text-[#D6BAFF]" : "text-violet-700"
+          )}
+        >
+          Rihane Dalhoum
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-10">
+          {navLinks.map(({ id, text, path }) => (
+            <Link
+              key={id}
+              to={path}
+              onClick={() => setActiveLink(id)}
+              className={cn(
+                "font-['Space_Grotesk'] tracking-tight transition-all duration-300",
+                activeLink === id
+                  ? isDark
+                    ? "text-[#D6BAFF] font-bold border-b-2 border-[#71D5E4] pb-1"
+                    : "text-violet-700 font-bold border-b-2 border-teal-500 pb-1"
+                  : isDark
+                    ? "text-slate-400 font-medium hover:text-[#71D5E4]"
+                    : "text-gray-500 font-medium hover:text-violet-700"
+              )}
+            >
+              {text}
+            </Link>
+          ))}
+        </div>
+
+        {/* Desktop right controls */}
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
             className={cn(
-              "backdrop-blur-md md:rounded-full px-4 md:px-6 py-2.5",
-              isDark ? "bg-[#090F1C]/90" : "bg-white/90"
+              "p-2 transition-colors",
+              isDark ? "text-slate-400 hover:text-[#D6BAFF]" : "text-gray-500 hover:text-violet-700"
             )}
           >
-            {/* Mobile top bar */}
-            <div className="flex justify-between items-center md:hidden px-2">
-              <Link
-                to="/"
-                className={cn(
-                  "font-bold",
-                  isDark ? "text-white" : "text-gray-900"
-                )}
-              >
-                Portfolio
-              </Link>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={toggleTheme}
-                  className={cn("p-2", isDark ? "text-white" : "text-gray-900")}
-                  aria-label="Toggle theme"
-                >
-                  {isDark ? (
-                    <Sun size={22} className="hover:text-yellow-400 transition-colors" />
-                  ) : (
-                    <Moon size={22} className="hover:text-blue-400 transition-colors" />
-                  )}
-                </button>
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={cn("p-2", isDark ? "text-white" : "text-gray-900")}
-                  aria-label="Toggle menu"
-                >
-                  <Menu size={22} className="hover:scale-110 transition-transform" />
-                </button>
-              </div>
-            </div>
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
 
-            {/* Navigation links */}
-            <div className={cn(isMenuOpen ? "block" : "hidden", "md:block")}>
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-1 lg:gap-2 py-4 md:py-0">
-                {navLinks.map(({ id, icon: Icon, text, path }) => (
-                  <Link
-                    key={id}
-                    to={path}
-                    onClick={() => {
-                      setActiveLink(id);
-                      setIsMenuOpen(false);
-                    }}
-                    className={cn(
-                      "px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2",
-                      activeLink === id
-                        ? cn(
-                            isDark
-                              ? "bg-white/15 text-white"
-                              : "bg-gray-900/15 text-gray-900"
-                          )
-                        : cn(
-                            isDark
-                              ? "text-gray-300 hover:text-white hover:bg-white/10"
-                              : "text-gray-600 hover:text-gray-900 hover:bg-gray-900/10"
-                          )
-                    )}
-                  >
-                    <Icon
-                      size={18}
-                      className={cn(
-                        "transition-transform",
-                        activeLink === id ? "scale-110" : ""
-                      )}
-                    />
-                    <span>{text}</span>
-                  </Link>
-                ))}
+          <button
+            onClick={toggleLang}
+            aria-label="Toggle language"
+            className={cn(
+              "text-xs font-['Inter'] font-bold tracking-widest uppercase transition-colors",
+              isDark ? "text-slate-400 hover:text-[#D6BAFF]" : "text-gray-500 hover:text-violet-700"
+            )}
+          >
+            {lang === "en" ? "FR" : "EN"}
+          </button>
 
-                {/* Theme toggle — desktop */}
-                <button
-                  onClick={toggleTheme}
-                  aria-label="Toggle theme"
-                  className={cn(
-                    "hidden md:flex px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium transition-all duration-300 items-center gap-2",
-                    isDark
-                      ? "text-gray-300 hover:text-white hover:bg-white/10"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-900/10"
-                  )}
-                >
-                  {isDark ? (
-                    <Sun size={18} className="hover:text-yellow-400 transition-colors" />
-                  ) : (
-                    <Moon size={18} className="hover:text-blue-400 transition-colors" />
-                  )}
-                </button>
-
-                {/* Language toggle */}
-                <button
-                  onClick={toggleLang}
-                  aria-label="Toggle language"
-                  className={cn(
-                    "px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase border transition-all duration-200",
-                    isDark
-                      ? "border-white/20 text-gray-300 hover:text-white hover:border-white/40"
-                      : "border-gray-300 text-gray-500 hover:text-gray-900 hover:border-gray-400"
-                  )}
-                >
-                  {lang === "en" ? "FR" : "EN"}
-                </button>
-
-                {/* Hire Me */}
-                <a
-                  href="/contact"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="px-4 py-1.5 rounded-full text-sm font-semibold bg-violet-600 hover:bg-violet-700 text-white transition-colors duration-200 text-center"
-                >
-                  {hireMeLabel}
-                </a>
-              </div>
-            </div>
-          </nav>
+          <a
+            href="/contact"
+            onClick={() => setActiveLink("contact")}
+            className={cn(
+              "px-6 py-2.5 rounded-full font-['Space_Grotesk'] font-bold text-sm scale-95 active:scale-90 transition-transform",
+              isDark
+                ? "bg-gradient-to-br from-[#D6BAFF] to-[#47088F] text-[#280057]"
+                : "bg-gradient-to-br from-violet-500 to-violet-800 text-white"
+            )}
+          >
+            {hireMeLabel}
+          </a>
         </div>
-      </div>
 
-      <style>{`
-        @keyframes gradient-x {
-          0%, 100% { background-position: 0% 50%; }
-          50%       { background-position: 100% 50%; }
-        }
-        .animate-gradient-x {
-          animation: gradient-x 3s linear infinite;
-          background-size: 200% 200%;
-        }
-      `}</style>
+        {/* Mobile controls */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className={cn("p-2", isDark ? "text-slate-400" : "text-gray-500")}
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+            className={cn("p-2", isDark ? "text-slate-400" : "text-gray-500")}
+          >
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div
+          className={cn(
+            "md:hidden px-8 pb-6 flex flex-col gap-4 border-t",
+            isDark ? "bg-[#111418] border-[#4A4452]/20" : "bg-white border-gray-200"
+          )}
+        >
+          {navLinks.map(({ id, text, path }) => (
+            <Link
+              key={id}
+              to={path}
+              onClick={() => {
+                setActiveLink(id);
+                setIsMenuOpen(false);
+              }}
+              className={cn(
+                "font-['Space_Grotesk'] font-medium py-2 transition-colors",
+                activeLink === id
+                  ? isDark ? "text-[#D6BAFF]" : "text-violet-700"
+                  : isDark ? "text-slate-400" : "text-gray-500"
+              )}
+            >
+              {text}
+            </Link>
+          ))}
+          <div className="flex items-center gap-4 pt-2">
+            <button
+              onClick={toggleLang}
+              className={cn(
+                "text-xs font-['Inter'] font-bold tracking-widest uppercase",
+                isDark ? "text-slate-400" : "text-gray-500"
+              )}
+            >
+              {lang === "en" ? "FR" : "EN"}
+            </button>
+            <a
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-6 py-2 rounded-full font-['Space_Grotesk'] font-bold text-sm bg-gradient-to-br from-[#D6BAFF] to-[#47088F] text-[#280057]"
+            >
+              {hireMeLabel}
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

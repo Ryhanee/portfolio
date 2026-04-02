@@ -8,6 +8,8 @@ import Projects from "./pages/Projects/page";
 import Contact from "./pages/Contact/page";
 import Education from "./pages/Education/Education";
 import Project from "@/pages/Projects/project/page";
+import Footer from "./pages/Footer/page";
+
 export default function App() {
   return (
     <>
@@ -17,11 +19,9 @@ export default function App() {
           <Route path="/skills" element={<Skills />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/project" element={<Project />} />
-
-            <Route path="/contact" element={<Contact />} />
+          <Route path="/projects/project" element={<Project />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/education" element={<Education />} />
-
           <Route
             path="*"
             element={
@@ -32,6 +32,7 @@ export default function App() {
             }
           />
         </Routes>
+        <Footer />
       </div>
     </>
   );

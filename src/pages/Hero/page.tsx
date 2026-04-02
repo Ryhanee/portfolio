@@ -1,41 +1,39 @@
 import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
-import { ShootingStars } from "@/components/ui/shooting-stars";
 import { cn } from "@/lib/utils";
 import config from "@/config/config";
 import { ArrowRight } from "lucide-react";
 import HeroImg from "@/assets/rihane.jpg";
 import my_resume from "@/assets/Rihane_Dalhoum_FullStack_CV.pdf";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const translations = {
   en: {
-    badge: "FULL-STACK DEVELOPER",
-    headingLine1: "Architecting",
-    headingItalic: "Innovative",
-    headingLine2: "Digital Experiences.",
+    badge: "Full-Stack Developer & Data Scientist",
+    headingStart: "Architecting ",
+    headingItalic: "Intentional",
+    headingEnd: " Digital Experiences.",
     subtitle:
-      "Crafting the intersection of high-end engineering aesthetics and functional full-stack development. I build tools for the next generation of the web.",
-    cta1: "View Projects",
+      "Crafting the intersection of high-end editorial aesthetics and functional full-stack engineering. I build tools for the next generation of the web.",
+    cta1: "View Showcase",
     cta2: "Read the story",
-    resume: "Get Resume",
-    currentFocusLabel: "CURRENT FOCUS",
+    currentFocusLabel: "Current Focus",
     currentFocusValue: "AI & Web Dev",
-    basedInLabel: "BASED IN",
+    basedInLabel: "Based In",
     basedInValue: "Tunisia",
   },
   fr: {
-    badge: "DÉVELOPPEUR FULL-STACK & DATA SCIENTIST",
-    headingLine1: "Architecturer des",
+    badge: "Développeur Full-Stack & Data Scientist",
+    headingStart: "Architecturer des ",
     headingItalic: "Expériences",
-    headingLine2: "Digitales Innovantes.",
+    headingEnd: " Digitales Intentionnelles.",
     subtitle:
-      "À l'intersection du design technique de haute qualité et du développement full-stack fonctionnel. Je construis des outils pour la prochaine génération du web.",
+      "À l'intersection du design éditorial de haute qualité et de l'ingénierie full-stack fonctionnelle. Je construis des outils pour la prochaine génération du web.",
     cta1: "Voir les projets",
     cta2: "Lire mon histoire",
-    resume: "Mon CV",
-    currentFocusLabel: "FOCUS ACTUEL",
+    currentFocusLabel: "Focus Actuel",
     currentFocusValue: "IA & Développement",
-    basedInLabel: "BASÉ EN",
+    basedInLabel: "Basé en",
     basedInValue: "Tunisie",
   },
 } as const;
@@ -45,172 +43,145 @@ export default function Hero() {
   const { lang } = useLang();
   const isDark = theme === "dark";
   const tx = translations[lang];
+  const { scrollY } = useScroll();
+  const bgTextX = useTransform(scrollY, [0, 800], ["0%", "-15%"]);
 
   return (
-    <>
-      <div
-        className={cn(
-          "hero min-h-screen pt-24 relative overflow-hidden",
-          isDark ? "bg-[#090f1c] text-white" : "bg-white text-gray-900"
-        )}
-      >
-        {/* Ambient glow */}
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="absolute left-[5%] top-[20%] h-[400px] w-[400px] bg-gradient-to-r from-purple-900 via-indigo-800 to-cyan-900 opacity-20 blur-[120px]" />
-          <div className="absolute right-[10%] top-[10%] h-[300px] w-[300px] bg-gradient-to-r from-violet-800 to-purple-900 opacity-15 blur-[100px]" />
+    <section
+      className={cn(
+        "relative min-h-screen flex items-center overflow-hidden px-8 pt-20",
+        isDark ? "bg-[#111418] text-[#e1e2e8]" : "bg-white text-gray-900"
+      )}
+    >
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Left: Value Proposition */}
+        <div className="lg:col-span-7 z-10">
+          {/* Badge */}
+          <div
+            className={cn(
+              "inline-block px-4 py-1.5 rounded-full mb-6",
+              isDark ? "bg-[#272a2e]" : "bg-gray-100"
+            )}
+          >
+            <span
+              className={cn(
+                "font-['Inter'] text-[10px] uppercase tracking-[0.2em]",
+                isDark ? "text-[#71d5e4]" : "text-teal-600"
+              )}
+            >
+              {tx.badge}
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h1 className="font-['Space_Grotesk'] text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight mb-8">
+            {tx.headingStart}
+            <span className={cn("italic", isDark ? "text-[#d6baff]" : "text-violet-600")}>
+              {tx.headingItalic}
+            </span>
+            {tx.headingEnd}
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            className={cn(
+              "font-['Manrope'] text-lg md:text-xl max-w-xl mb-10 leading-relaxed",
+              isDark ? "text-[#ccc3d4]" : "text-gray-600"
+            )}
+          >
+            {tx.subtitle}
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap gap-6 items-center">
+            <a
+              href="/projects"
+              className={cn(
+                "px-10 py-4 rounded-md font-['Space_Grotesk'] font-bold text-base hover:opacity-90 transition-all duration-300",
+                isDark
+                  ? "bg-gradient-to-r from-[#d6baff] to-[#47088f] text-[#280057]"
+                  : "bg-gradient-to-r from-violet-500 to-violet-800 text-white"
+              )}
+            >
+              {tx.cta1}
+            </a>
+            <a
+              href={my_resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "flex items-center gap-2 font-['Space_Grotesk'] font-medium border-b border-transparent hover:border-[#71d5e4] transition-all duration-300 py-1",
+                isDark ? "text-[#b2c5ff]" : "text-violet-700"
+              )}
+            >
+              <span>{tx.cta2}</span>
+              <ArrowRight size={16} />
+            </a>
+          </div>
         </div>
 
-        {/* Dot grid */}
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)] opacity-10" />
-
-        <div className="container mx-auto px-6 md:px-10 py-12 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-12 min-h-[85vh]">
-
-            {/* Left — Text content */}
-            <div className="md:w-1/2 w-full space-y-6">
-              {/* Badge */}
-              <div
-                className={cn(
-                  "inline-flex items-center border rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase",
-                  isDark
-                    ? "border-white/20 text-gray-300"
-                    : "border-gray-300 text-gray-500"
-                )}
-              >
-                {tx.badge}
-              </div>
-
-              {/* Heading */}
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-                <span>{tx.headingLine1}</span>
-                <br />
-                <em className="not-italic text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-purple-400">
-                  {tx.headingItalic}
-                </em>
-                <br />
-                <span>{tx.headingLine2}</span>
-              </h1>
-
-              {/* Subtitle */}
-              <p
-                className={cn(
-                  "text-base md:text-lg max-w-md leading-relaxed",
-                  isDark ? "text-gray-400" : "text-gray-600"
-                )}
-              >
-                {tx.subtitle}
-              </p>
-
-              {/* CTAs */}
-              <div className="flex items-center gap-4 flex-wrap pt-2">
-                <a
-                  href="/projects"
-                  className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
-                >
-                  {tx.cta1}
-                </a>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={my_resume}
-                  className={cn(
-                    "inline-flex items-center gap-2 font-medium px-2 py-3 transition-colors duration-200",
-                    isDark
-                      ? "text-gray-300 hover:text-white"
-                      : "text-gray-600 hover:text-gray-900"
-                  )}
-                >
-                  {tx.cta2}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-
-            {/* Right — Portrait card */}
-            <div className="md:w-5/12 w-full flex justify-center md:justify-end">
-              <div className="relative w-full max-w-sm">
-                {/* Glow ring */}
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 opacity-40 blur-sm" />
-
-                {/* Card */}
-                <div
-                  className={cn(
-                    "relative rounded-2xl overflow-hidden border",
-                    isDark
-                      ? "border-white/10 bg-gray-900"
-                      : "border-gray-200 bg-gray-50"
-                  )}
-                >
-                  <img
-                    src={HeroImg}
-                    alt={config.information.name}
-                    className="w-full object-cover aspect-[3/4]"
-                  />
-
-                  {/* Info overlay */}
-                  <div
+        {/* Right: Portrait */}
+        <div className="lg:col-span-5 relative">
+          <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src={HeroImg}
+              alt={config.information.name}
+              className="w-full h-full object-cover"
+            />
+            {/* Glass Overlay */}
+            <div
+              className={cn(
+                "absolute bottom-6 left-6 right-6 p-6 rounded-xl border",
+                isDark
+                  ? "glass-effect border-[#4a4452]/15"
+                  : "bg-white/80 backdrop-blur-xl border-white/50"
+              )}
+            >
+              <div className="flex justify-between items-end">
+                <div>
+                  <p className="font-['Inter'] text-[10px] uppercase tracking-widest text-[#ccc3d4] mb-1">
+                    {tx.currentFocusLabel}
+                  </p>
+                  <p
                     className={cn(
-                      "absolute bottom-0 left-0 right-0 p-4 backdrop-blur-md border-t",
-                      isDark
-                        ? "bg-black/60 border-white/10"
-                        : "bg-white/80 border-gray-200"
+                      "font-['Space_Grotesk'] font-bold",
+                      isDark ? "text-[#d6baff]" : "text-violet-600"
                     )}
                   >
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p
-                          className={cn(
-                            "text-[10px] font-semibold tracking-widest uppercase",
-                            isDark ? "text-gray-400" : "text-gray-500"
-                          )}
-                        >
-                          {tx.currentFocusLabel}
-                        </p>
-                        <p
-                          className={cn(
-                            "text-sm font-semibold mt-0.5",
-                            isDark ? "text-white" : "text-gray-900"
-                          )}
-                        >
-                          {tx.currentFocusValue}
-                        </p>
-                      </div>
-
-                      <div
-                        className={cn(
-                          "w-px h-8",
-                          isDark ? "bg-white/20" : "bg-gray-300"
-                        )}
-                      />
-
-                      <div>
-                        <p
-                          className={cn(
-                            "text-[10px] font-semibold tracking-widest uppercase",
-                            isDark ? "text-gray-400" : "text-gray-500"
-                          )}
-                        >
-                          {tx.basedInLabel}
-                        </p>
-                        <p
-                          className={cn(
-                            "text-sm font-semibold mt-0.5",
-                            isDark ? "text-white" : "text-gray-900"
-                          )}
-                        >
-                          {tx.basedInValue}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    {tx.currentFocusValue}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="font-['Inter'] text-[10px] uppercase tracking-widest text-[#ccc3d4] mb-1">
+                    {tx.basedInLabel}
+                  </p>
+                  <p
+                    className={cn(
+                      "font-['Space_Grotesk'] font-bold",
+                      isDark ? "text-[#e1e2e8]" : "text-gray-800"
+                    )}
+                  >
+                    {tx.basedInValue}
+                  </p>
                 </div>
               </div>
             </div>
-
           </div>
+          {/* Decorative blurs */}
+          <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#47088f]/20 blur-[100px] rounded-full -z-10" />
+          <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-[#003b42]/20 blur-[100px] rounded-full -z-10" />
         </div>
       </div>
-      <ShootingStars />
-    </>
+
+      {/* Background parallax watermark */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden whitespace-nowrap pointer-events-none select-none z-0 opacity-[0.04]">
+        <motion.span
+          style={{ x: bgTextX }}
+          className="font-['Space_Grotesk'] text-[15rem] font-bold tracking-tighter text-stroke inline-block"
+        >
+          DEVELOPER DATA SCIENTIST FULL-STACK ENGINEER
+        </motion.span>
+      </div>
+    </section>
   );
 }

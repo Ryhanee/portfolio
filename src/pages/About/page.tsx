@@ -1,29 +1,32 @@
 import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
 import { cn } from "@/lib/utils";
-import CraftechLogo from "@/assets/LOGO-craftech-f-630x230.png";
-import { Paintbrush, Code2, Zap } from "lucide-react";
+import { Sparkles, Terminal, MousePointerClick } from "lucide-react";
 import type { LucideProps } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
 type IconComponent = React.ComponentType<LucideProps>;
 
-interface CardData {
+interface CardIcon {
   Icon: IconComponent;
-  title: string;
-  desc: string;
+  darkColor: string;
+  lightColor: string;
 }
 
-const CARD_ICONS: IconComponent[] = [Paintbrush, Code2, Zap];
+const CARD_ICONS: CardIcon[] = [
+  { Icon: Sparkles, darkColor: "text-[#71d5e4]", lightColor: "text-teal-600" },
+  { Icon: Terminal, darkColor: "text-[#d6baff]", lightColor: "text-violet-600" },
+  { Icon: MousePointerClick, darkColor: "text-[#b2c5ff]", lightColor: "text-blue-600" },
+];
 
 const translations = {
   en: {
-    sectionLabel: "PHILOSOPHY",
+    sectionLabel: "Philosophy",
     leftHeading: "A dual approach to digital creation.",
     rightHeading:
       "I bridge the gap between visually arresting design and robust, scalable code.",
-    p1: "Full-Stack Developer with over 7 years of experience specializing in designing and developing web and mobile solutions. Passionate about innovative technologies, artificial intelligence, and best development practices.",
-    p2: "As the creator of the OlovaJS UI Framework and co-founder of Craftech, I'm dedicated to simplifying development workflows and crafting intelligent digital solutions.",
+    p1: "With a background rooted in both fine arts and computer science, I don't see UI/UX and Full-Stack development as separate disciplines. To me, they are two sides of the same coin—the interface is the promise, and the code is the delivery.",
+    p2: "I specialize in building complex design systems, high-performance web applications, and interactive prototypes that feel alive. My mission is to ensure that no pixel is wasted and no logic is redundant.",
     cards: [
       {
         title: "UI/UX Strategy",
@@ -38,32 +41,23 @@ const translations = {
         desc: "Bringing static designs to life through purposeful motion, micro-interactions, and accessibility.",
       },
     ],
-    toolkitLabel: "THE TOOLKIT",
-    toolkit: [
-      "TypeScript",
-      "React",
-      "Node.js",
-      "Python",
-      "TailwindCSS",
-      "PostgreSQL",
-      "Docker",
-      "AWS EC2",
-    ],
-    ctaBadge: "AVAILABLE FOR NEW OPPORTUNITIES",
-    ctaHeading: "Ready to bring your\u00a0project to life?",
+    toolkitLabel: "The Toolkit",
+    toolkit: ["TypeScript", "Tailwind CSS", "React", "Node.js", "PostgreSQL", "Python", "Docker", "GraphQL"],
+    ctaBadge: "Available for new opportunities",
+    ctaHeadingStart: "Ready to bring your ",
+    ctaHeadingColored: "project to life?",
     ctaSubtitle:
       "Let's collaborate to transform your ideas into exceptional digital experiences, combining cutting-edge design and precision engineering.",
     ctaBtn1: "Start a project",
     ctaBtn2: "Contact me",
-    craftechBy: "Rihane Dalhoum, Co-founder of",
   },
   fr: {
-    sectionLabel: "PHILOSOPHIE",
+    sectionLabel: "Philosophie",
     leftHeading: "Une double approche de la création digitale.",
     rightHeading:
       "Je fais le lien entre un design visuellement saisissant et un code robuste et scalable.",
-    p1: "Développeur Full-Stack avec plus de 7 ans d'expérience spécialisé dans la conception et le développement de solutions web et mobiles. Passionné par les technologies innovantes, l'intelligence artificielle et les meilleures pratiques de développement.",
-    p2: "En tant que créateur du framework UI OlovaJS et co-fondateur de Craftech, je m'engage à simplifier les workflows de développement et à créer des solutions numériques intelligentes.",
+    p1: "Avec une formation ancrée à la fois dans les arts et l'informatique, je ne vois pas le UI/UX et le développement Full-Stack comme des disciplines séparées. Ce sont deux faces d'une même pièce — l'interface est la promesse, le code est la livraison.",
+    p2: "Je me spécialise dans la création de systèmes de design complexes, d'applications web haute performance et de prototypes interactifs qui semblent vivants. Ma mission : aucun pixel gaspillé, aucune logique redondante.",
     cards: [
       {
         title: "Stratégie UI/UX",
@@ -78,24 +72,15 @@ const translations = {
         desc: "Donner vie aux designs statiques grâce aux micro-interactions et à l'accessibilité.",
       },
     ],
-    toolkitLabel: "LA BOÎTE À OUTILS",
-    toolkit: [
-      "TypeScript",
-      "React",
-      "Node.js",
-      "Python",
-      "TailwindCSS",
-      "PostgreSQL",
-      "Docker",
-      "AWS EC2",
-    ],
-    ctaBadge: "DISPONIBLE POUR DE NOUVELLES OPPORTUNITÉS",
-    ctaHeading: "Prêt à donner vie à\u00a0votre projet\u00a0?",
+    toolkitLabel: "La Boîte à Outils",
+    toolkit: ["TypeScript", "Tailwind CSS", "React", "Node.js", "PostgreSQL", "Python", "Docker", "GraphQL"],
+    ctaBadge: "Disponible pour de nouvelles opportunités",
+    ctaHeadingStart: "Prêt à donner vie à ",
+    ctaHeadingColored: "votre projet ?",
     ctaSubtitle:
       "Collaborons pour transformer vos idées en expériences numériques exceptionnelles, alliant design de pointe et ingénierie de précision.",
     ctaBtn1: "Démarrer un projet",
     ctaBtn2: "Me Contacter",
-    craftechBy: "Rihane Dalhoum, Co-fondateur de",
   },
 } as const;
 
@@ -104,12 +89,6 @@ export default function About() {
   const { lang } = useLang();
   const isDark = theme === "dark";
   const tx = translations[lang];
-
-  const cards: CardData[] = tx.cards.map((c, i) => ({
-    Icon: CARD_ICONS[i],
-    title: c.title,
-    desc: c.desc,
-  }));
 
   return (
     <>
@@ -121,200 +100,229 @@ export default function About() {
         />
       </Helmet>
 
-      {/* ── Philosophy section ── */}
+      {/* Gradient transition from hero */}
+      <div
+        className={cn(
+          "h-32",
+          isDark
+            ? "bg-gradient-to-b from-[#111418] to-[#191c20]"
+            : "bg-gradient-to-b from-white to-gray-50"
+        )}
+      />
+
+      {/* About section */}
       <section
         id="about"
         className={cn(
-          "py-20 md:py-32",
-          isDark ? "bg-[#090f1c] text-white" : "bg-white text-gray-900"
+          "py-24 px-8",
+          isDark ? "bg-[#191c20] text-[#e1e2e8]" : "bg-gray-50 text-gray-900"
         )}
       >
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-
-          {/* Two-column intro */}
-          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
-
-            {/* Left */}
-            <div className="space-y-4">
-              <p
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            {/* Sticky sidebar */}
+            <div className="lg:col-span-3 lg:sticky lg:top-32">
+              <h2
                 className={cn(
-                  "text-xs font-semibold tracking-[0.2em] uppercase",
-                  isDark ? "text-teal-400" : "text-teal-600"
+                  "font-['Inter'] text-xs uppercase tracking-[0.3em] mb-4",
+                  isDark ? "text-[#71d5e4]" : "text-teal-600"
                 )}
               >
                 {tx.sectionLabel}
-              </p>
-              <div
-                className={cn(
-                  "w-8 h-0.5",
-                  isDark ? "bg-teal-400" : "bg-teal-600"
-                )}
-              />
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-                {tx.leftHeading}
               </h2>
-
-              {/* Craftech attribution */}
-              <div className="pt-4 flex items-center gap-3 flex-wrap">
-                <cite
-                  className={cn(
-                    "not-italic text-sm",
-                    isDark ? "text-gray-400" : "text-gray-500"
-                  )}
-                >
-                  {tx.craftechBy}
-                </cite>
-                <a
-                  href="http://craftech-digital.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={CraftechLogo}
-                    alt="Craftech"
-                    className="h-8 w-auto"
-                  />
-                </a>
-              </div>
-            </div>
-
-            {/* Right */}
-            <div className="space-y-5">
-              <h3
-                className={cn(
-                  "text-2xl md:text-3xl font-semibold leading-snug",
-                  isDark ? "text-teal-300" : "text-teal-700"
-                )}
-              >
-                {tx.rightHeading}
-              </h3>
-              <p
-                className={cn(
-                  "leading-relaxed",
-                  isDark ? "text-gray-300" : "text-gray-600"
-                )}
-              >
-                {tx.p1}
-              </p>
-              <p
-                className={cn(
-                  "leading-relaxed",
-                  isDark ? "text-gray-300" : "text-gray-600"
-                )}
-              >
-                {tx.p2}
-              </p>
-            </div>
-          </div>
-
-          {/* Feature cards */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {cards.map(({ Icon, title, desc }) => (
               <div
-                key={title}
+                className={cn("w-12 h-px mb-8", isDark ? "bg-[#71d5e4]" : "bg-teal-500")}
+              />
+              <p
                 className={cn(
-                  "rounded-xl p-6 border space-y-3 transition-colors duration-200",
-                  isDark
-                    ? "bg-white/5 border-white/10 hover:bg-white/[0.08]"
-                    : "bg-gray-50 border-gray-200 hover:bg-gray-100"
+                  "font-['Space_Grotesk'] text-3xl font-bold leading-tight",
+                  isDark ? "text-[#e1e2e8]" : "text-gray-900"
                 )}
               >
-                <Icon
+                {tx.leftHeading}
+              </p>
+            </div>
+
+            {/* Main content */}
+            <div className="lg:col-span-9 space-y-16">
+              <div className="max-w-3xl">
+                <h3
                   className={cn(
-                    "w-6 h-6",
-                    isDark ? "text-violet-400" : "text-violet-600"
+                    "font-['Space_Grotesk'] text-4xl font-medium mb-8",
+                    isDark ? "text-[#d6baff]" : "text-violet-700"
                   )}
-                />
-                <h4 className="font-semibold text-base">{title}</h4>
+                >
+                  {tx.rightHeading}
+                </h3>
                 <p
                   className={cn(
-                    "text-sm leading-relaxed",
-                    isDark ? "text-gray-400" : "text-gray-500"
+                    "font-['Manrope'] text-xl leading-relaxed mb-8",
+                    isDark ? "text-[#ccc3d4]" : "text-gray-600"
                   )}
                 >
-                  {desc}
+                  {tx.p1}
+                </p>
+                <p
+                  className={cn(
+                    "font-['Manrope'] text-xl leading-relaxed",
+                    isDark ? "text-[#ccc3d4]" : "text-gray-600"
+                  )}
+                >
+                  {tx.p2}
                 </p>
               </div>
-            ))}
-          </div>
 
-          {/* Toolkit */}
-          <div className="mt-12 space-y-4">
-            <p
-              className={cn(
-                "text-xs font-semibold tracking-[0.2em] uppercase text-center",
-                isDark ? "text-gray-500" : "text-gray-400"
-              )}
-            >
-              {tx.toolkitLabel}
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {tx.toolkit.map((item) => (
-                <span
-                  key={item}
+              {/* Bento cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {tx.cards.map((card, i) => {
+                  const { Icon, darkColor, lightColor } = CARD_ICONS[i];
+                  return (
+                    <div
+                      key={card.title}
+                      className={cn(
+                        "p-8 rounded-xl border transition-colors group",
+                        isDark
+                          ? "bg-[#272a2e] border-[#4a4452]/10 hover:bg-[#323539]"
+                          : "bg-white border-gray-200 hover:bg-gray-50"
+                      )}
+                    >
+                      <Icon
+                        className={cn(
+                          "mb-6 w-8 h-8 group-hover:scale-110 transition-transform",
+                          isDark ? darkColor : lightColor
+                        )}
+                      />
+                      <h4
+                        className={cn(
+                          "font-['Space_Grotesk'] text-xl font-bold mb-4",
+                          isDark ? "text-[#e1e2e8]" : "text-gray-900"
+                        )}
+                      >
+                        {card.title}
+                      </h4>
+                      <p
+                        className={cn(
+                          "font-['Manrope'] text-sm leading-relaxed",
+                          isDark ? "text-[#ccc3d4]" : "text-gray-500"
+                        )}
+                      >
+                        {card.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Toolkit */}
+              <div>
+                <p
                   className={cn(
-                    "px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase border",
-                    isDark
-                      ? "border-white/15 text-gray-300 bg-white/5"
-                      : "border-gray-300 text-gray-500 bg-gray-50"
+                    "font-['Inter'] text-[10px] uppercase tracking-widest mb-6",
+                    isDark ? "text-[#ccc3d4]" : "text-gray-400"
                   )}
                 >
-                  {item}
-                </span>
-              ))}
+                  {tx.toolkitLabel}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {tx.toolkit.map((item) => (
+                    <span
+                      key={item}
+                      className={cn(
+                        "px-5 py-2 rounded-full text-xs font-['Inter'] uppercase tracking-widest",
+                        isDark ? "bg-[#323539] text-[#e1e2e8]" : "bg-gray-200 text-gray-700"
+                      )}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── CTA section ── */}
-      <section
-        className={cn(
-          "py-24 md:py-32",
-          isDark
-            ? "bg-gradient-to-b from-[#090f1c] to-[#060b15]"
-            : "bg-gradient-to-b from-white to-gray-50"
-        )}
-      >
-        <div className="mx-auto max-w-3xl px-6 text-center space-y-6">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-widest uppercase border-violet-500/40 text-violet-400">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-            {tx.ctaBadge}
+      {/* CTA section */}
+      <section className="relative py-32 px-8 overflow-hidden">
+        <div
+          className={cn(
+            "absolute inset-0 z-0",
+            isDark
+              ? "bg-gradient-to-tr from-[#0b0e12] via-[#191c20] to-[#272a2e]"
+              : "bg-gradient-to-tr from-gray-50 via-white to-gray-100"
+          )}
+        />
+        <div
+          className={cn(
+            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] blur-[120px] rounded-full z-0",
+            isDark ? "bg-[#d6baff]/10" : "bg-violet-200/40"
+          )}
+        />
+
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <div
+            className={cn(
+              "inline-flex items-center gap-2 px-4 py-1 rounded-full border mb-8",
+              isDark ? "bg-[#d6baff]/10 border-[#d6baff]/20" : "bg-violet-100 border-violet-200"
+            )}
+          >
+            <span
+              className={cn(
+                "w-2 h-2 rounded-full animate-pulse",
+                isDark ? "bg-[#d6baff]" : "bg-violet-500"
+              )}
+            />
+            <span
+              className={cn(
+                "font-['Inter'] text-[10px] uppercase tracking-widest",
+                isDark ? "text-[#d6baff]" : "text-violet-600"
+              )}
+            >
+              {tx.ctaBadge}
+            </span>
           </div>
 
           <h2
             className={cn(
-              "text-4xl md:text-5xl lg:text-6xl font-bold leading-tight",
-              isDark ? "text-white" : "text-gray-900"
+              "font-['Space_Grotesk'] text-4xl md:text-6xl font-bold mb-8 leading-tight",
+              isDark ? "text-[#e1e2e8]" : "text-gray-900"
             )}
           >
-            {tx.ctaHeading}
+            {tx.ctaHeadingStart}
+            <span className={isDark ? "text-[#71d5e4]" : "text-teal-600"}>
+              {tx.ctaHeadingColored}
+            </span>
           </h2>
 
           <p
             className={cn(
-              "text-base md:text-lg max-w-xl mx-auto leading-relaxed",
-              isDark ? "text-gray-400" : "text-gray-600"
+              "font-['Manrope'] text-xl mb-12 max-w-2xl mx-auto leading-relaxed",
+              isDark ? "text-[#ccc3d4]" : "text-gray-600"
             )}
           >
             {tx.ctaSubtitle}
           </p>
 
-          <div className="flex items-center justify-center gap-4 flex-wrap pt-2">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-medium px-7 py-3.5 rounded-lg transition-colors duration-200"
+              className={cn(
+                "group relative px-12 py-5 rounded-xl font-['Space_Grotesk'] font-bold text-lg shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-300",
+                isDark
+                  ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057] shadow-[#d6baff]/20"
+                  : "bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20"
+              )}
             >
-              {tx.ctaBtn1}
+              <span className="relative z-10">{tx.ctaBtn1}</span>
+              <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
               href="/contact"
               className={cn(
-                "inline-flex items-center gap-2 font-medium px-7 py-3.5 rounded-lg border transition-colors duration-200",
+                "px-12 py-5 rounded-xl font-['Space_Grotesk'] font-bold text-lg transition-all duration-300 border",
                 isDark
-                  ? "border-white/20 text-gray-300 hover:text-white hover:border-white/40"
-                  : "border-gray-300 text-gray-600 hover:text-gray-900 hover:border-gray-400"
+                  ? "glass-effect border-[#4a4452]/30 text-[#e1e2e8] hover:bg-[#323539]"
+                  : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
               )}
             >
               {tx.ctaBtn2}
