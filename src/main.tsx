@@ -14,9 +14,11 @@ if (rootElement) {
         <StrictMode>
             <HelmetProvider>
                 <ThemeProvider>
-                    <BrowserRouter>
-                        <App />
-                    </BrowserRouter>
+                    <LangProvider>
+                        <BrowserRouter>
+                            <App />
+                        </BrowserRouter>
+                    </LangProvider>
                 </ThemeProvider>
             </HelmetProvider>
         </StrictMode>
