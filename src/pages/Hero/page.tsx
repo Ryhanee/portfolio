@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils";
 import config from "@/config/config";
 import { ArrowRight } from "lucide-react";
 import HeroImg from "@/assets/rihane.jpg";
-import my_resume from "@/assets/RIHANE DALHOUM cv dev.pdf";
+import my_resume from "@/assets/Rihane_Dalhoum_FullStack_CV.pdf";
 
 const translations = {
   en: {
-    badge: "FULL-STACK DEVELOPER & DATA SCIENTIST",
+    badge: "FULL-STACK DEVELOPER",
     headingLine1: "Architecting",
     headingItalic: "Innovative",
     headingLine2: "Digital Experiences.",
