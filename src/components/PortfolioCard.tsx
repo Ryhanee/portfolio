@@ -66,13 +66,13 @@ const PortfolioCard = ({
 
                         <Icon className="w-8 h-8" />
                                  </div>
-                <h3
+                <h2
                     className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
                         isDark ? "from-white to-gray-400" : "from-gray-900 to-gray-600"
                     }`}
                 >
                     {title}
-                </h3>
+                </h2>
             </div>
             <div className="flex flex-wrap gap-2">
                 {skills.map((skill, index) => (

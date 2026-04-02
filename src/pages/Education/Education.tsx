@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Award, Calendar, BookOpen, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/provider/page";
+import {Helmet} from "react-helmet-async";
 
 const EducationSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -55,6 +56,15 @@ const EducationSection = () => {
   };
 
   return (
+      <>
+        <Helmet>
+          <title>Education – Rihane Dalhoum</title>
+          <meta
+              name="description"
+              content="Academic background and certifications in software engineering and web development."
+          />
+        </Helmet>
+
     <section
       className={`min-h-screen relative overflow-hidden py-40 ${
         isDarkMode
@@ -112,13 +122,13 @@ const EducationSection = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
                     <span className="text-3xl">{edu.mascot}</span>
-                    <h3
+                    <h2
                       className={`text-2xl font-bold ${
                         isDarkMode ? "text-white" : "text-gray-900"
                       }`}
                     >
                       {edu.degree}
-                    </h3>
+                    </h2>
                   </div>
                   <p
                     className={`text-lg flex items-center gap-2 ${
@@ -147,14 +157,14 @@ const EducationSection = () => {
                 </p>
 
                 <div className="space-y-3">
-                  <h4
+                  <h3
                     className={`text-sm font-semibold flex items-center gap-2 ${
                       isDarkMode ? "text-white" : "text-gray-900"
                     }`}
                   >
                     <Trophy className="w-4 h-4 text-yellow-500" />
                     Key Achievements
-                  </h4>
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {edu.achievements.map((achievement, i) => (
                       <div
@@ -184,6 +194,7 @@ const EducationSection = () => {
         </motion.div>
       </div>
     </section>
+      </>
   );
 };
 

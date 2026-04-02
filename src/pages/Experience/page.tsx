@@ -3,12 +3,22 @@ import { Calendar, Code } from "lucide-react";
 import { ReactNode } from "react";
 import { useTheme } from "../../provider/page";
 import { motion } from "framer-motion";
+import {Helmet} from "react-helmet-async";
 
 export default function ProfessionalJourney() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
   return (
+      <>
+        <Helmet>
+          <title>Experience – Rihane Dalhoum</title>
+          <meta
+              name="description"
+              content="Professional experience in full-stack web development across various industries and technologies."
+          />
+        </Helmet>
+
     <section
       className={`${
         isDark ? "bg-[#090F1C]" : "bg-zinc-50"
@@ -73,7 +83,7 @@ export default function ProfessionalJourney() {
           />
 
           <ExperienceCard
-            title="Full-stack Developer"
+            title="Full-stack Developer / Team leader"
             company="Parcus Digital Solutions"
             period="2019 - 2022"
             description="Assisted in building and optimizing web applications and mentor junior developers."
@@ -90,6 +100,7 @@ export default function ProfessionalJourney() {
         </motion.div>
       </div>
     </section>
+      </>
   );
 }
 
@@ -136,13 +147,13 @@ const ExperienceCard = ({
           </CardDecorator>
 
           <div className="flex-1">
-            <h3
+            <h2
               className={`text-xl font-medium ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
               {title}
-            </h3>
+            </h2>
             <div className="flex flex-col gap-2 mt-1">
               <p
                 className={`font-medium ${

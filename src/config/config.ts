@@ -3,19 +3,20 @@ const config = {
     name: "Rihane Dalhoum",
     helloText: "Hello",
     welcomeText: "✨ Welcome to my universe",
-    title: "Full stack developer | Data scientist",
+    title: "Full-stack web developer | DevOps & AI Enthusiast",
     title3: "and coding the future 💻 ✨",
   },
-  flipWords: ["Frontend Web Developer", "Backend Developer", "Machine Learning", "Deep Learning", "Crafting plugins & Themes"],
+  flipWords: ["Frontend Developer", "Backend Developer", "Crafting Wordpress plugins & Themes", "Linux server management", "Deploying web apps & API'S"],
   codeContent: {
     code: `const profile = {
   name: 'Rihane Dalhoum',
-  title: 'Full-Stack Developer | Data scientist | Problem Solver',
+  title: 'Full-Stack Developer',
   skills: [
-    'React', 'React Native', 'NextJS', 'Angular','TypeScript',
-    'NestJS', 'Node JS', 'Express', 'Php', 'Laravel',
-    'Python', 'Flask', 'Tensorflow', 'Pytorch', 'PostgreSQL',
-    'MySQL', 'MongoDB', 'Docker', 'AWS EC2', 'Git', 'Linux'
+    'React', 'React Native', 'NextJS', 
+    'TypeScript', 'Nest JS', 'Node JS',
+    'Wordpress', 'PrestaShop', 'Php', 'Laravel',
+    'PostgreSQL','MySQL','MongoDB',
+    'Docker', 'AWS EC2', 'Git/Gitlab', 'Linux'
   ],
   hardWorker: true,
   quickLearner: true, 

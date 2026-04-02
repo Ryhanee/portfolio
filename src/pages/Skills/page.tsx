@@ -35,6 +35,7 @@ import {
 } from "react-icons/si";
 import { BsFileEarmarkCode } from "react-icons/bs";
 import { TbBrandVscode } from "react-icons/tb";
+import {Helmet} from "react-helmet-async";
 
 interface Skill {
   name: string;
@@ -80,13 +81,13 @@ const SkillCard = ({
         >
           <Icon className="w-8 h-8" />
         </div>
-        <h3
+        <h2
           className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
             isDark ? "from-white to-gray-400" : "from-gray-900 to-gray-600"
           }`}
         >
           {title}
-        </h3>
+        </h2>
       </div>
       <div className="flex flex-wrap gap-2">
         {skills.map((skill, index) => (
@@ -298,6 +299,15 @@ const SkillsSection = () => {
   ];
 
   return (
+      <>
+        <Helmet>
+          <title>Skills – Rihane Dalhoum | Full-Stack Technologies</title>
+          <meta
+              name="description"
+              content="Technical skills including React, Node.js, PHP, Laravel, WordPress and modern frontend and backend technologies."
+          />
+        </Helmet>
+
     <main
       className={`lg:pt-0 flex flex-col items-center justify-center ${
         isDark ? "bg-[#090F1C] text-white" : "bg-gray-50 text-gray-900"
@@ -510,6 +520,7 @@ const SkillsSection = () => {
         </div>
       </section>
     </main>
+        </>
   );
 };
 

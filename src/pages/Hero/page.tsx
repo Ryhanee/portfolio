@@ -1,14 +1,14 @@
-import { useTheme } from "../../provider/page";
+import { useTheme } from "@/provider/page";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
 import { SparklesText } from "@/components/magicui/sparkles-text";
-import { FlipWords } from "../../components/ui/flip-words";
+import { FlipWords } from "@/components/ui/flip-words";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { ShootingStars } from "../../components/ui/shooting-stars";
+import { ShootingStars } from "@/components/ui/shooting-stars";
 import config from "@/config/config";
 import { ArrowRightIcon } from "lucide-react";
-import my_resume from "../../assets/RIHANE DALHOUM cv dev.pdf";
+import my_resume from "../../assets/Rihane_Dalhoum_FullStack_CV.pdf";
 import {Button} from "@/components/ui/moving-border";
 
 export default function Hero() {

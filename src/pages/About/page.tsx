@@ -1,9 +1,10 @@
 import HeroImg from "../../assets/rihane.jpg";
-import { useTheme } from "../../provider/page";
+import { useTheme } from "@/provider/page";
 import CraftechLogo from "../../assets/LOGO-craftech-f-630x230.png";
 //import SkillsSection from "../Skills/page";
 
 import elementbg3 from "../../assets/Graphic elements/shape-service.png";
+import {Helmet} from "react-helmet-async";
 
 
 export default function About() {
@@ -11,6 +12,14 @@ export default function About() {
 
   return (
     <>
+      <Helmet>
+        <title>Rihane Dalhoum – Full-Stack Developer</title>
+        <meta
+            name="description"
+            content="Full-stack developer creating smart, scalable web apps with React, Node.js, WordPress, PHP, and Laravel. Passionate about AI and innovative digital solutions."
+        />
+      </Helmet>
+
       <section
         id="about"
         className={`py-16 md:py-32 ${
@@ -68,14 +77,7 @@ export default function About() {
                 web and mobile solutions. Passionate about innovative technologies, artificial intelligence, and
                 best development practices. Skilled in boosting team productivity and delivering high-quality
                 outcomes.{" "}
-                <span
-                  className={`font-bold ${
-                    theme === "dark" ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  As the creator of the OlovaJS UI Framework
-                </span>
-                , I'm dedicated to simplifying development workflows.
+
               </p>
               <p
                 className={`${

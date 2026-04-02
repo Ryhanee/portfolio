@@ -14,6 +14,10 @@ import optic from "@/assets/projects/optique-distibution.jpg";
 import eyeverda from "@/assets/projects/eyeverda.jpg";
 import marship from "@/assets/projects/marship.jpg";
 import craftech from "@/assets/projects/craftech.jpg";
+import parcus from "@/assets/projects/parcus.jpg";
+import tuniship from "@/assets/projects/tuniship.jpg";
+import sotumar from "@/assets/projects/sotumar.jpg";
+
 import no_image from "@/assets/projects/Image-not-found.png"
 
 import { useTheme } from "@/provider/page";
@@ -33,6 +37,7 @@ import {
 import {FaWordpress} from "react-icons/fa";
 import {BiLogoJavascript} from "react-icons/bi";
 import {useState} from "react";
+import {Helmet} from "react-helmet-async";
 
 // const MacOsButtons = () => (
 //   <div className="flex gap-2 mb-4">
@@ -45,7 +50,7 @@ import {useState} from "react";
 const ProjectShowcase = () => {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
-  const [activeTab, setActiveTab] = useState("apps"); // 'apps' or 'websites'
+  const [activeTab, setActiveTab] = useState("websites"); // 'apps' or 'websites'
 
   const tabClasses = (tab: string) =>
       `px-4 py-2 rounded-t-md text-sm font-medium transition ${
@@ -59,43 +64,7 @@ const ProjectShowcase = () => {
       }`;
 
   const projects = [
-    {
-      icon: Code2,
-      title: "Profili",
-      description:
-          "Is a web plateform to generate website portfolio with resume parser and a drag and drop system",
-      tags: [
-        {
-          name: "Node.js",
-          icon: <Server className="w-4 h-4 text-[#339933]" />,
-        },
-        {
-          name: "Flask",
-          icon: <SiPython className="w-4 h-4 text-[#4584b6]" />,
-        },
-        {
-          name: "MongoDB",
-          icon: <SiMongodb className="w-4 h-4 text-[#47A248]" />,
-        },
-        {
-          name: "REST APIs",
-          icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
-        },
-        {
-          name: "React JS",
-          icon: <SiRedux className="w-4 h-4 text-[#764ABC]" />,
-        },
-      ],
-      links: {
-        github: "https://github.com/Ryhanee/profili",
-        demo: "#",
-      },
-      image: no_image,
-      featured: true,
-      category: 1,
-      color: 'text-purple-400',
-      cms:''
-    },
+
     {
       icon: Code2,
       title: "EQUIMONDO",
@@ -251,6 +220,44 @@ const ProjectShowcase = () => {
       cms:''
     },
     {
+      icon: Code2,
+      title: "Profili",
+      description:
+          "Is a web plateform to generate website portfolio with resume parser and a drag and drop system",
+      tags: [
+        {
+          name: "Node.js",
+          icon: <Server className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Flask",
+          icon: <SiPython className="w-4 h-4 text-[#4584b6]" />,
+        },
+        {
+          name: "MongoDB",
+          icon: <SiMongodb className="w-4 h-4 text-[#47A248]" />,
+        },
+        {
+          name: "REST APIs",
+          icon: <Server className="w-4 h-4 text-[#FF6C37]" />,
+        },
+        {
+          name: "React JS",
+          icon: <SiRedux className="w-4 h-4 text-[#764ABC]" />,
+        },
+      ],
+      links: {
+        github: "https://github.com/Ryhanee/profili",
+        demo: "#",
+      },
+      image: no_image,
+      featured: true,
+      category: 1,
+      color: 'text-purple-400',
+      cms:''
+    },
+
+    {
       icon:Code2,
       title:
           "Linkaura",
@@ -351,74 +358,6 @@ const ProjectShowcase = () => {
     {
       icon: FaWordpress,
       title:
-          "Botanical",
-      description: "E-commerce website for a tunisian brand to sell natural based products.",
-      tags: [
-        {
-          name: "Wordpress",
-          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
-        },
-        {
-          name: "Php",
-          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
-        },
-        {
-          name: "CSS",
-          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
-        },
-        {
-          name: "jQuery",
-          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
-        },
-      ],
-      links: {
-        github: "#",
-        demo: "https://botanical-collection.com/",
-      },
-      image: botanical,
-      featured: true,
-      color: 'text-purple-400',
-      category: 2,
-      cms:''
-    },
-    {
-      icon: FaWordpress,
-      title:
-          "Atelier la fabrique",
-      description:
-          "Website for an architecture to present his services",
-      tags: [
-        {
-          name: "Wordpress",
-          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
-        },
-        {
-          name: "Php",
-          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
-        },
-        {
-          name: "CSS",
-          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
-        },
-        {
-          name: "jQuery",
-          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
-        },
-      ],
-      links: {
-        github: "#",
-        demo: "https://atelierlafabrique.fr/",
-      },
-      image: no_image,
-      featured: true,
-      color: 'text-purple-400',
-      category: 2,
-      cms:''
-    },
-
-    {
-      icon: FaWordpress,
-      title:
           "CRAFTECH",
       description:
           "A website of a digital agency that represent's it's services.",
@@ -484,7 +423,141 @@ const ProjectShowcase = () => {
       category: 2,
       cms:''
     },
-
+    {
+      icon: FaWordpress,
+      title:
+          "Tuniship",
+      description:
+          "A website to represent a company of logistic freights.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
+      links: {
+        github: "#",
+        demo: "https://tuniship.net/",
+      },
+      image: tuniship,
+      featured: true,
+      color: 'text-purple-400',
+      category: 2,
+      cms:''
+    },
+    {
+      icon: FaWordpress,
+      title:
+          "Sotumar",
+      description:
+          "A website to represent a company of logistic freights.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
+      links: {
+        github: "#",
+        demo: "https://sotumar.net/",
+      },
+      image: sotumar,
+      featured: true,
+      color: 'text-purple-400',
+      category: 2,
+      cms:''
+    },
+    {
+      icon: FaWordpress,
+      title:
+          "Parcus",
+      description:
+          "A website to represent a company of digital services.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
+      links: {
+        github: "#",
+        demo: "https://parcus.fr/",
+      },
+      image: parcus,
+      featured: true,
+      color: 'text-purple-400',
+      category: 2,
+      cms:''
+    },
+    {
+      icon: FaWordpress,
+      title:
+          "Botanical",
+      description: "E-commerce website for a tunisian brand to sell natural based products.",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
+      links: {
+        github: "#",
+        demo: "https://botanical-collection.com/",
+      },
+      image: botanical,
+      featured: true,
+      color: 'text-purple-400',
+      category: 2,
+      cms:''
+    },
     {
       icon: Code2,
       title:
@@ -526,6 +599,40 @@ const ProjectShowcase = () => {
     {
       icon: FaWordpress,
       title:
+          "Atelier la fabrique",
+      description:
+          "Website for an architecture to present his services",
+      tags: [
+        {
+          name: "Wordpress",
+          icon: <FaWordpress className="w-4 h-4 text-[#339933]" />,
+        },
+        {
+          name: "Php",
+          icon: <SiPhp className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "CSS",
+          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
+        },
+        {
+          name: "jQuery",
+          icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" />,
+        },
+      ],
+      links: {
+        github: "#",
+        demo: "https://atelierlafabrique.fr/",
+      },
+      image: no_image,
+      featured: true,
+      color: 'text-purple-400',
+      category: 2,
+      cms:''
+    },
+    {
+      icon: FaWordpress,
+      title:
           "Eyeverda",
       description:
           "A Tunisia's first digital hub dedicated to sustainable innovation and the green economy!",
@@ -562,6 +669,14 @@ const ProjectShowcase = () => {
 // TODO
   //FIX DESCRIPTIONS AND LINKS AND IMAGES AND ICONS
   return (
+      <><Helmet>
+        <title>Projects – Rihane Dalhoum | Web Development Portfolio</title>
+        <meta
+            name="description"
+            content="Selected web development projects built with React, Wordpress, React Native, Node.js, PHP and Laravel."
+        />
+      </Helmet>
+
       <div
           className={`pt-40 min-h-screen p-8 ${
               isDarkMode
@@ -610,12 +725,13 @@ const ProjectShowcase = () => {
         <div className="max-w-7xl mx-auto space-y-12 my-2 md:my-0">
           {/* Tabs */}
           <div className="flex space-x-4 border-b border-slate-300 dark:border-slate-700">
+            <button className={tabClasses("websites")} onClick={() => setActiveTab("websites")}>
+              Websites | CMS
+            </button>
             <button className={tabClasses("apps")} onClick={() => setActiveTab("apps")}>
               Web Applications | APIs
             </button>
-            <button className={tabClasses("websites")} onClick={() => setActiveTab("websites")}>
-              Websites
-            </button>
+
           </div>
 
           {/* Tab content */}
@@ -660,6 +776,7 @@ const ProjectShowcase = () => {
           )}
         </div>
       </div>
+      </>
   );
 };
 

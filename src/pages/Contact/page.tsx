@@ -1,6 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import {Send, MapPin, Mail, Phone} from "lucide-react";
 import { useTheme } from "@/provider/page";
+import {Helmet} from "react-helmet-async";
 
 interface FormData {
   name: string;
@@ -116,6 +117,15 @@ export default function Contact() {
   };
 
   return (
+      <>
+        <Helmet>
+          <title>Contact – Rihane Dalhoum</title>
+          <meta
+              name="description"
+              content="Get in touch to discuss web development projects, collaborations or freelance opportunities."
+          />
+        </Helmet>
+
     <main
       className={`min-h-screen flex items-center justify-center ${
         isDarkMode
@@ -129,7 +139,7 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="space-y-8 backdrop-blur-sm p-8 rounded-3xl border border-white/10 shadow-lg bg-gradient-to-br from-white/5 to-white/10">
               <div>
-                <h2 className={`text-4xl font-bold ${
+                <h1 className={`text-4xl font-bold ${
                     isDarkMode ? "text-white" : "text-gray-900"
                 } bg-clip-text text-transparent bg-gradient-to-r ${
                     isDarkMode
@@ -137,7 +147,7 @@ export default function Contact() {
                         : "from-[#0A409B] to-[#47088F]"
                 }`}>
                   Get in Touch
-                </h2>
+                </h1>
                 <p
                   className={`text-lg ${
                     isDarkMode ? "text-gray-300" : "text-gray-700"
@@ -323,5 +333,6 @@ export default function Contact() {
         </div>
       </section>
     </main>
+      </>
   );
 }
