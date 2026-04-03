@@ -9,16 +9,16 @@ import { useScroll, useTransform, motion } from "framer-motion";
 
 const translations = {
   en: {
-    badge: "Full-Stack Developer & Data Scientist",
-    headingStart: "Architecting ",
-    headingItalic: "Intentional",
-    headingEnd: " Digital Experiences.",
+    badge: "Full-Stack Engineer | WordPress, PrestaShop, SaaS & AI",
+    headingStart: "High-Converting ",
+    headingItalic: "Websites & eCommerce ",
+    headingEnd: " Platforms.",
     subtitle:
-      "Crafting the intersection of high-end editorial aesthetics and functional full-stack engineering. I build tools for the next generation of the web.",
-    cta1: "View Showcase",
-    cta2: "Read the story",
+      "I build scalable WordPress, PrestaShop and custom platforms optimized for SEO, performance, and conversion, helping businesses turn traffic into qualified leads and measurable growth.",
+    cta1: "View Results",
+    cta2: "Start your project",
     currentFocusLabel: "Current Focus",
-    currentFocusValue: "AI & Web Dev",
+    currentFocusValue: "Web Development, eCommerce & SaaS",
     basedInLabel: "Based In",
     basedInValue: "Tunisia",
   },
@@ -74,7 +74,7 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="font-['Space_Grotesk'] text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight mb-8">
+          <h1 className="font-['Space_Grotesk'] text-3xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-8">
             {tx.headingStart}
             <span className={cn("italic", isDark ? "text-[#d6baff]" : "text-violet-600")}>
               {tx.headingItalic}

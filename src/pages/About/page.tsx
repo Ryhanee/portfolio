@@ -21,28 +21,28 @@ const CARD_ICONS: CardIcon[] = [
 
 const translations = {
   en: {
-    sectionLabel: "Philosophy",
-    leftHeading: "A dual approach to digital creation.",
+    sectionLabel: "Proven Experience",
+    leftHeading: "Engineering Web Platforms That Drive Results.",
     rightHeading:
-      "I bridge the gap between visually arresting design and robust, scalable code.",
-    p1: "With a background rooted in both fine arts and computer science, I don't see UI/UX and Full-Stack development as separate disciplines. To me, they are two sides of the same coin—the interface is the promise, and the code is the delivery.",
-    p2: "I specialize in building complex design systems, high-performance web applications, and interactive prototypes that feel alive. My mission is to ensure that no pixel is wasted and no logic is redundant.",
+      "7+ Years Building Production-Ready Web & eCommerce Systems.",
+    p1: "With over 7 years of experience, I design and develop production-ready websites, eCommerce platforms, and custom web applications used in real business environments.",
+    p2: "I’ve worked on complex platforms including eCommerce systems, booking solutions, and SaaS applications, with a strong emphasis on clean architecture, performance optimization, and long-term reliability.",
     cards: [
       {
-        title: "UI/UX Strategy",
-        desc: "Editorial layouts, design systems, and user behavior mapping focused on conversion and retention.",
+        title: "Lead-Driven Websites",
+        desc: "Websites designed to attract, engage, and convert visitors into qualified leads.",
       },
       {
-        title: "Full-Stack Dev",
-        desc: "Building with React, Next.js, and Node. Clean architectures that scale with your users.",
+        title: "eCommerce Systems",
+        desc: "High-performance online stores built for sales, scalability, and user experience.",
       },
       {
-        title: "Interaction",
-        desc: "Bringing static designs to life through purposeful motion, micro-interactions, and accessibility.",
+        title: "Custom Web Applications",
+        desc: "Scalable platforms, SaaS tools, and business systems tailored to real operational needs.",
       },
     ],
     toolkitLabel: "The Toolkit",
-    toolkit: ["TypeScript", "Tailwind CSS", "React", "Node.js", "PostgreSQL", "Python", "Docker", "GraphQL"],
+    toolkit: ["Wordpress", "Prestashop", "TypeScript", "React", "Node.js", "Python", "PostgreSQL","MySQL","Docker", "GraphQL"],
     ctaBadge: "Available for new opportunities",
     ctaHeadingStart: "Ready to bring your ",
     ctaHeadingColored: "project to life?",
