@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Sparkles, Terminal, MousePointerClick } from "lucide-react";
 import type { LucideProps } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { Skills } from "../../components/ui/skills"
 
 type IconComponent = React.ComponentType<LucideProps>;
 
@@ -237,6 +238,7 @@ export default function About() {
                   ))}
                 </div>
               </div>
+              <Skills />
             </div>
           </div>
         </div>
