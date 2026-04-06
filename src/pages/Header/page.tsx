@@ -26,6 +26,7 @@ export default function Header() {
 
   const navLinks = [
     { id: "home", text: lang === "en" ? "Home" : "Accueil", path: "/" },
+    { id: "skills", text: lang === "en" ? "Skills" : "Compétences", path: "/skills" },
     { id: "projects", text: lang === "en" ? "Projects" : "Projets", path: "/projects" },
     { id: "experience", text: lang === "en" ? "Experience" : "Expérience", path: "/experience" },
     { id: "contact", text: "Contact", path: "/contact" },
