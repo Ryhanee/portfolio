@@ -1,56 +1,23 @@
 import {
-  Server,
-  FileCode,
-  Code2,
   ChevronLeft,
   ChevronRight,
   ExternalLink,
   Globe,
   Terminal,
 } from "lucide-react";
-
-import equimondo from "@/assets/projects/equimondo.jpg.jpg";
-import wellbeing from "@/assets/projects/wellbeing.png";
-import cromdn from "@/assets/projects/cromdn.png";
-import nutislab from "@/assets/projects/nutislab.png";
-import lascensoriste from "@/assets/projects/lascensoriste-1.jpg.jpg";
-import botanical from "@/assets/projects/botanical.png";
-import linkaura from "@/assets/projects/linkaura.jpg";
-import optic from "@/assets/projects/optique-distibution.jpg";
-import eyeverda from "@/assets/projects/eyeverda.jpg";
-import marship from "@/assets/projects/marship.jpg";
-import craftech from "@/assets/projects/craftech.jpg";
-import parcus from "@/assets/projects/parcus.jpg";
-import tuniship from "@/assets/projects/tuniship.jpg";
-import sotumar from "@/assets/projects/sotumar.jpg";
-import no_image from "@/assets/projects/Image-not-found.png";
-
+import { FaGithub } from "react-icons/fa";
+import { useState } from "react";
+import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
 import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
 import { cn } from "@/lib/utils";
-import {
-  SiGraphql,
-  SiJquery,
-  SiLaravel,
-  SiMongodb,
-  SiMysql,
-  SiNodedotjs,
-  SiPhp,
-  SiPostgresql,
-  SiPython,
-  SiReact,
-  SiRedux,
-  SiServerless,
-} from "react-icons/si";
-import { FaWordpress, FaGithub } from "react-icons/fa";
-import { BiLogoJavascript } from "react-icons/bi";
-import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { projects } from "@/data/projects";
 
 const translations = {
   en: {
     helmetTitle: "Projects – Rihane Dalhoum | Web Development Portfolio",
-    helmetDesc: "Selected web development projects built with React, Wordpress, React Native, Node.js, PHP and Laravel.",
+    helmetDesc: "Selected web development projects built with React, WordPress, React Native, Node.js, PHP and Laravel.",
     sectionLabel: "Portfolio",
     headingStart: "Selected ",
     headingColored: "Works.",
@@ -105,308 +72,6 @@ const ProjectShowcase = () => {
   const tx = translations[lang];
   const [activeTab, setActiveTab] = useState<"websites" | "apps">("websites");
   const [currentPage, setCurrentPage] = useState(1);
-
-  const projects = [
-    {
-      icon: Code2,
-      title: "EQUIMONDO",
-      description:
-        "Web application designed to meet the specific needs of equestrian centres. Built with PHP, providing a clean and professional look.",
-      tags: [
-        { name: "Php", icon: <SiPhp className="w-4 h-4 text-[#339933]" /> },
-        { name: "jQuery", icon: <SiJquery className="w-4 h-4 text-[#4584b6]" /> },
-        { name: "Ajax", icon: <SiJquery className="w-4 h-4 text-[#47A248]" /> },
-        { name: "REST APIs", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
-        { name: "MySQL", icon: <SiMysql className="w-4 h-4 text-[#764ABC]" /> },
-      ],
-      links: { github: "https://github.com/equimondo1/", demo: "https://alpha.equimondo.fr/" },
-      image: equimondo,
-      featured: true,
-      category: 1,
-      color: "text-blue-400",
-      cms: "",
-    },
-    {
-      icon: Code2,
-      title: "Wellbeing",
-      description:
-        "Mobile marketplace for reserving beauty & care services. Contains AI features to detect skin problems and a recommendation system.",
-      tags: [
-        { name: "React Native", icon: <SiReact className="w-4 h-4 text-[#339933]" /> },
-        { name: "MongoDB", icon: <SiMongodb className="w-4 h-4 text-[#4584b6]" /> },
-        { name: "REST APIs", icon: <SiServerless className="w-4 h-4 text-[#FF6C37]" /> },
-        { name: "Node JS", icon: <SiNodedotjs className="w-4 h-4 text-[#764ABC]" /> },
-        { name: "Amazon EC2", icon: <Server className="w-4 h-4 text-[#764ABC]" /> },
-      ],
-      links: { github: "https://github.com/Ryhanee/wellness-backend", demo: "#" },
-      image: wellbeing,
-      featured: true,
-      category: 1,
-      color: "text-blue-400",
-      cms: "",
-    },
-    {
-      icon: Code2,
-      title: "Nutislab",
-      description:
-        "Web application dedicated to managing orthodontists and their clients. Built with Laravel, Angular and MySQL.",
-      tags: [
-        { name: "Laravel", icon: <Server className="w-4 h-4 text-[#339933]" /> },
-        { name: "Angular", icon: <Server className="w-4 h-4 text-[#339933]" /> },
-        { name: "MySQL", icon: <SiPostgresql className="w-4 h-4 text-[#336791]" /> },
-        { name: "REST APIs", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
-        { name: "GraphQL", icon: <SiGraphql className="w-4 h-4 text-[#E10098]" /> },
-      ],
-      links: { github: "https://github.com/FarahKa/nutislabFront", demo: "https://dashboad.nutislab.com/" },
-      image: nutislab,
-      featured: true,
-      category: 1,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: Code2,
-      title: "Cromdn",
-      description:
-        "Web application to manage and filter Tunisian dentists based on multiple features. Built with Laravel and MySQL.",
-      tags: [
-        { name: "Laravel", icon: <Server className="w-4 h-4 text-[#339933]" /> },
-        { name: "HTML", icon: <Server className="w-4 h-4 text-[#339933]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "MySQL", icon: <SiPostgresql className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "https://github.com/Ryhanee/CROMDN", demo: "https://cromdn.business-mania.services/" },
-      image: cromdn,
-      featured: true,
-      category: 1,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: Code2,
-      title: "Profili",
-      description:
-        "Web platform to generate portfolio websites with a resume parser and a drag-and-drop system.",
-      tags: [
-        { name: "Node.js", icon: <Server className="w-4 h-4 text-[#339933]" /> },
-        { name: "Flask", icon: <SiPython className="w-4 h-4 text-[#4584b6]" /> },
-        { name: "MongoDB", icon: <SiMongodb className="w-4 h-4 text-[#47A248]" /> },
-        { name: "REST APIs", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
-        { name: "React JS", icon: <SiRedux className="w-4 h-4 text-[#764ABC]" /> },
-      ],
-      links: { github: "https://github.com/Ryhanee/profili", demo: "#" },
-      image: no_image,
-      featured: true,
-      category: 1,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: Code2,
-      title: "Linkaura",
-      description:
-        "API for intelligent Instagram influencer matching based on specific inputs. Built with Flask, ML models and MongoDB.",
-      tags: [
-        { name: "Flask", icon: <SiPostgresql className="w-4 h-4 text-[#336791]" /> },
-        { name: "Machine Learning", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
-        { name: "MongoDB", icon: <SiMongodb className="w-4 h-4 text-[#47A248]" /> },
-      ],
-      links: { github: "https://github.com/Ryhanee/linkaura", demo: "#" },
-      image: linkaura,
-      featured: true,
-      category: 1,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: Code2,
-      title: "Simulateur",
-      description:
-        "Web tool to calculate the cost of a digital service based on client choices, with AI features to analyse extra services. Built with React JS and Laravel.",
-      tags: [
-        { name: "React JS", icon: <SiReact className="w-4 h-4 text-[#339933]" /> },
-        { name: "Laravel", icon: <SiLaravel className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "MySQL", icon: <SiMysql className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-      ],
-      links: { github: "https://github.com/Ryhanee/simulateur-craftech", demo: "#" },
-      image: no_image,
-      featured: true,
-      category: 1,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Lascensoriste",
-      description: "E-commerce website to sell elevator elements. Complete digital identity overhaul focusing on UX and B2B conversion.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://lascensoriste.tn/" },
-      image: lascensoriste,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: <FaWordpress className="w-4 h-4 text-[#E10098]" />,
-    },
-    {
-      icon: FaWordpress,
-      title: "Marship",
-      description: "Website for MARSHIP, a freight forwarding company based in Morocco. Clean, professional corporate presence.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://marship.parcus.fr/en/home/" },
-      image: marship,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "CRAFTECH",
-      description: "Website for a digital agency showcasing its full range of digital services and expertise.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "http://craftech-digital.com/" },
-      image: craftech,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Optic Distribution",
-      description: "Website for a company selling ophthalmological materials. Focus on product showcase and lead generation.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://optiquedistribution.net/" },
-      image: optic,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Tuniship",
-      description: "Website for a logistics freight company. Clean corporate branding with service-focused architecture.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://tuniship.net/" },
-      image: tuniship,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Sotumar",
-      description: "Corporate website for a logistics freight company. Streamlined service presentation and contact flow.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://sotumar.net/" },
-      image: sotumar,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Parcus",
-      description: "Website for a digital services company showcasing their solutions and attracting new clients.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://parcus.fr/" },
-      image: parcus,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Botanical",
-      description: "E-commerce website for a Tunisian brand selling natural-based beauty and wellness products.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://botanical-collection.com/" },
-      image: botanical,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Atelier la fabrique",
-      description: "Website for an architecture studio to present their portfolio and services to potential clients.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://atelierlafabrique.fr/" },
-      image: no_image,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-    {
-      icon: FaWordpress,
-      title: "Eyeverda",
-      description: "Tunisia's first digital hub dedicated to sustainable innovation and the green economy.",
-      tags: [
-        { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
-        { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
-        { name: "jQuery", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
-      ],
-      links: { github: "#", demo: "https://eyeverda.com/" },
-      image: eyeverda,
-      featured: true,
-      category: 2,
-      color: "text-purple-400",
-      cms: "",
-    },
-  ];
 
   const filtered = projects.filter((p) =>
     activeTab === "websites" ? p.category === 2 : p.category === 1
@@ -547,7 +212,7 @@ const ProjectShowcase = () => {
 
         {/* Sidebar + content */}
         <div className="flex flex-col lg:flex-row max-w-7xl mx-auto px-8 gap-12 pb-24">
-          {/* Sidebar (desktop only) */}
+          {/* Sidebar */}
           <aside
             className={cn(
               "hidden lg:flex flex-col w-64 shrink-0 h-[calc(100vh-120px)] sticky top-24 rounded-xl p-6 space-y-8 shadow-2xl",
@@ -582,9 +247,7 @@ const ProjectShowcase = () => {
                   "flex items-center gap-3 w-full rounded-lg p-3 transition-all duration-300 hover:translate-x-1",
                   activeTab === "websites"
                     ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
-                    : isDark
-                      ? "text-[#ccc3d4] hover:bg-[#272a2e]"
-                      : "text-gray-500 hover:bg-gray-100"
+                    : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-gray-500 hover:bg-gray-100"
                 )}
               >
                 <Globe size={18} className="flex-shrink-0" />
@@ -599,9 +262,7 @@ const ProjectShowcase = () => {
                   "flex items-center gap-3 w-full rounded-lg p-3 transition-all duration-300 hover:translate-x-1",
                   activeTab === "apps"
                     ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
-                    : isDark
-                      ? "text-[#ccc3d4] hover:bg-[#272a2e]"
-                      : "text-gray-500 hover:bg-gray-100"
+                    : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-gray-500 hover:bg-gray-100"
                 )}
               >
                 <Terminal size={18} className="flex-shrink-0" />
@@ -627,20 +288,10 @@ const ProjectShowcase = () => {
                   RD
                 </div>
                 <div>
-                  <p
-                    className={cn(
-                      "text-xs font-bold font-['Space_Grotesk']",
-                      isDark ? "text-[#e1e2e8]" : "text-gray-900"
-                    )}
-                  >
+                  <p className={cn("text-xs font-bold font-['Space_Grotesk']", isDark ? "text-[#e1e2e8]" : "text-gray-900")}>
                     {tx.curatorLabel}
                   </p>
-                  <p
-                    className={cn(
-                      "text-[10px] font-['Inter']",
-                      isDark ? "text-[#ccc3d4]" : "text-gray-500"
-                    )}
-                  >
+                  <p className={cn("text-[10px] font-['Inter']", isDark ? "text-[#ccc3d4]" : "text-gray-500")}>
                     {tx.curatorRole}
                   </p>
                 </div>
@@ -698,16 +349,14 @@ const ProjectShowcase = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {pageItems.map((project, index) => (
                 <article
-                  key={`${project.title}-${index}`}
+                  key={`${project.slug}-${index}`}
                   className={cn("group space-y-6", index >= 2 && "md:translate-y-12")}
                 >
-                  {/* Image container */}
+                  {/* Image with overlay actions */}
                   <div
                     className={cn(
                       "relative overflow-hidden rounded-xl aspect-[4/3] transition-all duration-500",
-                      isDark
-                        ? "bg-[#191c20] hover:bg-[#323539]"
-                        : "bg-gray-100 hover:bg-gray-200"
+                      isDark ? "bg-[#191c20] hover:bg-[#323539]" : "bg-gray-100 hover:bg-gray-200"
                     )}
                   >
                     <img
@@ -715,17 +364,26 @@ const ProjectShowcase = () => {
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                     />
-                    {/* Hover overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111418]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <div className="flex gap-3">
+                        <Link
+                          to={`/projects/${project.slug}`}
+                          className="w-11 h-11 rounded-full bg-[#d6baff] flex items-center justify-center text-[#280057] shadow-xl hover:scale-110 transition-transform"
+                          title="View Details"
+                        >
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                          </svg>
+                        </Link>
                         {project.links.demo !== "#" && (
                           <a
                             href={project.links.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-11 h-11 rounded-full bg-[#d6baff] flex items-center justify-center text-[#280057] shadow-xl hover:scale-110 transition-transform"
+                            className="w-11 h-11 rounded-full bg-[#272a2e] flex items-center justify-center text-[#e1e2e8] border border-[#4a4452]/20 shadow-xl hover:scale-110 transition-transform"
+                            title="Live Demo"
                           >
-                            <ExternalLink size={18} />
+                            <ExternalLink size={16} />
                           </a>
                         )}
                         {project.links.github !== "#" && (
@@ -734,8 +392,9 @@ const ProjectShowcase = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-11 h-11 rounded-full bg-[#272a2e] flex items-center justify-center text-[#e1e2e8] border border-[#4a4452]/20 shadow-xl hover:scale-110 transition-transform"
+                            title="GitHub"
                           >
-                            <FaGithub size={18} />
+                            <FaGithub size={16} />
                           </a>
                         )}
                       </div>
@@ -760,14 +419,18 @@ const ProjectShowcase = () => {
                         </span>
                       ))}
                     </div>
-                    <h3
-                      className={cn(
-                        "font-['Space_Grotesk'] text-3xl font-bold",
-                        isDark ? "text-[#e1e2e8]" : "text-gray-900"
-                      )}
-                    >
-                      {project.title}
-                    </h3>
+                    <Link to={`/projects/${project.slug}`}>
+                      <h3
+                        className={cn(
+                          "font-['Space_Grotesk'] text-3xl font-bold transition-colors",
+                          isDark
+                            ? "text-[#e1e2e8] hover:text-[#d6baff]"
+                            : "text-gray-900 hover:text-violet-600"
+                        )}
+                      >
+                        {project.title}
+                      </h3>
+                    </Link>
                     <p
                       className={cn(
                         "font-['Manrope'] leading-relaxed",
@@ -887,8 +550,8 @@ const ProjectShowcase = () => {
                 {tx.ctaSubtitle}
               </p>
               <div className="flex flex-wrap gap-6">
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className={cn(
                     "px-10 py-5 font-['Space_Grotesk'] font-bold rounded-lg shadow-2xl hover:opacity-90 transition-all",
                     isDark
@@ -897,9 +560,9 @@ const ProjectShowcase = () => {
                   )}
                 >
                   {tx.ctaBtn1}
-                </a>
-                <a
-                  href="/skills"
+                </Link>
+                <Link
+                  to="/skills"
                   className={cn(
                     "px-10 py-5 border font-['Space_Grotesk'] font-bold rounded-lg transition-all",
                     isDark
@@ -908,7 +571,7 @@ const ProjectShowcase = () => {
                   )}
                 >
                   {tx.ctaBtn2}
-                </a>
+                </Link>
               </div>
             </div>
 
