@@ -16,8 +16,9 @@ import { projects } from "@/data/projects";
 
 const translations = {
   en: {
-    helmetTitle: "Projects – Rihane Dalhoum | Web Development Portfolio",
-    helmetDesc: "Selected web development projects built with React, WordPress, React Native, Node.js, PHP and Laravel.",
+    helmetTitle: "Web Development Portfolio | WordPress, React, eCommerce & SaaS Projects | Rihane Dalhoum",
+    helmetDesc: "Explore 17 web development projects by Rihane Dalhoum — high-converting WordPress websites, eCommerce platforms, React web applications, SaaS tools, and machine learning APIs. Full-stack developer available for remote projects worldwide.",
+    helmetKeywords: "web development portfolio, WordPress developer projects, React developer portfolio, eCommerce projects, full-stack developer work, SaaS development portfolio, lead generation websites, remote web developer projects",
     sectionLabel: "Portfolio",
     headingStart: "Selected ",
     headingColored: "Works.",
@@ -39,8 +40,9 @@ const translations = {
     ctaBtn2: "View skills",
   },
   fr: {
-    helmetTitle: "Projets – Rihane Dalhoum | Portfolio Développement Web",
-    helmetDesc: "Projets web sélectionnés réalisés avec React, WordPress, React Native, Node.js, PHP et Laravel.",
+    helmetTitle: "Portfolio Développement Web | WordPress, React, eCommerce & SaaS | Rihane Dalhoum",
+    helmetDesc: "Découvrez 17 projets web de Rihane Dalhoum — sites WordPress à forte conversion, plateformes eCommerce, applications React, outils SaaS et APIs machine learning. Développeuse full-stack disponible pour des projets à distance dans le monde entier.",
+    helmetKeywords: "portfolio développement web, projets développeur WordPress, portfolio développeur React, projets eCommerce, travaux développeur full-stack, portfolio développement SaaS, sites web génération leads, projets développeur remote",
     sectionLabel: "Portfolio",
     headingStart: "Travaux ",
     headingColored: "Sélectionnés.",
@@ -144,7 +146,7 @@ const ProjectShowcase = () => {
               className={cn(
                 "w-10 h-10 rounded-lg flex items-center justify-center font-['Space_Grotesk'] font-bold text-sm transition-all",
                 currentPage === p
-                  ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
+                  ? "bg-gradient-to-br from-[#7F22FE] to-[#47088f] text-white"
                   : isDark
                     ? "text-[#ccc3d4] hover:bg-[#272a2e] hover:text-[#e1e2e8]"
                     : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
@@ -171,11 +173,111 @@ const ProjectShowcase = () => {
     </div>
   );
 
+  const siteUrl = "https://ryhane.craftech-digital.com";
+
+  const projectsJsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": tx.helmetTitle,
+        "description": tx.helmetDesc,
+        "url": `${siteUrl}/projects`,
+        "inLanguage": lang === "en" ? "en-US" : "fr-FR",
+        "author": {
+          "@type": "Person",
+          "name": "Rihane Dalhoum",
+          "url": siteUrl,
+          "jobTitle": lang === "en" ? "Full-Stack Web Developer & Data Scientist" : "Développeuse Web Full-Stack & Data Scientist",
+        },
+      },
+      {
+        "@type": "ItemList",
+        "name": lang === "en" ? "Web Development Projects by Rihane Dalhoum" : "Projets de développement web par Rihane Dalhoum",
+        "numberOfItems": projects.length,
+        "itemListElement": projects.map((p, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": p.title,
+          "description": p.description,
+          "url": `${siteUrl}/projects/${p.slug}`,
+          "item": {
+            "@type": "CreativeWork",
+            "name": p.title,
+            "description": p.description,
+            "url": p.links.demo !== "#" ? p.links.demo : `${siteUrl}/projects/${p.slug}`,
+            "keywords": p.tags.map((t) => t.name).join(", "),
+            "dateCreated": p.year,
+            "creator": { "@type": "Person", "name": "Rihane Dalhoum" },
+          },
+        })),
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": lang === "en"
+          ? [
+              {
+                "@type": "Question",
+                "name": "What types of web projects has Rihane Dalhoum built?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Rihane has built 17+ projects including high-converting WordPress websites, eCommerce platforms with WooCommerce and PrestaShop, React and React Native web applications, SaaS tools, healthcare management systems, and machine learning APIs." },
+              },
+              {
+                "@type": "Question",
+                "name": "Can Rihane Dalhoum build a lead-generating website for my business?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Rihane specialises in building websites optimised for SEO, conversion, and lead generation. Her projects include B2B platforms, eCommerce stores, and corporate websites that have delivered measurable growth in traffic and qualified leads." },
+              },
+              {
+                "@type": "Question",
+                "name": "Does Rihane Dalhoum work on international projects?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Rihane is fully remote and has delivered web development projects for clients in Tunisia, France, Morocco, and beyond. She is open to new projects from any country." },
+              },
+            ]
+          : [
+              {
+                "@type": "Question",
+                "name": "Quels types de projets web Rihane Dalhoum a-t-elle réalisés ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Rihane a réalisé plus de 17 projets incluant des sites WordPress à forte conversion, des plateformes eCommerce, des applications React et React Native, des outils SaaS, des systèmes de gestion médicale et des APIs machine learning." },
+              },
+              {
+                "@type": "Question",
+                "name": "Rihane Dalhoum peut-elle créer un site web générateur de leads pour mon entreprise ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Oui. Rihane est spécialisée dans la création de sites web optimisés pour le SEO, la conversion et la génération de leads. Ses projets incluent des plateformes B2B, des boutiques eCommerce et des sites corporate." },
+              },
+              {
+                "@type": "Question",
+                "name": "Rihane Dalhoum travaille-t-elle sur des projets internationaux ?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Oui. Rihane est entièrement disponible à distance et a livré des projets pour des clients en Tunisie, en France, au Maroc et au-delà. Elle est ouverte à de nouveaux projets dans n'importe quel pays." },
+              },
+            ],
+      },
+    ],
+  });
+
   return (
     <>
       <Helmet>
         <title>{tx.helmetTitle}</title>
         <meta name="description" content={tx.helmetDesc} />
+        <meta name="keywords" content={tx.helmetKeywords} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${siteUrl}/projects`} />
+        <link rel="alternate" hrefLang="en" href={`${siteUrl}/projects`} />
+        <link rel="alternate" hrefLang="fr" href={`${siteUrl}/projects`} />
+        <link rel="alternate" hrefLang="x-default" href={`${siteUrl}/projects`} />
+        <meta name="geo.region" content="TN" />
+        <meta name="geo.placename" content="Tunis, Tunisia" />
+        <meta name="geo.position" content="36.8065;10.1815" />
+        <meta name="ICBM" content="36.8065, 10.1815" />
+        <meta property="og:title" content={tx.helmetTitle} />
+        <meta property="og:description" content={tx.helmetDesc} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteUrl}/projects`} />
+        <meta property="og:locale" content={lang === "en" ? "en_US" : "fr_FR"} />
+        <meta property="og:locale:alternate" content={lang === "en" ? "fr_FR" : "en_US"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={tx.helmetTitle} />
+        <meta name="twitter:description" content={tx.helmetDesc} />
+        <script type="application/ld+json">{projectsJsonLd}</script>
       </Helmet>
 
       <div
@@ -246,7 +348,7 @@ const ProjectShowcase = () => {
                 className={cn(
                   "flex items-center gap-3 w-full rounded-lg p-3 transition-all duration-300 hover:translate-x-1",
                   activeTab === "websites"
-                    ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
+                    ? "bg-gradient-to-br from-[#7F22FE] to-[#47088f] text-white"
                     : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-gray-500 hover:bg-gray-100"
                 )}
               >
@@ -261,7 +363,7 @@ const ProjectShowcase = () => {
                 className={cn(
                   "flex items-center gap-3 w-full rounded-lg p-3 transition-all duration-300 hover:translate-x-1",
                   activeTab === "apps"
-                    ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
+                    ? "bg-gradient-to-br from-[#7F22FE] to-[#47088f] text-white"
                     : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-gray-500 hover:bg-gray-100"
                 )}
               >
@@ -482,7 +584,7 @@ const ProjectShowcase = () => {
                         className={cn(
                           "w-10 h-10 rounded-lg flex items-center justify-center font-['Space_Grotesk'] font-bold text-sm transition-all",
                           currentPage === p
-                            ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
+                            ? "bg-gradient-to-br from-[#7F22FE] to-[#47088f] text-white"
                             : isDark
                               ? "text-[#ccc3d4] hover:bg-[#272a2e] hover:text-[#e1e2e8]"
                               : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"

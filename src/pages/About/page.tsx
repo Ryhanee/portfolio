@@ -15,7 +15,7 @@ interface CardIcon {
 }
 
 const CARD_ICONS: CardIcon[] = [
-  { Icon: Sparkles, darkColor: "text-[#71d5e4]", lightColor: "text-teal-600" },
+  { Icon: Sparkles, darkColor: "text-[#71d5e4]", lightColor: "text-[#1A3C8B]" },
   { Icon: Terminal, darkColor: "text-[#d6baff]", lightColor: "text-violet-600" },
   { Icon: MousePointerClick, darkColor: "text-[#b2c5ff]", lightColor: "text-blue-600" },
 ];
@@ -23,63 +23,63 @@ const CARD_ICONS: CardIcon[] = [
 const translations = {
   en: {
     sectionLabel: "Proven Experience",
-    leftHeading: "Engineering Web Platforms That Drive Results.",
+    leftHeading: "Building High-Performance Web Platforms That Drive Results.",
     rightHeading:
-      "7+ Years Building Production-Ready Web & eCommerce Systems.",
-    p1: "With over 7 years of experience, I design and develop production-ready websites, eCommerce platforms, and custom web applications used in real business environments.",
-    p2: "I’ve worked on complex platforms including eCommerce systems, booking solutions, and SaaS applications, with a strong emphasis on clean architecture, performance optimization, and long-term reliability.",
+      "7+ Years of Experience in Web & eCommerce Development.",
+    p1: "With over 7 years of experience, I design and develop websites, eCommerce platforms, and custom applications used in real business environments.",
+    p2: "I’ve built websites, online stores, and SaaS platforms with a strong focus on clean architecture, performance, SEO, and scalability.",
     cards: [
       {
         title: "Lead-Driven Websites",
-        desc: "Websites designed to attract, engage, and convert visitors into qualified leads.",
+        desc: "Websites designed to attract traffic, improve SEO, and convert visitors into qualified leads.",
       },
       {
         title: "eCommerce Systems",
-        desc: "High-performance online stores built for sales, scalability, and user experience.",
+        desc: "High-performance online stores optimized for sales and user experience.",
       },
       {
         title: "Custom Web Applications",
-        desc: "Scalable platforms, SaaS tools, and business systems tailored to real operational needs.",
+        desc: "Scalable SaaS platforms and business tools tailored to real operational needs.",
       },
     ],
-    toolkitLabel: "The Toolkit",
+    toolkitLabel: "Tech Stack",
     toolkit: ["Wordpress", "Prestashop", "TypeScript", "React", "Node.js", "Python", "PostgreSQL","MySQL","Docker", "GraphQL"],
-    ctaBadge: "Available for new opportunities",
-    ctaHeadingStart: "Ready to bring your ",
-    ctaHeadingColored: "project to life?",
+    ctaBadge: "AVAILABLE FOR NEW PROJECTS",
+    ctaHeadingStart: "Ready to Build Your ",
+    ctaHeadingColored: "Next Web Project?",
     ctaSubtitle:
-      "Let's collaborate to transform your ideas into exceptional digital experiences, combining cutting-edge design and precision engineering.",
+      "Let’s build a high-performance website or eCommerce platform designed to generate real results and support your business growth.",
     ctaBtn1: "Start a project",
     ctaBtn2: "Contact me",
   },
   fr: {
-    sectionLabel: "Philosophie",
-    leftHeading: "Une double approche de la création digitale.",
+    sectionLabel: "Expérience confirmée",
+    leftHeading: "Développement de plateformes web performantes orientées résultats.",
     rightHeading:
-      "Je fais le lien entre un design visuellement saisissant et un code robuste et scalable.",
-    p1: "Avec une formation ancrée à la fois dans les arts et l'informatique, je ne vois pas le UI/UX et le développement Full-Stack comme des disciplines séparées. Ce sont deux faces d'une même pièce — l'interface est la promesse, le code est la livraison.",
-    p2: "Je me spécialise dans la création de systèmes de design complexes, d'applications web haute performance et de prototypes interactifs qui semblent vivants. Ma mission : aucun pixel gaspillé, aucune logique redondante.",
+      "+7 ans d’expérience en développement web et eCommerce.",
+    p1: "Avec plus de 7 ans d’expérience, je conçois et développe des sites web, plateformes eCommerce et applications sur mesure utilisés dans des environnements métiers réels.",
+    p2: "J’ai réalisé des projets de création de sites web, boutiques en ligne et plateformes SaaS, avec un fort accent sur l’architecture propre, la performance, le SEO et la scalabilité.",
     cards: [
       {
-        title: "Stratégie UI/UX",
-        desc: "Mises en page éditoriales, systèmes de design et cartographie du comportement utilisateur.",
+        title: "Sites web orientés conversion",
+        desc: "Création de sites web optimisés pour attirer du trafic, améliorer le SEO et convertir les visiteurs en leads qualifiés.",
       },
       {
-        title: "Développement Full-Stack",
-        desc: "Construction avec React, Next.js et Node. Architectures propres qui évoluent avec vos utilisateurs.",
+        title: "Développement eCommerce",
+        desc: "Création de boutiques en ligne performantes et optimisées pour la vente et l’expérience utilisateur.",
       },
       {
-        title: "Interaction",
-        desc: "Donner vie aux designs statiques grâce aux micro-interactions et à l'accessibilité.",
+        title: "Applications web sur mesure",
+        desc: "Développement de plateformes SaaS et outils métiers adaptés aux besoins des entreprises et conçus pour évoluer.",
       },
     ],
-    toolkitLabel: "La Boîte à Outils",
-    toolkit: ["TypeScript", "Tailwind CSS", "React", "Node.js", "PostgreSQL", "Python", "Docker", "GraphQL"],
-    ctaBadge: "Disponible pour de nouvelles opportunités",
-    ctaHeadingStart: "Prêt à donner vie à ",
-    ctaHeadingColored: "votre projet ?",
+    toolkitLabel: "Technologies",
+    toolkit: ["Wordpress", "Prestashop", "TypeScript", "React", "Node.js", "PHP", "Laravel", "Python", "Flask", "PostgreSQL","MySQL","Docker", "GraphQL"],
+    ctaBadge: "DISPONIBLE POUR DE NOUVEAUX PROJETS",
+    ctaHeadingStart: "Prête à développer ",
+    ctaHeadingColored: "votre projet web ?",
     ctaSubtitle:
-      "Collaborons pour transformer vos idées en expériences numériques exceptionnelles, alliant design de pointe et ingénierie de précision.",
+      "Collaborons pour créer un site web ou une plateforme eCommerce performante, pensée pour générer des résultats concrets et soutenir la croissance de votre activité.",
     ctaBtn1: "Démarrer un projet",
     ctaBtn2: "Me Contacter",
   },
@@ -116,7 +116,7 @@ export default function About() {
         id="about"
         className={cn(
           "py-24 px-8",
-          isDark ? "bg-[#191c20] text-[#e1e2e8]" : "bg-gray-50 text-gray-900"
+          isDark ? "bg-[#191c20] text-[#e1e2e8]" : "bg-gray-100 text-gray-900"
         )}
       >
         <div className="max-w-7xl mx-auto">
@@ -126,13 +126,13 @@ export default function About() {
               <h2
                 className={cn(
                   "font-['Inter'] text-xs uppercase tracking-[0.3em] mb-4",
-                  isDark ? "text-[#71d5e4]" : "text-teal-600"
+                  isDark ? "text-[#71d5e4]" : "text-[#1A3C8B]"
                 )}
               >
                 {tx.sectionLabel}
               </h2>
               <div
-                className={cn("w-12 h-px mb-8", isDark ? "bg-[#71d5e4]" : "bg-teal-500")}
+                className={cn("w-12 h-px mb-8", isDark ? "bg-[#71d5e4]" : "bg-[#1A3C8B]")}
               />
               <p
                 className={cn(
@@ -291,7 +291,7 @@ export default function About() {
             )}
           >
             {tx.ctaHeadingStart}
-            <span className={isDark ? "text-[#71d5e4]" : "text-teal-600"}>
+            <span className={isDark ? "text-[#71d5e4]" : "text-[#1A3C8B]"}>
               {tx.ctaHeadingColored}
             </span>
           </h2>

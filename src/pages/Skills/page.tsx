@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/provider/page";
+import { useLang } from "@/provider/lang";
 import { Marquee } from "@/components/magicui/marquee";
 import {
   Code2,
@@ -48,6 +49,39 @@ interface SkillCategory {
   color: string;
   skills: Skill[];
 }
+
+const translations = {
+  en: {
+    metaTitle: "Full-Stack Developer & Data Scientist Skills | React, Node.js, Python | Rihane Dalhoum – Tunis",
+    metaDesc: "Explore Rihane Dalhoum's full technical stack: React, Next.js, Angular, Node.js, PHP, Python, PostgreSQL, MongoDB, Docker, Machine Learning and more. Full-stack developer & data scientist based in Tunis, Tunisia — available for remote projects worldwide.",
+    keywords: "full-stack developer Tunis, data scientist Tunisia, React developer, Node.js developer, Python developer, freelance developer Tunisia, web development skills, machine learning engineer, remote developer Africa",
+    heading: "My Tech Stack",
+    subtitle: "Technologies I work with",
+    categories: [
+      "Frontend Development",
+      "Backend Development",
+      "Data Science",
+      "UI/UX Design",
+      "Cloud & DevOps",
+      "Tools & Technologies",
+    ],
+  },
+  fr: {
+    metaTitle: "Compétences Développeuse Full-Stack & Data Scientist | React, Node.js, Python | Rihane Dalhoum – Tunis",
+    metaDesc: "Découvrez les compétences techniques de Rihane Dalhoum : React, Next.js, Angular, Node.js, PHP, Python, PostgreSQL, MongoDB, Docker, Machine Learning et plus. Développeuse full-stack & data scientist à Tunis, Tunisie — disponible pour des projets à distance.",
+    keywords: "développeuse full-stack Tunis, data scientist Tunisie, développeuse React, développeuse Node.js, développeuse Python, freelance développeuse Tunisie, compétences développement web, machine learning, développeuse remote Afrique",
+    heading: "Mes compétences",
+    subtitle: "Technologies que j'utilise",
+    categories: [
+      "Développement Frontend",
+      "Développement Backend",
+      "Data Science",
+      "Design UI/UX",
+      "Cloud & DevOps",
+      "Outils & Technologies",
+    ],
+  },
+} as const;
 
 interface SkillCardProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -116,11 +150,13 @@ const SkillCard = ({
 const SkillsSection = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const { lang } = useLang();
+  const tx = translations[lang];
 
   const skillCategories: SkillCategory[] = [
     {
       icon: Code2,
-      title: "Frontend Development",
+      title: tx.categories[0],
       color: "text-blue-400",
       skills: [
         {
@@ -159,7 +195,7 @@ const SkillsSection = () => {
     },
     {
       icon: Database,
-      title: "Backend Development",
+      title: tx.categories[1],
       color: "text-green-400",
       skills: [
         {
@@ -194,7 +230,7 @@ const SkillsSection = () => {
     },
     {
       icon: Layout,
-      title: "Data science",
+      title: tx.categories[2],
       color: "text-purple-400",
       skills: [
         {
@@ -225,7 +261,7 @@ const SkillsSection = () => {
     },
     {
       icon: Layout,
-      title: "UI/UX Design",
+      title: tx.categories[3],
       color: "text-purple-400",
       skills: [
         { name: "Figma", icon: <Figma className="w-4 h-4 text-[#F24E1E]" /> },
@@ -245,7 +281,7 @@ const SkillsSection = () => {
     },
     {
       icon: Cloud,
-      title: "Cloud & DevOps",
+      title: tx.categories[4],
       color: "text-orange-400",
       skills: [
         { name: "AWS", icon: <CloudCog className="w-4 h-4 text-[#FF9900]" /> },
@@ -267,7 +303,7 @@ const SkillsSection = () => {
     },
     {
       icon: Cpu,
-      title: "Tools & Technologies",
+      title: tx.categories[5],
       color: "text-pink-400",
       skills: [
         {
@@ -298,14 +334,62 @@ const SkillsSection = () => {
 
   ];
 
+  const skillsJsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": tx.metaTitle,
+    "description": tx.metaDesc,
+    "inLanguage": lang === "en" ? "en-US" : "fr-FR",
+    "url": "https://ryhane.craftech-digital.com/skills",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Rihane Dalhoum",
+      "jobTitle": lang === "en" ? "Full-Stack Developer & Data Scientist" : "Développeuse Full-Stack & Data Scientist",
+      "url": "https://ryhane.craftech-digital.com",
+      "email": "dalhoumrihane@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": lang === "en" ? "Tunis, Tunisia" : "Tunis, Tunisie",
+        "addressCountry": "TN",
+      },
+      "knowsAbout": [
+        "React", "Next.js", "Angular", "TypeScript", "Tailwind CSS",
+        "Node.js", "PHP", "Python", "PostgreSQL", "MongoDB", "GraphQL",
+        "Machine Learning", "Deep Learning", "Pandas", "TensorFlow",
+        "Docker", "AWS", "CI/CD", "Figma",
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/rihane-dalhoum/",
+        "https://github.com/Rihanee",
+      ],
+    },
+  });
+
   return (
       <>
         <Helmet>
-          <title>Skills – Rihane Dalhoum | Full-Stack Technologies</title>
-          <meta
-              name="description"
-              content="Technical skills including React, Node.js, PHP, Laravel, WordPress and modern frontend and backend technologies."
-          />
+          <title>{tx.metaTitle}</title>
+          <meta name="description" content={tx.metaDesc} />
+          <meta name="keywords" content={tx.keywords} />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://ryhane.craftech-digital.com/skills" />
+          <link rel="alternate" hrefLang="en" href="https://ryhane.craftech-digital.com/skills" />
+          <link rel="alternate" hrefLang="fr" href="https://ryhane.craftech-digital.com/skills" />
+          <link rel="alternate" hrefLang="x-default" href="https://ryhane.craftech-digital.com/skills" />
+          <meta name="geo.region" content="TN" />
+          <meta name="geo.placename" content="Tunis, Tunisia" />
+          <meta name="geo.position" content="36.8065;10.1815" />
+          <meta name="ICBM" content="36.8065, 10.1815" />
+          <meta property="og:title" content={tx.metaTitle} />
+          <meta property="og:description" content={tx.metaDesc} />
+          <meta property="og:type" content="profile" />
+          <meta property="og:url" content="https://ryhane.craftech-digital.com/skills" />
+          <meta property="og:locale" content={lang === "en" ? "en_US" : "fr_FR"} />
+          <meta property="og:locale:alternate" content={lang === "en" ? "fr_FR" : "en_US"} />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content={tx.metaTitle} />
+          <meta name="twitter:description" content={tx.metaDesc} />
+          <script type="application/ld+json">{skillsJsonLd}</script>
         </Helmet>
 
     <main
@@ -323,7 +407,7 @@ const SkillsSection = () => {
               : "from-[#0A409B] to-[#47088F]"
           }`}
         >
-          My Tech Stack
+          {tx.heading}
         </h1>
       </div>
 
@@ -340,7 +424,7 @@ const SkillsSection = () => {
               isDark ? "text-blue-300" : "text-blue-600"
             }`}
           >
-            Technologies I work with
+            {tx.subtitle}
           </span>
           <span
             className={`inline-block w-1.5 h-1.5 rounded-full ${
