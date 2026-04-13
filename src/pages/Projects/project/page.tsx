@@ -57,6 +57,16 @@ export default function ProjectDetail() {
   const project = idx !== -1 ? projects[idx] : null;
   const nextProject = project ? projects[(idx + 1) % projects.length] : null;
 
+  const desc = project
+    ? lang === "fr" ? project.description_fr : project.description
+    : "";
+  const challenge = project
+    ? lang === "fr" ? project.challenge_fr : project.challenge
+    : { heading: "", body: [] };
+  const solution = project
+    ? lang === "fr" ? project.solution_fr : project.solution
+    : { heading: "", body: [] };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
@@ -90,7 +100,7 @@ export default function ProjectDetail() {
     <>
       <Helmet>
         <title>{project.title} – Rihane Dalhoum</title>
-        <meta name="description" content={project.description} />
+        <meta name="description" content={desc} />
       </Helmet>
 
       <div className={cn(isDark ? "bg-[#111418] text-[#e1e2e8]" : "bg-white text-gray-900")}>
@@ -166,7 +176,7 @@ export default function ProjectDetail() {
                   isDark ? "text-[#ccc3d4]" : "text-gray-600"
                 )}
               >
-                {project.description}
+                {desc}
               </p>
             </div>
           </div>
@@ -276,10 +286,10 @@ export default function ProjectDetail() {
                       isDark ? "text-[#e1e2e8]" : "text-gray-900"
                     )}
                   >
-                    {project.challenge.heading}
+                    {challenge.heading}
                   </p>
                   <div className="space-y-5">
-                    {project.challenge.body.map((para, i) => (
+                    {challenge.body.map((para, i) => (
                       <p
                         key={i}
                         className={cn(
@@ -309,10 +319,10 @@ export default function ProjectDetail() {
                       isDark ? "text-[#e1e2e8]" : "text-gray-900"
                     )}
                   >
-                    {project.solution.heading}
+                    {solution.heading}
                   </p>
                   <div className="space-y-5">
-                    {project.solution.body.map((para, i) => (
+                    {solution.body.map((para, i) => (
                       <p
                         key={i}
                         className={cn(
@@ -452,7 +462,7 @@ export default function ProjectDetail() {
                   )}
                 >
                   <img
-                    src={project.image}
+                    src={project.image1 ?? project.image}
                     alt={project.title}
                     className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 cursor-zoom-in aspect-[4/3]"
                   />
@@ -466,7 +476,7 @@ export default function ProjectDetail() {
                     )}
                   >
                     <img
-                      src={project.image}
+                      src={project.image2 ?? project.image}
                       alt={`${project.title} detail`}
                       className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 cursor-zoom-in min-h-[160px]"
                     />
@@ -478,7 +488,7 @@ export default function ProjectDetail() {
                     )}
                   >
                     <img
-                      src={project.image}
+                      src={project.image3 ?? project.image}
                       alt={`${project.title} view`}
                       className="w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-700 cursor-zoom-in min-h-[160px]"
                     />
@@ -492,7 +502,7 @@ export default function ProjectDetail() {
                   )}
                 >
                   <img
-                    src={project.image}
+                    src={project.image1 ?? project.image}
                     alt={`${project.title} full view`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-zoom-in"
                   />
