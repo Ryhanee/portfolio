@@ -57,55 +57,19 @@ export default function ProjectDetail() {
   const project = idx !== -1 ? projects[idx] : null;
   const nextProject = project ? projects[(idx + 1) % projects.length] : null;
 
+  const desc = project
+    ? lang === "fr" ? project.description_fr : project.description
+    : "";
+  const challenge = project
+    ? lang === "fr" ? project.challenge_fr : project.challenge
+    : { heading: "", body: [] };
+  const solution = project
+    ? lang === "fr" ? project.solution_fr : project.solution
+    : { heading: "", body: [] };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
-
-  const siteUrl = "https://ryhane.craftech-digital.com";
-  const projectUrl = `${siteUrl}/projects/${project?.slug ?? ""}`;
-  const projectKeywords = project
-    ? project.tags.map((t) => t.name).join(", ") +
-      `, ${project.categoryLabel}, web development, Rihane Dalhoum`
-    : "";
-
-  const projectJsonLd = project
-    ? JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "CreativeWork",
-            "name": project.title,
-            "description": project.description,
-            "url": projectUrl,
-            "dateCreated": project.year,
-            "keywords": projectKeywords,
-            "inLanguage": "en-US",
-            "genre": project.categoryLabel,
-            "author": {
-              "@type": "Person",
-              "name": "Rihane Dalhoum",
-              "url": siteUrl,
-              "jobTitle": "Full-Stack Web Developer & Data Scientist",
-              "email": "dalhoumrihane@gmail.com",
-              "sameAs": [
-                "https://www.linkedin.com/in/rihane-dalhoum/",
-                "https://github.com/Rihanee",
-              ],
-            },
-            ...(project.links.demo !== "#" && { "sameAs": project.links.demo }),
-            ...(project.links.github !== "#" && { "codeRepository": project.links.github }),
-          },
-          {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
-              { "@type": "ListItem", "position": 2, "name": "Projects", "item": `${siteUrl}/projects` },
-              { "@type": "ListItem", "position": 3, "name": project.title, "item": projectUrl },
-            ],
-          },
-        ],
-      })
-    : "";
 
   if (!project || !nextProject) {
     return (
@@ -135,29 +99,8 @@ export default function ProjectDetail() {
   return (
     <>
       <Helmet>
-        <title>{project.title} | {project.categoryLabel} — Rihane Dalhoum Portfolio</title>
-        <meta name="description" content={`${project.description} Built by Rihane Dalhoum, full-stack web developer available for remote projects worldwide.`} />
-        <meta name="keywords" content={projectKeywords} />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={projectUrl} />
-        <link rel="alternate" hrefLang="en" href={projectUrl} />
-        <link rel="alternate" hrefLang="x-default" href={projectUrl} />
-        <meta name="geo.region" content="TN" />
-        <meta name="geo.placename" content="Tunis, Tunisia" />
-        <meta name="geo.position" content="36.8065;10.1815" />
-        <meta name="ICBM" content="36.8065, 10.1815" />
-        <meta property="og:title" content={`${project.title} | ${project.categoryLabel} — Rihane Dalhoum`} />
-        <meta property="og:description" content={project.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={projectUrl} />
-        <meta property="og:locale" content="en_US" />
-        {project.hasHeroImage && (
-          <meta property="og:image" content={typeof project.image === "string" ? project.image : projectUrl} />
-        )}
-        <meta name="twitter:card" content={project.hasHeroImage ? "summary_large_image" : "summary"} />
-        <meta name="twitter:title" content={`${project.title} | ${project.categoryLabel} — Rihane Dalhoum`} />
-        <meta name="twitter:description" content={project.description} />
-        <script type="application/ld+json">{projectJsonLd}</script>
+        <title>{project.title} – Rihane Dalhoum</title>
+        <meta name="description" content={desc} />
       </Helmet>
 
       <div className={cn(isDark ? "bg-[#111418] text-[#e1e2e8]" : "bg-white text-gray-900")}>
@@ -233,7 +176,7 @@ export default function ProjectDetail() {
                   isDark ? "text-[#ccc3d4]" : "text-gray-600"
                 )}
               >
-                {project.description}
+                {desc}
               </p>
             </div>
           </div>
@@ -343,10 +286,10 @@ export default function ProjectDetail() {
                       isDark ? "text-[#e1e2e8]" : "text-gray-900"
                     )}
                   >
-                    {project.challenge.heading}
+                    {challenge.heading}
                   </p>
                   <div className="space-y-5">
-                    {project.challenge.body.map((para, i) => (
+                    {challenge.body.map((para, i) => (
                       <p
                         key={i}
                         className={cn(
@@ -376,10 +319,10 @@ export default function ProjectDetail() {
                       isDark ? "text-[#e1e2e8]" : "text-gray-900"
                     )}
                   >
-                    {project.solution.heading}
+                    {solution.heading}
                   </p>
                   <div className="space-y-5">
-                    {project.solution.body.map((para, i) => (
+                    {solution.body.map((para, i) => (
                       <p
                         key={i}
                         className={cn(
@@ -519,7 +462,7 @@ export default function ProjectDetail() {
                   )}
                 >
                   <img
-                    src={project.image}
+                    src={project.image1 ?? project.image}
                     alt={project.title}
                     className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 cursor-zoom-in aspect-[4/3]"
                   />
@@ -533,7 +476,7 @@ export default function ProjectDetail() {
                     )}
                   >
                     <img
-                      src={project.image}
+                      src={project.image2 ?? project.image}
                       alt={`${project.title} detail`}
                       className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 cursor-zoom-in min-h-[160px]"
                     />
@@ -545,7 +488,7 @@ export default function ProjectDetail() {
                     )}
                   >
                     <img
-                      src={project.image}
+                      src={project.image3 ?? project.image}
                       alt={`${project.title} view`}
                       className="w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-700 cursor-zoom-in min-h-[160px]"
                     />
@@ -559,7 +502,7 @@ export default function ProjectDetail() {
                   )}
                 >
                   <img
-                    src={project.image}
+                    src={project.image1 ?? project.image}
                     alt={`${project.title} full view`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-zoom-in"
                   />

@@ -23,9 +23,8 @@ interface FormErrors {
 
 const translations = {
   en: {
-    helmetTitle: "Hire a Full-Stack Developer in Tunis | Contact Rihane Dalhoum",
-    helmetDesc: "Looking to hire a full-stack developer or data scientist based in Tunis, Tunisia? Contact Rihane Dalhoum for web development projects, freelance missions, API integrations, or long-term remote collaboration. Fast response guaranteed.",
-    keywords: "hire full-stack developer Tunis, freelance developer Tunisia, contact web developer, hire React developer Africa, hire data scientist Tunisia, remote developer hire, web development freelance Tunis",
+    helmetTitle: "Contact – Rihane Dalhoum",
+    helmetDesc: "Get in touch to discuss web development projects, collaborations or freelance opportunities.",
     badge: "Available for Collaboration",
     headingStart: "Let's create something ",
     headingItalic: "remarkable",
@@ -58,9 +57,8 @@ const translations = {
     errorMessage: "Message is required",
   },
   fr: {
-    helmetTitle: "Recruter une Développeuse Full-Stack à Tunis | Contacter Rihane Dalhoum",
-    helmetDesc: "Vous cherchez une développeuse full-stack ou data scientist basée à Tunis, Tunisie ? Contactez Rihane Dalhoum pour vos projets web, missions freelance, intégrations API ou collaborations à long terme à distance. Réponse rapide garantie.",
-    keywords: "recruter développeuse full-stack Tunis, freelance développeuse Tunisie, contacter développeuse web, développeuse React Afrique, data scientist Tunisie, développeuse remote, freelance développement web Tunis",
+    helmetTitle: "Contact – Rihane Dalhoum",
+    helmetDesc: "Contactez-moi pour discuter de projets web, collaborations ou opportunités freelance.",
     badge: "Disponible pour Collaboration",
     headingStart: "Créons quelque chose de ",
     headingItalic: "remarquable",
@@ -187,58 +185,11 @@ export default function Contact() {
       : "bg-gray-100 border-gray-200 text-gray-900 placeholder-gray-400 focus:border-violet-400"
   );
 
-  const contactJsonLd = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": tx.helmetTitle,
-    "description": tx.helmetDesc,
-    "inLanguage": lang === "en" ? "en-US" : "fr-FR",
-    "url": "https://ryhane.craftech-digital.com/contact",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Rihane Dalhoum",
-      "jobTitle": lang === "en" ? "Full-Stack Developer & Data Scientist" : "Développeuse Full-Stack & Data Scientist",
-      "url": "https://ryhane.craftech-digital.com",
-      "email": "dalhoumrihane@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": lang === "en" ? "Tunis, Tunisia" : "Tunis, Tunisie",
-        "addressCountry": "TN",
-      },
-      "availableLanguage": ["English", "French", "Arabic"],
-      "sameAs": [
-        "https://www.linkedin.com/in/rihane-dalhoum/",
-        "https://github.com/Rihanee",
-        "https://dribbble.com/rihane_dalhoum",
-      ],
-    },
-  });
-
   return (
     <>
       <Helmet>
         <title>{tx.helmetTitle}</title>
         <meta name="description" content={tx.helmetDesc} />
-        <meta name="keywords" content={tx.keywords} />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://ryhane.craftech-digital.com/contact" />
-        <link rel="alternate" hrefLang="en" href="https://ryhane.craftech-digital.com/contact" />
-        <link rel="alternate" hrefLang="fr" href="https://ryhane.craftech-digital.com/contact" />
-        <link rel="alternate" hrefLang="x-default" href="https://ryhane.craftech-digital.com/contact" />
-        <meta name="geo.region" content="TN" />
-        <meta name="geo.placename" content="Tunis, Tunisia" />
-        <meta name="geo.position" content="36.8065;10.1815" />
-        <meta name="ICBM" content="36.8065, 10.1815" />
-        <meta property="og:title" content={tx.helmetTitle} />
-        <meta property="og:description" content={tx.helmetDesc} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ryhane.craftech-digital.com/contact" />
-        <meta property="og:locale" content={lang === "en" ? "en_US" : "fr_FR"} />
-        <meta property="og:locale:alternate" content={lang === "en" ? "fr_FR" : "en_US"} />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={tx.helmetTitle} />
-        <meta name="twitter:description" content={tx.helmetDesc} />
-        <script type="application/ld+json">{contactJsonLd}</script>
       </Helmet>
 
       <main
