@@ -144,10 +144,10 @@ const ProjectShowcase = () => {
               className={cn(
                 "w-10 h-10 rounded-lg flex items-center justify-center font-['Space_Grotesk'] font-bold text-sm transition-all",
                 currentPage === p
-                  ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
+                  ? "bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20"
                   : isDark
-                    ? "text-[#ccc3d4] hover:bg-[#272a2e] hover:text-[#e1e2e8]"
-                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                    ? "text-white hover:bg-[#272a2e] hover:text-[#e1e2e8]"
+                    : "text-white-500 hover:bg-gray-100 hover:text-gray-900"
               )}
             >
               {p}
@@ -225,7 +225,7 @@ const ProjectShowcase = () => {
               <h3
                 className={cn(
                   "font-['Space_Grotesk'] font-bold text-lg tracking-tight",
-                  isDark ? "text-[#e1e2e8]" : "text-gray-900"
+                  isDark ? "text-[#e1e2e8]" : "text-[#0b419b]"
                 )}
               >
                 {tx.galleryTitle}
@@ -246,8 +246,8 @@ const ProjectShowcase = () => {
                 className={cn(
                   "flex items-center gap-3 w-full rounded-lg p-3 transition-all duration-300 hover:translate-x-1",
                   activeTab === "websites"
-                    ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
-                    : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-gray-500 hover:bg-gray-100"
+                    ? "bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20"
+                    : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-white-500 hover:bg-gray-100"
                 )}
               >
                 <Globe size={18} className="flex-shrink-0" />
@@ -261,8 +261,8 @@ const ProjectShowcase = () => {
                 className={cn(
                   "flex items-center gap-3 w-full rounded-lg p-3 transition-all duration-300 hover:translate-x-1",
                   activeTab === "apps"
-                    ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
-                    : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-gray-500 hover:bg-gray-100"
+                    ? "bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20"
+                    : isDark ? "text-[#ccc3d4] hover:bg-[#272a2e]" : "text-white-500 hover:bg-gray-100"
                 )}
               >
                 <Terminal size={18} className="flex-shrink-0" />
@@ -308,8 +308,8 @@ const ProjectShowcase = () => {
                 className={cn(
                   "whitespace-nowrap px-6 py-3 rounded-full font-['Inter'] text-xs uppercase font-bold tracking-widest transition-all",
                   activeTab === "websites"
-                    ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
-                    : isDark ? "bg-[#272a2e] text-[#ccc3d4]" : "bg-gray-100 text-gray-600"
+                    ? "bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20"
+                    : isDark ? "bg-[#272a2e] text-[#ccc3d4]" : "bg-gray-100 text-white-600"
                 )}
               >
                 {tx.tab1}
@@ -319,8 +319,8 @@ const ProjectShowcase = () => {
                 className={cn(
                   "whitespace-nowrap px-6 py-3 rounded-full font-['Inter'] text-xs uppercase font-bold tracking-widest transition-all",
                   activeTab === "apps"
-                    ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
-                    : isDark ? "bg-[#272a2e] text-[#ccc3d4]" : "bg-gray-100 text-gray-600"
+                    ? "bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20"
+                    : isDark ? "bg-[#272a2e] text-[#ccc3d4]" : "bg-gray-100 text-white-600"
                 )}
               >
                 {tx.tab2}
@@ -353,9 +353,10 @@ const ProjectShowcase = () => {
                   className={cn("group space-y-6", index >= 2 && "md:translate-y-12")}
                 >
                   {/* Image with overlay actions */}
-                  <div
+                  <Link
+                    to={`/projects/${project.slug}`}
                     className={cn(
-                      "relative overflow-hidden rounded-xl aspect-[4/3] transition-all duration-500",
+                      "relative overflow-hidden rounded-xl aspect-[4/3] transition-all duration-500 block",
                       isDark ? "bg-[#191c20] hover:bg-[#323539]" : "bg-gray-100 hover:bg-gray-200"
                     )}
                   >
@@ -366,20 +367,21 @@ const ProjectShowcase = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111418]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <div className="flex gap-3">
-                        <Link
-                          to={`/projects/${project.slug}`}
-                          className="w-11 h-11 rounded-full bg-[#d6baff] flex items-center justify-center text-[#280057] shadow-xl hover:scale-110 transition-transform"
+                        {/* View Details — styled indicator, navigation handled by outer Link */}
+                        <span
+                          className="w-11 h-11 rounded-full bg-[#d6baff] flex items-center justify-center text-[#280057] shadow-xl"
                           title="View Details"
                         >
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                           </svg>
-                        </Link>
+                        </span>
                         {project.links.demo !== "#" && (
                           <a
                             href={project.links.demo}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="w-11 h-11 rounded-full bg-[#272a2e] flex items-center justify-center text-[#e1e2e8] border border-[#4a4452]/20 shadow-xl hover:scale-110 transition-transform"
                             title="Live Demo"
                           >
@@ -391,6 +393,7 @@ const ProjectShowcase = () => {
                             href={project.links.github}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
                             className="w-11 h-11 rounded-full bg-[#272a2e] flex items-center justify-center text-[#e1e2e8] border border-[#4a4452]/20 shadow-xl hover:scale-110 transition-transform"
                             title="GitHub"
                           >
@@ -399,7 +402,7 @@ const ProjectShowcase = () => {
                         )}
                       </div>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Card meta */}
                   <div className="space-y-4">
@@ -437,7 +440,7 @@ const ProjectShowcase = () => {
                         isDark ? "text-[#ccc3d4]" : "text-gray-600"
                       )}
                     >
-                      {project.description}
+                      {lang === "fr" ? project.description_fr : project.description}
                     </p>
                   </div>
                 </article>
@@ -482,10 +485,10 @@ const ProjectShowcase = () => {
                         className={cn(
                           "w-10 h-10 rounded-lg flex items-center justify-center font-['Space_Grotesk'] font-bold text-sm transition-all",
                           currentPage === p
-                            ? "bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057]"
+                            ? "bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20"
                             : isDark
-                              ? "text-[#ccc3d4] hover:bg-[#272a2e] hover:text-[#e1e2e8]"
-                              : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                              ? "text-white hover:bg-[#272a2e] hover:text-[#e1e2e8]"
+                              : "text-white-500 hover:bg-gray-100 hover:text-gray-900"
                         )}
                       >
                         {p}
@@ -537,7 +540,7 @@ const ProjectShowcase = () => {
                 )}
               >
                 {tx.ctaHeadingStart}
-                <span className={isDark ? "text-[#71d5e4]" : "text-teal-600"}>
+                <span className={isDark ? "text-[#71d5e4]" : "text-[#0b419b]"}>
                   {tx.ctaHeadingColored}
                 </span>
               </h2>

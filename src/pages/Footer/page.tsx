@@ -7,18 +7,18 @@ const translations = {
     copyright: "© 2024 Rihane Dalhoum. Crafted for the digital age.",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/rihane-dalhoum/" },
-      { label: "Dribbble", href: "#" },
+      { label: "Facebook", href: "https://www.facebook.com/rihab.dalhoum.5" },
       { label: "GitHub", href: "https://github.com/Ryhanee" },
-      { label: "Email", href: "/contact" },
+      { label: "Email", href: "mailto:rihanedalhoume@gmail.com" },
     ],
   },
   fr: {
     copyright: "© 2024 Rihane Dalhoum. Conçu pour l'ère numérique.",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/rihane-dalhoum/" },
-      { label: "Dribbble", href: "#" },
+      { label: "Facebook", href: "https://www.facebook.com/rihab.dalhoum.5" },
       { label: "GitHub", href: "https://github.com/Ryhanee" },
-      { label: "Email", href: "/contact" },
+      { label: "Email", href: "mailto:rihanedalhoume@gmail.com" },
     ],
   },
 } as const;

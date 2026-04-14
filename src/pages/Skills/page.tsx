@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/provider/page";
-import { useLang } from "@/provider/lang";
 import { Marquee } from "@/components/magicui/marquee";
 import {
   Code2,
@@ -9,7 +8,6 @@ import {
   Layout,
   Cpu,
   Cloud,
-  Sparkles,
   Layers,
   GitBranch,
   Server,
@@ -20,7 +18,7 @@ import {
   CloudCog,
 } from "lucide-react";
 
-import { FaDocker, FaLinux } from "react-icons/fa";
+import {FaAndroid, FaAngular, FaDocker, FaHtml5, FaLinux, FaNodeJs, FaPhp, FaPython, FaReact} from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
 import {
   SiTypescript,
@@ -28,15 +26,43 @@ import {
   SiPostgresql,
   SiMongodb,
   SiGraphql,
-  SiJest,
   SiWebpack,
   SiRedux,
   SiFirebase,
-  SiVite,
+  SiVite, SiMysql, SiWordpress, SiPrestashop, SiProbot, SiPreact, SiIntellijidea,
 } from "react-icons/si";
-import { BsFileEarmarkCode } from "react-icons/bs";
 import { TbBrandVscode } from "react-icons/tb";
 import {Helmet} from "react-helmet-async";
+import {AiOutlineRobot} from "react-icons/ai";
+import {DiCss3} from "react-icons/di";
+import { useLang } from "@/provider/lang";
+
+const translations = {
+  en: {
+    helmetTitle: "Skills – Rihane Dalhoum | Full-Stack Technologies",
+    helmetDesc: "Technical skills including React, Node.js, PHP, WordPress and modern frontend and backend technologies.",
+    heading: "My Tech Stack",
+    badge: "Technologies I work with",
+    cat1: "Frontend Development",
+    cat2: "Backend Development",
+    cat3: "AI & Data Science",
+    cat4: "Databases",
+    cat5: "Cloud & DevOps",
+    cat6: "Tools & Technologies",
+  },
+  fr: {
+    helmetTitle: "Compétences – Rihane Dalhoum | Technologies Full-Stack",
+    helmetDesc: "Compétences techniques incluant React, Node.js, PHP, WordPress et les technologies modernes frontend et backend.",
+    heading: "Mon Stack Technique",
+    badge: "Technologies avec lesquelles je travaille",
+    cat1: "Développement Frontend",
+    cat2: "Développement Backend",
+    cat3: "IA & Science des Données",
+    cat4: "Bases de Données",
+    cat5: "Cloud & DevOps",
+    cat6: "Outils & Technologies",
+  },
+} as const;
 
 interface Skill {
   name: string;
@@ -50,39 +76,6 @@ interface SkillCategory {
   skills: Skill[];
 }
 
-const translations = {
-  en: {
-    metaTitle: "Full-Stack Developer & Data Scientist Skills | React, Node.js, Python | Rihane Dalhoum – Tunis",
-    metaDesc: "Explore Rihane Dalhoum's full technical stack: React, Next.js, Angular, Node.js, PHP, Python, PostgreSQL, MongoDB, Docker, Machine Learning and more. Full-stack developer & data scientist based in Tunis, Tunisia — available for remote projects worldwide.",
-    keywords: "full-stack developer Tunis, data scientist Tunisia, React developer, Node.js developer, Python developer, freelance developer Tunisia, web development skills, machine learning engineer, remote developer Africa",
-    heading: "My Tech Stack",
-    subtitle: "Technologies I work with",
-    categories: [
-      "Frontend Development",
-      "Backend Development",
-      "Data Science",
-      "UI/UX Design",
-      "Cloud & DevOps",
-      "Tools & Technologies",
-    ],
-  },
-  fr: {
-    metaTitle: "Compétences Développeuse Full-Stack & Data Scientist | React, Node.js, Python | Rihane Dalhoum – Tunis",
-    metaDesc: "Découvrez les compétences techniques de Rihane Dalhoum : React, Next.js, Angular, Node.js, PHP, Python, PostgreSQL, MongoDB, Docker, Machine Learning et plus. Développeuse full-stack & data scientist à Tunis, Tunisie — disponible pour des projets à distance.",
-    keywords: "développeuse full-stack Tunis, data scientist Tunisie, développeuse React, développeuse Node.js, développeuse Python, freelance développeuse Tunisie, compétences développement web, machine learning, développeuse remote Afrique",
-    heading: "Mes compétences",
-    subtitle: "Technologies que j'utilise",
-    categories: [
-      "Développement Frontend",
-      "Développement Backend",
-      "Data Science",
-      "Design UI/UX",
-      "Cloud & DevOps",
-      "Outils & Technologies",
-    ],
-  },
-} as const;
-
 interface SkillCardProps {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
@@ -92,88 +85,88 @@ interface SkillCardProps {
 }
 
 const SkillCard = ({
-  icon: Icon,
-  title,
-  skills,
-  color,
-  isDark,
-}: SkillCardProps) => (
-  <Card
-    className={`group relative overflow-hidden ${
-      isDark ? "bg-gray-900/80 border-gray-700" : "bg-white/90 border-gray-200"
-    } hover:scale-[1.02] transition-all duration-300 hover:shadow-xl ${
-      isDark ? "hover:shadow-blue-500/20" : "hover:shadow-blue-500/10"
-    }`}
-  >
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer"></div>
-    <CardContent className="p-6 relative z-10">
-      <div className="flex items-center gap-4 mb-6">
-        <div
-          className={`p-3 rounded-xl ${
-            isDark ? "bg-gray-800/50" : "bg-gray-100"
-          } ${color} group-hover:scale-110 transition-transform duration-300`}
-        >
-          <Icon className="w-8 h-8" />
-        </div>
-        <h2
-          className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
-            isDark ? "from-white to-gray-400" : "from-gray-900 to-gray-600"
-          }`}
-        >
-          {title}
-        </h2>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {skills.map((skill, index) => (
-          <Badge
-            key={index}
-            variant="outline"
-            className={`group/badge relative ${
-              isDark
-                ? "bg-gray-800/50 hover:bg-gray-700/80 text-gray-100 border-gray-600"
-                : "bg-gray-100 hover:bg-gray-200 text-gray-800 border-gray-300"
-            } flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg ${
-              isDark ? "hover:shadow-blue-500/20" : "hover:shadow-blue-500/10"
-            }`}
+                     icon: Icon,
+                     title,
+                     skills,
+                     color,
+                     isDark,
+                   }: SkillCardProps) => (
+    <Card
+        className={`group relative overflow-hidden ${
+            isDark ? "bg-gray-900/80 border-gray-700" : "bg-white/90 border-gray-200"
+        } hover:scale-[1.02] transition-all duration-300 hover:shadow-xl ${
+            isDark ? "hover:shadow-blue-500/20" : "hover:shadow-blue-500/10"
+        }`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer"></div>
+      <CardContent className="p-6 relative z-10">
+        <div className="flex items-center gap-4 mb-6">
+          <div
+              className={`p-3 rounded-xl ${
+                  isDark ? "bg-gray-800/50" : "bg-gray-100"
+              } ${color} group-hover:scale-110 transition-transform duration-300`}
           >
+            <Icon className="w-8 h-8" />
+          </div>
+          <h2
+              className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
+                  isDark ? "from-white to-gray-400" : "from-gray-900 to-gray-600"
+              }`}
+          >
+            {title}
+          </h2>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill, index) => (
+              <Badge
+                  key={index}
+                  variant="outline"
+                  className={`group/badge relative ${
+                      isDark
+                          ? "bg-gray-800/50 hover:bg-gray-700/80 text-gray-100 border-gray-600"
+                          : "bg-gray-100 hover:bg-gray-200 text-gray-800 border-gray-300"
+                  } flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+                      isDark ? "hover:shadow-blue-500/20" : "hover:shadow-blue-500/10"
+                  }`}
+              >
             <span className="transform group-hover/badge:scale-110 transition-transform duration-300">
               {skill.icon}
             </span>
-            <span className="font-medium">{skill.name}</span>
-          </Badge>
-        ))}
-      </div>
-    </CardContent>
-  </Card>
+                <span className="font-medium">{skill.name}</span>
+              </Badge>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
 );
 
 const SkillsSection = () => {
   const { theme } = useTheme();
-  const isDark = theme === "dark";
   const { lang } = useLang();
+  const isDark = theme === "dark";
   const tx = translations[lang];
 
   const skillCategories: SkillCategory[] = [
     {
       icon: Code2,
-      title: tx.categories[0],
+      title: tx.cat1,
       color: "text-blue-400",
       skills: [
         {
           name: "React",
-          icon: <FileCode className="w-4 h-4 text-[#61DAFB]" />,
+          icon: <FaReact className="w-4 h-4 text-[#61DAFB]" />,
         },
         {
           name: "React Native",
-          icon: <FileCode className="w-4 h-4 text-[#61DAFB]" />,
+          icon: <SiPreact className="w-4 h-4 text-[#61DAFB]" />,
         },
         {
           name: "Next.js",
-          icon: <RiNextjsLine className="w-4 h-4 text-white" />,
+          icon: <RiNextjsLine className="w-4 h-4 text-[#61DAFB]" />,
         },
         {
           name: "Angular 18",
-          icon: <FileCode className="w-4 h-4 text-[#E34F26]" />,
+          icon: <FaAngular className="w-4 h-4 text-[#E34F26]" />,
         },
         {
           name: "TypeScript",
@@ -185,38 +178,30 @@ const SkillsSection = () => {
         },
         {
           name: "HTML5",
-          icon: <BsFileEarmarkCode className="w-4 h-4 text-[#E34F26]" />,
+          icon: <FaHtml5 className="w-4 h-4 text-[#E34F26]" />,
         },
         {
           name: "CSS3",
-          icon: <BsFileEarmarkCode className="w-4 h-4 text-[#1572B6]" />,
+          icon: <DiCss3 className="w-4 h-4 text-[#1572B6]" />,
         },
       ],
     },
     {
-      icon: Database,
-      title: tx.categories[1],
+      icon: Code2,
+      title: tx.cat2,
       color: "text-green-400",
       skills: [
         {
           name: "Node.js",
-          icon: <Server className="w-4 h-4 text-[#339933]" />,
+          icon: <FaNodeJs className="w-4 h-4 text-[#339933]" />,
         },
         {
           name: "Php",
-          icon: <Server className="w-4 h-4 text-[#4F5B93]" />,
+          icon: <FaPhp className="w-4 h-4 text-[#4F5B93]" />,
         },
         {
           name: "Python",
-          icon: <FileCode className="w-4 h-4 text-[#3776AB]" />,
-        },
-        {
-          name: "PostgreSQL",
-          icon: <SiPostgresql className="w-4 h-4 text-[#336791]" />,
-        },
-        {
-          name: "MongoDB",
-          icon: <SiMongodb className="w-4 h-4 text-[#47A248]" />,
+          icon: <FaPython className="w-4 h-4 text-[#3776AB]" />,
         },
         {
           name: "REST APIs",
@@ -230,9 +215,18 @@ const SkillsSection = () => {
     },
     {
       icon: Layout,
-      title: tx.categories[2],
+      title: tx.cat3,
       color: "text-purple-400",
       skills: [
+
+        {
+          name: "LLM & NLP",
+          icon: <AiOutlineRobot className="w-4 h-4 text-[#F59E0B]" />,
+        },
+        {
+          name: "Generative IA",
+          icon: <SiProbot className="w-4 h-4 text-[#F59E0B]" />,
+        },
         {
           name: "Machine learning",
           icon: <Layout className="w-4 h-4 text-[#38B2AC]" />,
@@ -241,47 +235,30 @@ const SkillsSection = () => {
           name: "Deep learning",
           icon: <Layers className="w-4 h-4 text-[#9CA3AF]" />,
         },
-        {
-          name: "Pandas",
-          icon: <Sparkles className="w-4 h-4 text-[#F59E0B]" />,
-        },
-        {
-          name: "Scikit-learn",
-          icon: <Sparkles className="w-4 h-4 text-[#F59E0B]" />,
-        },
-        {
-          name: "Tensorflow",
-          icon: <Sparkles className="w-4 h-4 text-[#F59E0B]" />,
-        },
-        {
-          name: "Power BI",
-          icon: <Sparkles className="w-4 h-4 text-[#F59E0B]" />,
-        },
       ],
     },
     {
-      icon: Layout,
-      title: tx.categories[3],
+      icon: Database,
+      title: tx.cat4,
       color: "text-purple-400",
       skills: [
-        { name: "Figma", icon: <Figma className="w-4 h-4 text-[#F24E1E]" /> },
         {
-          name: "Responsive Design",
-          icon: <Layout className="w-4 h-4 text-[#38B2AC]" />,
+          name: "MySQL",
+          icon: <SiMysql className="w-4 h-4 text-[#336791]" />,
         },
         {
-          name: "Wireframing",
-          icon: <Layers className="w-4 h-4 text-[#9CA3AF]" />,
+          name: "PostgreSQL",
+          icon: <SiPostgresql className="w-4 h-4 text-[#336791]" />,
         },
         {
-          name: "Prototyping",
-          icon: <Sparkles className="w-4 h-4 text-[#F59E0B]" />,
+          name: "MongoDB",
+          icon: <SiMongodb className="w-4 h-4 text-[#47A248]" />,
         },
       ],
     },
     {
       icon: Cloud,
-      title: tx.categories[4],
+      title: tx.cat5,
       color: "text-orange-400",
       skills: [
         { name: "AWS", icon: <CloudCog className="w-4 h-4 text-[#FF9900]" /> },
@@ -303,22 +280,25 @@ const SkillsSection = () => {
     },
     {
       icon: Cpu,
-      title: tx.categories[5],
+      title: tx.cat6,
       color: "text-pink-400",
       skills: [
+        { name: "Wordpress", icon: <SiWordpress className="w-4 h-4 text-[#007ACC]" /> },
+        { name: "Prestashop", icon: <SiPrestashop className="w-4 h-4 text-[#007ACC]" /> },
+
         {
           name: "VS Code",
           icon: <TbBrandVscode className="w-4 h-4 text-[#007ACC]" />,
         },
         {
           name: "IntelliJ",
-          icon: <TbBrandVscode className="w-4 h-4 text-[#007ACC]" />,
+          icon: <SiIntellijidea className="w-4 h-4 text-[#007ACC]" />,
         },
         {
           name: "Android Studio",
-          icon: <TbBrandVscode className="w-4 h-4 text-[#007ACC]" />,
+          icon: <FaAndroid className="w-4 h-4 text-[#007ACC]" />,
         },
-        { name: "Jest", icon: <SiJest className="w-4 h-4 text-[#C21325]" /> },
+
         {
           name: "Webpack",
           icon: <SiWebpack className="w-4 h-4 text-[#8DD6F9]" />,
@@ -334,277 +314,226 @@ const SkillsSection = () => {
 
   ];
 
-  const skillsJsonLd = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "name": tx.metaTitle,
-    "description": tx.metaDesc,
-    "inLanguage": lang === "en" ? "en-US" : "fr-FR",
-    "url": "https://ryhane.craftech-digital.com/skills",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Rihane Dalhoum",
-      "jobTitle": lang === "en" ? "Full-Stack Developer & Data Scientist" : "Développeuse Full-Stack & Data Scientist",
-      "url": "https://ryhane.craftech-digital.com",
-      "email": "dalhoumrihane@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": lang === "en" ? "Tunis, Tunisia" : "Tunis, Tunisie",
-        "addressCountry": "TN",
-      },
-      "knowsAbout": [
-        "React", "Next.js", "Angular", "TypeScript", "Tailwind CSS",
-        "Node.js", "PHP", "Python", "PostgreSQL", "MongoDB", "GraphQL",
-        "Machine Learning", "Deep Learning", "Pandas", "TensorFlow",
-        "Docker", "AWS", "CI/CD", "Figma",
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/in/rihane-dalhoum/",
-        "https://github.com/Rihanee",
-      ],
-    },
-  });
-
   return (
       <>
         <Helmet>
-          <title>{tx.metaTitle}</title>
-          <meta name="description" content={tx.metaDesc} />
-          <meta name="keywords" content={tx.keywords} />
-          <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="https://ryhane.craftech-digital.com/skills" />
-          <link rel="alternate" hrefLang="en" href="https://ryhane.craftech-digital.com/skills" />
-          <link rel="alternate" hrefLang="fr" href="https://ryhane.craftech-digital.com/skills" />
-          <link rel="alternate" hrefLang="x-default" href="https://ryhane.craftech-digital.com/skills" />
-          <meta name="geo.region" content="TN" />
-          <meta name="geo.placename" content="Tunis, Tunisia" />
-          <meta name="geo.position" content="36.8065;10.1815" />
-          <meta name="ICBM" content="36.8065, 10.1815" />
-          <meta property="og:title" content={tx.metaTitle} />
-          <meta property="og:description" content={tx.metaDesc} />
-          <meta property="og:type" content="profile" />
-          <meta property="og:url" content="https://ryhane.craftech-digital.com/skills" />
-          <meta property="og:locale" content={lang === "en" ? "en_US" : "fr_FR"} />
-          <meta property="og:locale:alternate" content={lang === "en" ? "fr_FR" : "en_US"} />
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:title" content={tx.metaTitle} />
-          <meta name="twitter:description" content={tx.metaDesc} />
-          <script type="application/ld+json">{skillsJsonLd}</script>
+          <title>{tx.helmetTitle}</title>
+          <meta name="description" content={tx.helmetDesc} />
         </Helmet>
 
-    <main
-      className={`lg:pt-0 flex flex-col items-center justify-center ${
-        isDark ? "bg-[#090F1C] text-white" : "bg-gray-50 text-gray-900"
-      } min-h-screen flex items-center justify-center`}
-    >
-      <div className="mt-30 text-center mb-8">
-        <h1
-          className={`text-4xl font-bold ${
-            isDark ? "text-white" : "text-gray-900"
-          } bg-clip-text text-transparent bg-gradient-to-r ${
-            isDark
-              ? "from-[#0A409B] to-[#47088F]"
-              : "from-[#0A409B] to-[#47088F]"
-          }`}
+        <main
+            className={`lg:pt-0 flex flex-col items-center justify-center ${
+                isDark ? "bg-[#090F1C] text-white" : "bg-gray-50 text-gray-900"
+            } min-h-screen flex items-center justify-center`}
         >
-          {tx.heading}
-        </h1>
-      </div>
-
-      <div className="text-center">
-        <div
-          className={`inline-flex items-center gap-2 px-4 py-1 rounded-full ${
-            isDark ? "bg-white/5" : "bg-black/5"
-          } backdrop-blur-sm border ${
-            isDark ? "border-white/10" : "border-black/10"
-          }`}
-        >
-          <span
-            className={`text-sm font-medium tracking-wider uppercase ${
-              isDark ? "text-blue-300" : "text-blue-600"
-            }`}
-          >
-            {tx.subtitle}
-          </span>
-          <span
-            className={`inline-block w-1.5 h-1.5 rounded-full ${
-              isDark ? "bg-blue-400" : "bg-blue-500"
-            } animate-pulse`}
-          ></span>
-        </div>
-      </div>
-
-      <section className="relative w-full overflow-hidden py-8">
-        <div
-          className={`w-full ${
-            isDark ? "bg-white/5" : "bg-black/5"
-          } backdrop-blur-lg border-y ${
-            isDark ? "border-white/10" : "border-black/10"
-          } shadow-lg`}
-        >
-          <div className="relative">
-            <div
-              className={`absolute inset-0 ${
-                isDark
-                  ? "bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10"
-                  : "bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5"
-              } opacity-50 animate-pulse`}
-            ></div>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-background opacity-20"></div>
-            <Marquee
-              pauseOnHover
-              className="[--duration:25s] py-6 hover:opacity-80 transition-opacity"
-              repeat={3}
+          <div className="mt-30 text-center mb-8">
+            <h1
+                className={`text-4xl font-bold ${
+                    isDark ? "text-white" : "text-gray-900"
+                } bg-clip-text text-transparent bg-gradient-to-r ${
+                    isDark
+                        ? "from-[#0A409B] to-[#47088F]"
+                        : "from-[#0A409B] to-[#47088F]"
+                }`}
             >
-              <div className="flex items-center gap-8 px-4">
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <FileCode className="w-8 h-8 text-[#61DAFB]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <RiNextjsLine className="w-8 h-8 text-white" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiTypescript className="w-8 h-8 text-[#3178C6]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiTailwindcss className="w-8 h-8 text-[#38B2AC]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <Server className="w-8 h-8 text-[#339933]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiPostgresql className="w-8 h-8 text-[#336791]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiMongodb className="w-8 h-8 text-[#47A248]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiGraphql className="w-8 h-8 text-[#E10098]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <Figma className="w-8 h-8 text-[#F24E1E]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <Layout className="w-8 h-8 text-[#38B2AC]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <CloudCog className="w-8 h-8 text-[#FF9900]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <FaDocker className="w-8 h-8 text-[#2496ED]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <TbBrandVscode className="w-8 h-8 text-[#007ACC]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiRedux className="w-8 h-8 text-[#764ABC]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiFirebase className="w-8 h-8 text-[#FFCA28]" />
-                </div>
-                <div
-                  className={`p-4 rounded-lg ${
-                    isDark ? "bg-gray-800/50" : "bg-white/80"
-                  } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
-                >
-                  <SiVite className="w-8 h-8 text-[#646CFF]" />
-                </div>
-              </div>
-            </Marquee>
+              {tx.heading}
+            </h1>
           </div>
-        </div>
 
-        <div
-          className={`pointer-events-none absolute inset-y-0 left-0 w-1/3 ${
-            isDark
-              ? "bg-gradient-to-r from-[#090F1C] via-[#090F1C]/90 to-transparent"
-              : "bg-gradient-to-r from-gray-50 via-gray-50/90 to-transparent"
-          } z-10`}
-        ></div>
-        <div
-          className={`pointer-events-none absolute inset-y-0 right-0 w-1/3 ${
-            isDark
-              ? "bg-gradient-to-l from-[#090F1C] via-[#090F1C]/90 to-transparent"
-              : "bg-gradient-to-l from-gray-50 via-gray-50/90 to-transparent"
-          } z-10`}
-        ></div>
-      </section>
-      <section className="container mx-auto px-4 py-11">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <SkillCard
-              key={index}
-              icon={category.icon}
-              title={category.title}
-              skills={category.skills}
-              color={category.color}
-              isDark={isDark}
-            />
-          ))}
-        </div>
-      </section>
-    </main>
-        </>
+          <div className="text-center">
+            <div
+                className={`inline-flex items-center gap-2 px-4 py-1 rounded-full ${
+                    isDark ? "bg-white/5" : "bg-black/5"
+                } backdrop-blur-sm border ${
+                    isDark ? "border-white/10" : "border-black/10"
+                }`}
+            >
+          <span
+              className={`text-sm font-medium tracking-wider uppercase ${
+                  isDark ? "text-blue-300" : "text-blue-600"
+              }`}
+          >
+            {tx.badge}
+          </span>
+              <span
+                  className={`inline-block w-1.5 h-1.5 rounded-full ${
+                      isDark ? "bg-blue-400" : "bg-blue-500"
+                  } animate-pulse`}
+              ></span>
+            </div>
+          </div>
+
+          <section className="relative w-full overflow-hidden py-8">
+            <div
+                className={`w-full ${
+                    isDark ? "bg-white/5" : "bg-black/5"
+                } backdrop-blur-lg border-y ${
+                    isDark ? "border-white/10" : "border-black/10"
+                } shadow-lg`}
+            >
+              <div className="relative">
+                <div
+                    className={`absolute inset-0 ${
+                        isDark
+                            ? "bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10"
+                            : "bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5"
+                    } opacity-50 animate-pulse`}
+                ></div>
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-background opacity-20"></div>
+                <Marquee
+                    pauseOnHover
+                    className="[--duration:25s] py-6 hover:opacity-80 transition-opacity"
+                    repeat={3}
+                >
+                  <div className="flex items-center gap-8 px-4">
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <FileCode className="w-8 h-8 text-[#61DAFB]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <RiNextjsLine className="w-8 h-8 text-white" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiTypescript className="w-8 h-8 text-[#3178C6]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiTailwindcss className="w-8 h-8 text-[#38B2AC]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <Server className="w-8 h-8 text-[#339933]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiPostgresql className="w-8 h-8 text-[#336791]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiMongodb className="w-8 h-8 text-[#47A248]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiGraphql className="w-8 h-8 text-[#E10098]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <Figma className="w-8 h-8 text-[#F24E1E]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <Layout className="w-8 h-8 text-[#38B2AC]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <CloudCog className="w-8 h-8 text-[#FF9900]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <FaDocker className="w-8 h-8 text-[#2496ED]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <TbBrandVscode className="w-8 h-8 text-[#007ACC]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiRedux className="w-8 h-8 text-[#764ABC]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiFirebase className="w-8 h-8 text-[#FFCA28]" />
+                    </div>
+                    <div
+                        className={`p-4 rounded-lg ${
+                            isDark ? "bg-gray-800/50" : "bg-white/80"
+                        } backdrop-blur-sm transform hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-blue-500/20`}
+                    >
+                      <SiVite className="w-8 h-8 text-[#646CFF]" />
+                    </div>
+                  </div>
+                </Marquee>
+              </div>
+            </div>
+
+            <div
+                className={`pointer-events-none absolute inset-y-0 left-0 w-1/3 ${
+                    isDark
+                        ? "bg-gradient-to-r from-[#090F1C] via-[#090F1C]/90 to-transparent"
+                        : "bg-gradient-to-r from-gray-50 via-gray-50/90 to-transparent"
+                } z-10`}
+            ></div>
+            <div
+                className={`pointer-events-none absolute inset-y-0 right-0 w-1/3 ${
+                    isDark
+                        ? "bg-gradient-to-l from-[#090F1C] via-[#090F1C]/90 to-transparent"
+                        : "bg-gradient-to-l from-gray-50 via-gray-50/90 to-transparent"
+                } z-10`}
+            ></div>
+          </section>
+          <section className="container mx-auto px-4 py-11">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {skillCategories.map((category, index) => (
+                  <SkillCard
+                      key={index}
+                      icon={category.icon}
+                      title={category.title}
+                      skills={category.skills}
+                      color={category.color}
+                      isDark={isDark}
+                  />
+              ))}
+            </div>
+          </section>
+        </main>
+      </>
   );
 };
 

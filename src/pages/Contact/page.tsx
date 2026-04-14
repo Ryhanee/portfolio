@@ -4,7 +4,7 @@ import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
 import { cn } from "@/lib/utils";
 import { Helmet } from "react-helmet-async";
-import { FaLinkedinIn, FaGithub, FaDribbble } from "react-icons/fa";
+import {FaLinkedinIn, FaGithub, FaFacebook} from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 
 interface FormData {
@@ -33,7 +33,7 @@ const translations = {
       "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's talk.",
     detailsLabel: "Contact Details",
     emailLabel: "Email",
-    emailValue: "dalhoumrihane@gmail.com",
+    emailValue: "rihanedalhoume@gmail.com",
     locationLabel: "Location",
     locationValue: "Tunis, Tunisia",
     connectLabel: "Connect",
@@ -75,7 +75,7 @@ const translations = {
     nameLabel: "Votre Nom",
     namePlaceholder: "Rihane Dalhoum",
     emailFieldLabel: "Adresse Email",
-    emailPlaceholder: "vous@exemple.com",
+    emailPlaceholder: "rihanedalhoume@gmail.com",
     subjectLabel: "Sujet",
     subjectPlaceholder: "Idée de projet, Collaboration, etc.",
     visionLabel: "Votre Vision",
@@ -104,9 +104,9 @@ const SOCIAL_LINKS = [
     Icon: FaGithub,
   },
   {
-    label: "Dribbble",
-    href: "https://dribbble.com/rihane_dalhoum",
-    Icon: FaDribbble,
+    label: "Facebook",
+    href: "https://www.facebook.com/rihab.dalhoum.5",
+    Icon: FaFacebook,
   },
 ];
 
@@ -229,7 +229,7 @@ export default function Contact() {
             {/* Heading */}
             <h1 className="font-['Space_Grotesk'] text-4xl md:text-5xl font-bold leading-[1.15] tracking-tight">
               {tx.headingStart}
-              <span className={cn("italic", isDark ? "text-[#71d5e4]" : "text-teal-600")}>
+              <span className={cn("italic", isDark ? "text-[#71d5e4]" : "text-[#7008E7]")}>
                 {tx.headingItalic}
               </span>
               {tx.headingEnd}
@@ -250,13 +250,13 @@ export default function Contact() {
               <p
                 className={cn(
                   "font-['Inter'] text-[10px] uppercase tracking-[0.3em]",
-                  isDark ? "text-[#71d5e4]" : "text-teal-600"
+                  isDark ? "text-[#71d5e4]" : "text-[#1A3C8B]"
                 )}
               >
                 {tx.detailsLabel}
               </p>
               <div
-                className={cn("w-8 h-px -mt-4", isDark ? "bg-[#71d5e4]" : "bg-teal-500")}
+                className={cn("w-8 h-px -mt-4", isDark ? "bg-[#71d5e4]" : "bg-[#1A3C8B]")}
               />
 
               <div className="space-y-5">
@@ -328,13 +328,13 @@ export default function Contact() {
               <p
                 className={cn(
                   "font-['Inter'] text-[10px] uppercase tracking-[0.3em]",
-                  isDark ? "text-[#71d5e4]" : "text-teal-600"
+                  isDark ? "text-[#71d5e4]" : "text-[#1A3C8B]"
                 )}
               >
                 {tx.connectLabel}
               </p>
               <div
-                className={cn("w-8 h-px -mt-4", isDark ? "bg-[#71d5e4]" : "bg-teal-500")}
+                className={cn("w-8 h-px -mt-4", isDark ? "bg-[#71d5e4]" : "bg-[#1A3C8B]")}
               />
               <div className="flex flex-wrap gap-3">
                 {SOCIAL_LINKS.map(({ label, href, Icon }) => (
@@ -372,12 +372,12 @@ export default function Contact() {
               <p
                 className={cn(
                   "font-['Inter'] text-[10px] uppercase tracking-[0.3em] mb-3",
-                  isDark ? "text-[#71d5e4]" : "text-teal-600"
+                  isDark ? "text-[#71d5e4]" : "text-[#1A3C8B]"
                 )}
               >
                 {tx.formLabel}
               </p>
-              <div className={cn("w-8 h-px", isDark ? "bg-[#71d5e4]" : "bg-teal-500")} />
+              <div className={cn("w-8 h-px", isDark ? "bg-[#71d5e4]" : "bg-[#1A3C8B]")} />
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>

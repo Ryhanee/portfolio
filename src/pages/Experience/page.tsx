@@ -16,7 +16,7 @@ const translations = {
     experiences: [
       {
         title: "Full-Stack Developer / CEO",
-        company: "Craftech",
+        company: "Craftech Innovation Digital",
         period: "2022 - Present",
         description: "Building high-performance websites, eCommerce platforms, and custom web applications that generate qualified leads and support measurable business growth for clients worldwide.",
       },
@@ -43,7 +43,7 @@ const translations = {
     experiences: [
       {
         title: "Développeuse Full-Stack / CEO",
-        company: "Craftech",
+        company: "Craftech Innovation Digital",
         period: "2022 - Présent",
         description: "Création de sites web performants, plateformes eCommerce et applications web sur mesure générant des leads qualifiés et soutenant la croissance mesurable des entreprises clientes dans le monde entier.",
       },
@@ -233,7 +233,7 @@ const ExperienceCard = ({
         <div className="flex flex-col p-6 gap-4">
           <CardDecorator>
             <div
-              className={`size-6 ${isDark ? "text-blue-400" : "text-blue-600"}`}
+              className={`size-6 ${isDark ? "text-blue-400" : "text-[#7008E7]"}`}
             >
               {icon}
             </div>
@@ -250,7 +250,7 @@ const ExperienceCard = ({
             <div className="flex flex-col gap-2 mt-1">
               <p
                 className={`font-medium ${
-                  isDark ? "text-blue-400" : "text-blue-600"
+                  isDark ? "text-blue-400" : "text-[#0b419b]"
                 }`}
               >
                 {company}

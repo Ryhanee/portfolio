@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation, Link } from "react-router";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Globe, ChevronDown } from "lucide-react";
 import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,8 @@ export default function Header() {
     return path;
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
   const { lang, toggleLang } = useLang();
   const isDark = theme === "dark";
@@ -24,6 +26,16 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const navLinks = [
     { id: "home", text: lang === "en" ? "Home" : "Accueil", path: "/" },
     { id: "skills", text: lang === "en" ? "Skills" : "Compétences", path: "/skills" },
@@ -32,7 +44,7 @@ export default function Header() {
     { id: "contact", text: "Contact", path: "/contact" },
   ];
 
-  const hireMeLabel = lang === "en" ? "Hire Me" : "M'embaucher";
+  const hireMeLabel = lang === "en" ? "Start a Project" : "Démarrer un Projet";
 
   return (
     <header
@@ -92,16 +104,57 @@ export default function Header() {
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          <button
-            onClick={toggleLang}
-            aria-label="Toggle language"
-            className={cn(
-              "text-xs font-['Inter'] font-bold tracking-widest uppercase transition-colors",
-              isDark ? "text-slate-400 hover:text-[#D6BAFF]" : "text-gray-500 hover:text-violet-700"
+          {/* Language dropdown — desktop */}
+          <div ref={langRef} className="relative">
+            <button
+              onClick={() => setIsLangOpen((o) => !o)}
+              aria-label="Select language"
+              className={cn(
+                "flex items-center gap-1 p-2 transition-colors",
+                isDark ? "text-slate-400 hover:text-[#D6BAFF]" : "text-gray-500 hover:text-violet-700"
+              )}
+            >
+              <Globe size={16} />
+              <span className="text-xs font-['Inter'] font-bold tracking-widest uppercase">
+                {lang.toUpperCase()}
+              </span>
+              <ChevronDown
+                size={12}
+                className={cn("transition-transform duration-200", isLangOpen ? "rotate-180" : "")}
+              />
+            </button>
+
+            {isLangOpen && (
+              <div
+                className={cn(
+                  "absolute right-0 top-full mt-2 w-28 rounded-xl border shadow-xl overflow-hidden",
+                  isDark
+                    ? "bg-[#1d2024] border-[#4a4452]/30 shadow-black/40"
+                    : "bg-white border-gray-200 shadow-gray-200/60"
+                )}
+              >
+                {(["en", "fr"] as const).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => { if (l !== lang) toggleLang(); setIsLangOpen(false); }}
+                    className={cn(
+                      "w-full flex items-center gap-2 px-4 py-2.5 text-xs font-['Inter'] font-bold uppercase tracking-widest transition-colors",
+                      l === lang
+                        ? isDark
+                          ? "bg-[#272a2e] text-[#D6BAFF]"
+                          : "bg-violet-50 text-violet-700"
+                        : isDark
+                          ? "text-slate-400 hover:bg-[#272a2e] hover:text-[#e1e2e8]"
+                          : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                    )}
+                  >
+                    <span>{l === lang ? "●" : "○"}</span>
+                    {l === "en" ? "English" : "Français"}
+                  </button>
+                ))}
+              </div>
             )}
-          >
-            {lang === "en" ? "FR" : "EN"}
-          </button>
+          </div>
 
           <a
             href="/contact"
@@ -163,15 +216,26 @@ export default function Header() {
             </Link>
           ))}
           <div className="flex items-center gap-4 pt-2">
-            <button
-              onClick={toggleLang}
-              className={cn(
-                "text-xs font-['Inter'] font-bold tracking-widest uppercase",
-                isDark ? "text-slate-400" : "text-gray-500"
-              )}
-            >
-              {lang === "en" ? "FR" : "EN"}
-            </button>
+            {/* Language options — mobile */}
+            <div className="flex items-center gap-1">
+              <Globe size={14} className={isDark ? "text-slate-400" : "text-gray-400"} />
+              {(["en", "fr"] as const).map((l, i) => (
+                <span key={l} className="flex items-center gap-1">
+                  {i > 0 && <span className={isDark ? "text-slate-600" : "text-gray-300"}>/</span>}
+                  <button
+                    onClick={() => { if (l !== lang) toggleLang(); }}
+                    className={cn(
+                      "text-xs font-['Inter'] font-bold tracking-widest uppercase transition-colors",
+                      l === lang
+                        ? isDark ? "text-[#D6BAFF]" : "text-violet-700"
+                        : isDark ? "text-slate-500 hover:text-slate-300" : "text-gray-400 hover:text-gray-600"
+                    )}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                </span>
+              ))}
+            </div>
             <a
               href="/contact"
               onClick={() => setIsMenuOpen(false)}

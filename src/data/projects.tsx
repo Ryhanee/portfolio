@@ -6,7 +6,7 @@ import {
   SiMysql,
   SiNodedotjs,
   SiPhp,
-  SiPostgresql,
+  SiPostgresql, SiPrestashop,
   SiPython,
   SiReact,
   SiRedux,
@@ -17,20 +17,48 @@ import { BiLogoJavascript } from "react-icons/bi";
 import React from "react";
 
 import equimondo from "@/assets/projects/equimondo.jpg.jpg";
+import equimondo1 from "@/assets/projects/equi-event.png";
+import equimondo2 from "@/assets/projects/equi-event-rec.png";
+import equimondo3 from "@/assets/projects/equi-synchro.png";
+
 import wellbeing from "@/assets/projects/wellbeing.png";
-import cromdn from "@/assets/projects/cromdn.png";
+import cromdn from "@/assets/projects/cromdn-off.png";
+import cromdn1 from "@/assets/projects/cromdn1.png";
+import cromdn2 from "@/assets/projects/cromdn2.png";
+import cromdn3 from "@/assets/projects/cromdn3.png";
+
 import nutislab from "@/assets/projects/nutislab.png";
-import lascensoriste from "@/assets/projects/lascensoriste-1.jpg.jpg";
+import nutislab1 from "@/assets/projects/nutis1.jpg";
+import nutislab2 from "@/assets/projects/nutis2.jpg";
+import nutislab3 from "@/assets/projects/nutis3.jpg";
+
+import lascensoriste from "@/assets/projects/lascensoriste-1.jpg";
 import botanical from "@/assets/projects/botanical.png";
 import linkaura from "@/assets/projects/linkaura.jpg";
 import optic from "@/assets/projects/optique-distibution.jpg";
+import optic_boutique from "@/assets/projects/optique-boutique.jpg";
+
 import eyeverda from "@/assets/projects/eyeverda.jpg";
 import marship from "@/assets/projects/marship.jpg";
+
 import craftech from "@/assets/projects/craftech.jpg";
+
 import parcus from "@/assets/projects/parcus.jpg";
+
 import tuniship from "@/assets/projects/tuniship.jpg";
+
 import sotumar from "@/assets/projects/sotumar.jpg";
+
 import no_image from "@/assets/projects/Image-not-found.png";
+import service22 from "@/assets/projects/22services.png";
+import assist from "@/assets/projects/assist.jpg";
+import trovana from "@/assets/projects/trovana.png";
+import e_sim from "@/assets/projects/22sim.jpg";
+import atelier from "@/assets/projects/atelier-la-fabrique.jpg";
+import nfc from "@/assets/projects/nfc-offf.png";
+import nfc1 from "@/assets/projects/nfc1.png";
+import nfc2 from "@/assets/projects/nfc2.png";
+import nfc3 from "@/assets/projects/nfc3.png";
 
 export interface ProjectTag {
   name: string;
@@ -81,8 +109,8 @@ const wpTags: ProjectTag[] = [
 export const projects: ProjectEntry[] = [
   /* ── WEB APPS (category 1) ── */
   {
-    icon: Code2,
     title: "EQUIMONDO",
+    icon: Code2,
     slug: "equimondo",
     description:
       "Full-featured equestrian centre management platform (v2) with multi-gateway online payments (Stripe, Paygreen, Monetico), transactional emails via Brevo & Amazon SES, GoCardless bank reconciliation, and a React Native WebView mobile companion.",
@@ -135,10 +163,13 @@ export const projects: ProjectEntry[] = [
     role: "Full-Stack Developer",
     year: "2022",
     status: "Live",
+    image1: equimondo1,
+    image2: equimondo2,
+    image3: equimondo3,
   },
   {
-    icon: Code2,
     title: "NFC Cards",
+    icon: Code2,
     slug: "nfc-cards",
     description:
       "B2B & B2C NFC digital card management platform enabling professionals and brands to create, manage, and share dynamic online profiles via NFC technology.",
@@ -151,8 +182,8 @@ export const projects: ProjectEntry[] = [
       { name: "PostgreSQL", icon: <SiPostgresql className="w-4 h-4 text-[#336791]" /> },
       { name: "REST APIs", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
     ],
-    links: { github: "#", demo: "#" },
-    image: no_image,
+    links: { github: "https://github.com/Ryhanee/NFC", demo: "#" },
+    image: nfc,
     hasHeroImage: false,
     featured: true,
     category: 1,
@@ -190,69 +221,13 @@ export const projects: ProjectEntry[] = [
     role: "Full-Stack Developer",
     year: "2024",
     status: "In Development",
+    image1: nfc1,
+    image2: nfc2,
+    image3: nfc3
   },
   {
-    icon: Code2,
-    title: "Wellbeing",
-    slug: "wellbeing",
-    description:
-      "Cross-platform beauty & wellness marketplace built with React Native — featuring AI skin analysis, a recommendation engine, an integrated e-wallet, and dual B2C consumer and B2B provider dashboards.",
-    description_fr:
-      "Marketplace beauté & bien-être cross-platform en React Native — avec analyse de peau par IA, moteur de recommandations, e-wallet intégré et tableaux de bord B2C consommateurs et B2B prestataires distincts.",
-    categoryLabel: "Health & Beauty | Mobile Application",
-    tags: [
-      { name: "React Native", icon: <SiReact className="w-4 h-4 text-[#339933]" /> },
-      { name: "MongoDB", icon: <SiMongodb className="w-4 h-4 text-[#4584b6]" /> },
-      { name: "REST APIs", icon: <SiServerless className="w-4 h-4 text-[#FF6C37]" /> },
-      { name: "Node JS", icon: <SiNodedotjs className="w-4 h-4 text-[#764ABC]" /> },
-      { name: "Amazon EC2", icon: <Server className="w-4 h-4 text-[#764ABC]" /> },
-    ],
-    links: { github: "https://github.com/Ryhanee/wellness-backend", demo: "#" },
-    image: wellbeing,
-    hasHeroImage: true,
-    featured: true,
-    category: 1,
-    color: "text-blue-400",
-    cms: "",
-    challenge: {
-      heading: "Building a two-sided beauty marketplace with AI personalisation and integrated payments.",
-      body: [
-        "The beauty and wellness market lacked a unified mobile platform serving both consumers booking services and professionals managing their business. Personalisation was absent, payments were fragmented, and providers had no analytics tooling.",
-        "The platform needed to simultaneously address consumer discovery and booking, provider business management, and an AI layer that turned passive browsing into personalised service recommendations.",
-      ],
-    },
-    challenge_fr: {
-      heading: "Construire une marketplace beauté biface avec personnalisation IA et paiements intégrés.",
-      body: [
-        "Le marché de la beauté et du bien-être manquait d'une plateforme mobile unifiée servant à la fois les consommateurs réservant des services et les professionnels gérant leur activité. La personnalisation était absente, les paiements fragmentés et les prestataires n'avaient aucun outil analytique.",
-        "La plateforme devait simultanément adresser la découverte et la réservation pour les consommateurs, la gestion d'activité pour les prestataires, et une couche IA transformant la navigation passive en recommandations de services personnalisées.",
-      ],
-    },
-    solution: {
-      heading: "A React Native marketplace with AI skin analysis, e-wallet, and B2B provider dashboards.",
-      body: [
-        "Developed a cross-platform mobile application with separate B2C and B2B flows. Consumers access an AI skin analysis module powered by computer vision to identify skin conditions and receive matched service and product recommendations via a collaborative filtering engine.",
-        "An integrated e-wallet handles payments, refunds, and loyalty credits. The B2B provider dashboard gives beauty professionals real-time booking management, revenue tracking, and customer analytics—all within the same application, backed by a Node.js API on Amazon EC2.",
-      ],
-    },
-    solution_fr: {
-      heading: "Une marketplace React Native avec analyse de peau par IA, e-wallet et tableaux de bord B2B prestataires.",
-      body: [
-        "Développement d'une application mobile cross-platform avec des parcours B2C et B2B distincts. Les consommateurs accèdent à un module d'analyse de peau par IA (computer vision) pour identifier les conditions cutanées et recevoir des recommandations personnalisées via un moteur de filtrage collaboratif.",
-        "Un e-wallet intégré gère les paiements, remboursements et crédits de fidélité. Le tableau de bord B2B donne aux professionnels de la beauté une gestion en temps réel des réservations, du chiffre d'affaires et des analytics clients — au sein de la même application, portée par une API Node.js sur Amazon EC2.",
-      ],
-    },
-    stats: [
-      { value: "+35%", label: "Session Depth" },
-      { value: "2×", label: "Booking Rate" },
-    ],
-    role: "Full-Stack Developer",
-    year: "2023",
-    status: "In Development",
-  },
-  {
-    icon: Code2,
     title: "Nutislab",
+    icon: Code2,
     slug: "nutislab",
     description:
       "Practice management platform for orthodontists and dental labs — featuring Angular frontend, role-based access control, manufacturing status tracking, and a 3D device preview module.",
@@ -305,10 +280,13 @@ export const projects: ProjectEntry[] = [
     role: "Full-Stack Developer",
     year: "2022",
     status: "Live",
+    image1: nutislab1,
+    image2: nutislab2,
+    image3: nutislab3
   },
   {
-    icon: Code2,
     title: "Cromdn",
+    icon: Code2,
     slug: "cromdn",
     description:
       "Comprehensive dental directory and practice management system for Tunisian orthodontists — featuring complex tariff calculations, payment tracking, and advanced analytics dashboards.",
@@ -360,10 +338,72 @@ export const projects: ProjectEntry[] = [
     role: "Full-Stack Developer",
     year: "2022",
     status: "Live",
+    image1:cromdn1,
+    image2:cromdn2,
+    image3:cromdn3
   },
   {
+    title: "Wellbeing",
     icon: Code2,
+    slug: "wellbeing",
+    description:
+        "Cross-platform beauty & wellness marketplace built with React Native — featuring AI skin analysis, a recommendation engine, an integrated e-wallet, and dual B2C consumer and B2B provider dashboards.",
+    description_fr:
+        "Marketplace beauté & bien-être cross-platform en React Native — avec analyse de peau par IA, moteur de recommandations, e-wallet intégré et tableaux de bord B2C consommateurs et B2B prestataires distincts.",
+    categoryLabel: "Health & Beauty | Mobile Application",
+    tags: [
+      { name: "React Native", icon: <SiReact className="w-4 h-4 text-[#339933]" /> },
+      { name: "MongoDB", icon: <SiMongodb className="w-4 h-4 text-[#4584b6]" /> },
+      { name: "REST APIs", icon: <SiServerless className="w-4 h-4 text-[#FF6C37]" /> },
+      { name: "Node JS", icon: <SiNodedotjs className="w-4 h-4 text-[#764ABC]" /> },
+      { name: "Amazon EC2", icon: <Server className="w-4 h-4 text-[#764ABC]" /> },
+    ],
+    links: { github: "https://github.com/Ryhanee/wellness-backend", demo: "#" },
+    image: wellbeing,
+    hasHeroImage: true,
+    featured: true,
+    category: 1,
+    color: "text-blue-400",
+    cms: "",
+    challenge: {
+      heading: "Building a two-sided beauty marketplace with AI personalisation and integrated payments.",
+      body: [
+        "The beauty and wellness market lacked a unified mobile platform serving both consumers booking services and professionals managing their business. Personalisation was absent, payments were fragmented, and providers had no analytics tooling.",
+        "The platform needed to simultaneously address consumer discovery and booking, provider business management, and an AI layer that turned passive browsing into personalised service recommendations.",
+      ],
+    },
+    challenge_fr: {
+      heading: "Construire une marketplace beauté biface avec personnalisation IA et paiements intégrés.",
+      body: [
+        "Le marché de la beauté et du bien-être manquait d'une plateforme mobile unifiée servant à la fois les consommateurs réservant des services et les professionnels gérant leur activité. La personnalisation était absente, les paiements fragmentés et les prestataires n'avaient aucun outil analytique.",
+        "La plateforme devait simultanément adresser la découverte et la réservation pour les consommateurs, la gestion d'activité pour les prestataires, et une couche IA transformant la navigation passive en recommandations de services personnalisées.",
+      ],
+    },
+    solution: {
+      heading: "A React Native marketplace with AI skin analysis, e-wallet, and B2B provider dashboards.",
+      body: [
+        "Developed a cross-platform mobile application with separate B2C and B2B flows. Consumers access an AI skin analysis module powered by computer vision to identify skin conditions and receive matched service and product recommendations via a collaborative filtering engine.",
+        "An integrated e-wallet handles payments, refunds, and loyalty credits. The B2B provider dashboard gives beauty professionals real-time booking management, revenue tracking, and customer analytics—all within the same application, backed by a Node.js API on Amazon EC2.",
+      ],
+    },
+    solution_fr: {
+      heading: "Une marketplace React Native avec analyse de peau par IA, e-wallet et tableaux de bord B2B prestataires.",
+      body: [
+        "Développement d'une application mobile cross-platform avec des parcours B2C et B2B distincts. Les consommateurs accèdent à un module d'analyse de peau par IA (computer vision) pour identifier les conditions cutanées et recevoir des recommandations personnalisées via un moteur de filtrage collaboratif.",
+        "Un e-wallet intégré gère les paiements, remboursements et crédits de fidélité. Le tableau de bord B2B donne aux professionnels de la beauté une gestion en temps réel des réservations, du chiffre d'affaires et des analytics clients — au sein de la même application, portée par une API Node.js sur Amazon EC2.",
+      ],
+    },
+    stats: [
+      { value: "+35%", label: "Session Depth" },
+      { value: "2×", label: "Booking Rate" },
+    ],
+    role: "Full-Stack Developer",
+    year: "2023",
+    status: "In Development",
+  },
+  {
     title: "Profili",
+    icon: Code2,
     slug: "profili",
     description:
       "AI-powered recruitment platform featuring NLP CV analysis, automated chatbot and video-bot interviews, intelligent candidate pre-selection, analytics dashboards, and an AI portfolio generator for shortlisted candidates.",
@@ -418,8 +458,8 @@ export const projects: ProjectEntry[] = [
     status: "In Development",
   },
   {
-    icon: Code2,
     title: "Linkaura",
+    icon: Code2,
     slug: "linkaura",
     description:
       "Machine learning API for intelligent Instagram content creator matching — using Decision Tree and Random Forest models to predict partnership success and match brands with the right influencers.",
@@ -473,8 +513,8 @@ export const projects: ProjectEntry[] = [
     status: "Completed",
   },
   {
-    icon: Code2,
     title: "Simulateur",
+    icon: Code2,
     slug: "simulateur",
     description:
       "Interactive digital project cost simulator with an AI layer — built with React.js, Laravel, and a Flask NLP module that analyses free-text client comments to extract and score service requirements.",
@@ -529,62 +569,269 @@ export const projects: ProjectEntry[] = [
   },
 
   /* ── WEBSITES (category 2) ── */
+
   {
+    title: "Tuniship",
     icon: FaWordpress,
-    title: "Lascensoriste",
-    slug: "lascensoriste",
+    slug: "tuniship",
     description:
-      "E-commerce website to sell elevator elements. Complete digital identity overhaul focusing on UX and B2B conversion.",
+        "Corporate website for a freight logistics company enhanced with an integrated pro chatbot for instant client support and an interactive billing simulator for transparent freight cost estimation.",
     description_fr:
-      "Site e-commerce pour la vente d'éléments d'ascenseurs. Refonte complète de l'identité digitale axée sur l'UX et la conversion B2B.",
-    categoryLabel: "E-Commerce | WordPress",
-    tags: wpTags,
-    links: { github: "#", demo: "https://lascensoriste.tn/" },
-    image: lascensoriste,
+        "Site corporate pour une société de transport maritime enrichi d'un chatbot pro intégré pour le support client instantané et d'un simulateur de facturation interactif pour une estimation transparente des coûts de fret.",
+    categoryLabel: "Freight Logistics | WordPress",
+    tags: [
+      ...wpTags,
+      { name: "Chatbot", icon: <Server className="w-4 h-4 text-[#00A67E]" /> },
+    ],
+    links: { github: "#", demo: "https://tuniship.net/" },
+    image: tuniship,
     hasHeroImage: true,
     featured: true,
     category: 2,
     color: "text-purple-400",
-    cms: <FaWordpress className="w-4 h-4 text-[#E10098]" />,
+    cms: "",
     challenge: {
-      heading: "Establishing a credible digital presence for a specialist elevator supplier.",
+      heading: "Modernising a freight company's web presence while reducing support friction.",
       body: [
-        "The client operated primarily through print and referral channels, with a dated website unable to showcase their product range or capture B2B leads effectively.",
-        "The objective was to transform their online identity into a conversion-focused platform that speaks directly to procurement managers and building contractors.",
+        "Tuniship was expanding its freight operations but lacked a digital presence that matched its ambitions. Beyond the basic corporate site, clients needed instant access to freight cost estimates and immediate answers to logistical queries.",
+        "The objective was a professional platform with self-service tools that would reduce inbound sales calls, inspire confidence in logistics partners, and generate qualified leads.",
       ],
     },
     challenge_fr: {
-      heading: "Établir une présence digitale crédible pour un fournisseur spécialisé en ascenseurs.",
+      heading: "Moderniser la présence web d'une société de fret tout en réduisant les frictions de support.",
       body: [
-        "Le client opérait principalement via des canaux print et le bouche-à-oreille, avec un site obsolète incapable de présenter sa gamme de produits ou de capter efficacement des leads B2B.",
-        "L'objectif était de transformer son identité en ligne en une plateforme axée sur la conversion, s'adressant directement aux responsables achats et aux entrepreneurs du bâtiment.",
+        "Tuniship développait ses opérations de fret mais manquait d'une présence digitale à la hauteur de ses ambitions. Au-delà du site corporate de base, les clients avaient besoin d'un accès instantané aux estimations de coûts de fret et de réponses immédiates à leurs questions logistiques.",
+        "L'objectif était une plateforme professionnelle dotée d'outils en libre-service qui réduiraient les appels commerciaux entrants, inspireraient confiance aux partenaires logistiques et généreraient des leads qualifiés.",
       ],
     },
     solution: {
-      heading: "A WordPress e-commerce site built for B2B trust and catalogue exploration.",
+      heading: "A WordPress corporate site with an embedded pro chatbot and interactive billing simulator.",
       body: [
-        "Developed a custom WordPress theme with WooCommerce integration, featuring filterable product categories and a bulk request-for-quote flow designed for professional buyers.",
-        "A precise, technical visual language—clean typography, structured layout—conveys expertise and builds confidence with the B2B audience.",
+        "Built a structured WordPress site with dedicated service pages and partner-focused messaging. An integrated pro chatbot provides instant answers to common logistics questions—routes, transit times, documentation—reducing the load on the operations team.",
+        "A billing simulator allows clients to estimate freight costs based on cargo parameters directly on the site, turning a common pre-sales inquiry into a self-service conversion tool.",
       ],
     },
     solution_fr: {
-      heading: "Un site e-commerce WordPress conçu pour la confiance et l'exploration catalogue B2B.",
+      heading: "Un site WordPress corporate avec chatbot pro intégré et simulateur de facturation interactif.",
       body: [
-        "Développement d'un thème WordPress personnalisé avec intégration WooCommerce, comprenant des catégories produits filtrables et un parcours de demande de devis en gros conçu pour les acheteurs professionnels.",
-        "Un langage visuel précis et technique — typographie épurée, mise en page structurée — transmet l'expertise et instaure la confiance auprès de l'audience B2B.",
+        "Construction d'un site WordPress structuré avec des pages de services dédiées et un messaging orienté partenaires. Un chatbot pro intégré fournit des réponses instantanées aux questions logistiques courantes — routes, délais de transit, documentation — réduisant la charge de l'équipe opérationnelle.",
+        "Un simulateur de facturation permet aux clients d'estimer les coûts de fret selon les paramètres de leur cargaison directement sur le site, transformant une question courante de pré-vente en outil de conversion en libre-service.",
       ],
     },
-    stats: [
-      { value: "3×", label: "Catalogue Reach" },
-      { value: "+40%", label: "Lead Growth" },
-    ],
+    stats: [],
     role: "Full-Stack Developer",
     year: "2023",
     status: "Completed",
   },
   {
+    title: "Trovana",
     icon: FaWordpress,
+    slug: "trovana",
+    description:
+        "Corporate website for Trovana, a leading digital solutions provider specializing in e-goods and modern electronic services.",
+    description_fr:
+        "Site corporate pour Trovana, fournisseur de solutions digitales spécialisé dans les biens numériques et les services électroniques modernes.",
+    categoryLabel: "Digital Solutions | WordPress",
+    tags: wpTags,
+    links: { github: "#", demo: "https://www.troveana.com/" },
+    image: trovana,
+    hasHeroImage: false,
+    featured: true,
+    category: 2,
+    color: "text-purple-400",
+    cms: "",
+    challenge: {
+      heading: "Establishing Trovana as a leading digital solutions brand in the e-goods market.",
+      body: [
+        "Trovana operates in the fast-moving e-goods and electronic services space and needed a digital presence that immediately communicated market leadership, trustworthiness, and the breadth of their service catalogue.",
+        "The goal was a site that could serve both B2B partners and individual consumers, positioning Trovana as the definitive platform for modern electronic services.",
+      ],
+    },
+    challenge_fr: {
+      heading: "Positionner Trovana comme leader de solutions digitales sur le marché des biens numériques.",
+      body: [
+        "Trovana opère sur le marché dynamique des biens numériques et des services électroniques et avait besoin d'une présence digitale communiquant immédiatement le leadership, la fiabilité et l'étendue de son catalogue de services.",
+        "L'objectif était un site capable de servir à la fois les partenaires B2B et les consommateurs individuels, positionnant Trovana comme la plateforme de référence pour les services électroniques modernes.",
+      ],
+    },
+    solution: {
+      heading: "A brand-forward WordPress site that leads with Trovana's market positioning.",
+      body: [
+        "Designed a bold, conversion-optimised WordPress site structured around Trovana's core service categories—e-goods, digital vouchers, and electronic services—with clear pathways for both business and consumer visitors.",
+        "The visual identity—dynamic, modern, high-energy—signals market leadership and differentiates Trovana in a category where trust and immediacy are the decisive purchase factors.",
+      ],
+    },
+    solution_fr: {
+      heading: "Un site WordPress centré sur la marque qui affirme le positionnement de marché de Trovana.",
+      body: [
+        "Conception d'un site WordPress audacieux et optimisé pour la conversion, structuré autour des catégories de services phares de Trovana — biens numériques, vouchers digitaux et services électroniques — avec des parcours clairs pour les visiteurs B2B et consommateurs.",
+        "L'identité visuelle — dynamique, moderne, haute énergie — signale le leadership marché et différencie Trovana dans une catégorie où la confiance et l'immédiateté sont les facteurs d'achat décisifs.",
+      ],
+    },
+    stats: [],
+    role: "Full-Stack Developer",
+    year: "2024",
+    status: "Completed",
+  },
+  {
+    title: "Optic Distribution",
+    icon: SiPrestashop,
+    slug: "optic-distribution",
+    description:
+        "E-commerce boutique for an ophthalmological products distributor featuring real-time currency synchronisation by country, multiple payment gateways, and integrated delivery management.",
+    description_fr:
+        "Boutique e-commerce pour un distributeur de produits d'ophtalmologie avec synchronisation de devise en temps réel par pays, passerelles de paiement multiples et gestion de livraison intégrée.",
+    categoryLabel: "Medical E-Commerce | WordPress",
+    tags: [
+      { name: "Prestashop", icon: <SiPrestashop className="w-4 h-4 text-[#339933]" /> },
+      { name: "PHP", icon: <SiPhp className="w-4 h-4 text-[#3776AB]" /> },
+      { name: "REST APIs", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
+      { name: "CSS", icon: <FileCode className="w-4 h-4 text-[#3776AB]" /> },
+      { name: "javascript", icon: <BiLogoJavascript className="w-4 h-4 text-[#336791]" /> },
+    ],
+    links: { github: "#", demo: "https://boutique.optiquedistribution.net/" },
+    image: optic_boutique,
+    hasHeroImage: true,
+    featured: true,
+    category: 2,
+    color: "text-purple-400",
+    cms: "",
+    challenge: {
+      heading: "Building an international e-commerce experience for a specialist medical products distributor.",
+      body: [
+        "The client distributed ophthalmological products across multiple markets with different currencies and payment preferences. A generic catalogue site was not enough—they needed a full e-commerce experience that handled international complexity seamlessly.",
+        "The challenge was building a platform that felt local to buyers in different countries, with their native currency, preferred payment methods, and reliable delivery options—while maintaining the technical clarity expected in the medical sector.",
+      ],
+    },
+    challenge_fr: {
+      heading: "Construire une expérience e-commerce internationale pour un distributeur spécialisé en produits médicaux.",
+      body: [
+        "Le client distribuait des produits d'ophtalmologie sur plusieurs marchés avec des devises et préférences de paiement différentes. Un simple catalogue en ligne ne suffisait pas — il fallait une expérience e-commerce complète gérant la complexité internationale de manière transparente.",
+        "Le défi était de construire une plateforme perçue comme locale par les acheteurs de différents pays, avec leur devise native, leurs modes de paiement préférés et des options de livraison fiables — tout en maintenant la clarté technique attendue dans le secteur médical.",
+      ],
+    },
+    solution: {
+      heading: "A WooCommerce boutique with currency sync by country, multi-gateway payments, and delivery management.",
+      body: [
+        "Built a full WooCommerce store with real-time currency synchronisation based on visitor country, allowing international buyers to see prices in their local currency automatically. Multiple payment gateways were integrated to accommodate regional payment preferences.",
+        "An integrated delivery management module handles shipping rules, carrier selection, and order tracking—giving both the client and their customers full visibility into the fulfilment process from checkout to delivery.",
+      ],
+    },
+    solution_fr: {
+      heading: "Une boutique WooCommerce avec synchronisation de devise par pays, paiements multi-gateway et gestion de livraison.",
+      body: [
+        "Construction d'une boutique WooCommerce complète avec synchronisation de devise en temps réel selon le pays du visiteur, permettant aux acheteurs internationaux de voir les prix dans leur devise locale automatiquement. Plusieurs passerelles de paiement ont été intégrées pour accommoder les préférences régionales.",
+        "Un module de gestion de livraison intégré gère les règles d'expédition, la sélection des transporteurs et le suivi des commandes — offrant au client et à ses acheteurs une visibilité complète sur le processus de fulfillment du checkout à la livraison.",
+      ],
+    },
+    stats: [],
+    role: "Full-Stack Developer",
+    year: "2023",
+    status: "Completed",
+  },
+  {
+    title: "CRAFTECH",
+    icon: FaWordpress,
+    slug: "craftech",
+    description:
+        "Website for CRAFTECH, a digital creation agency showcasing its full range of digital solutions—from custom web development to e-commerce and SaaS applications.",
+    description_fr:
+        "Site web pour CRAFTECH, agence de création de solutions digitales présentant sa gamme complète — du développement web sur mesure à l'e-commerce et aux applications SaaS.",
+    categoryLabel: "Digital Agency | WordPress",
+    tags: wpTags,
+    links: { github: "#", demo: "http://craftech-digital.com/" },
+    image: craftech,
+    hasHeroImage: true,
+    featured: true,
+    category: 2,
+    color: "text-purple-400",
+    cms: "",
+    challenge: {
+      heading: "Building a digital agency's showcase that reflects its own expertise.",
+      body: [
+        "CRAFTECH needed a website that didn't just list services but actively demonstrated design capability and technical depth to attract enterprise clients.",
+        "The challenge was to create a platform that would differentiate CRAFTECH from the many generic agency sites in the region.",
+      ],
+    },
+    challenge_fr: {
+      heading: "Construire la vitrine d'une agence digitale à la hauteur de son propre savoir-faire.",
+      body: [
+        "CRAFTECH avait besoin d'un site qui ne se contente pas de lister des services, mais démontre activement ses capacités design et sa profondeur technique pour attirer des clients entreprise.",
+        "Le défi était de créer une plateforme qui différencie CRAFTECH des nombreux sites d'agences génériques dans la région.",
+      ],
+    },
+    solution: {
+      heading: "A visual-first WordPress site that leads with results, not just services.",
+      body: [
+        "Designed a portfolio-forward WordPress site with animated service sections, client case study cards, and a clear conversion funnel leading to a consultation CTA.",
+        "The aesthetic—dark, bold, high-contrast—was intentionally chosen to differentiate CRAFTECH and signal design ambition from the first scroll.",
+      ],
+    },
+    solution_fr: {
+      heading: "Un site WordPress visuel-first qui met les résultats en avant, pas seulement les services.",
+      body: [
+        "Conception d'un site WordPress centré sur le portfolio, avec des sections de services animées, des cartes d'études de cas clients et un funnel de conversion clair menant à un CTA de consultation.",
+        "L'esthétique — sombre, audacieuse, fort contraste — a été intentionnellement choisie pour différencier CRAFTECH et signaler l'ambition design dès le premier scroll.",
+      ],
+    },
+    stats: [],
+    role: "Full-Stack Developer",
+    year: "2022",
+    status: "Completed",
+  },
+  {
+    title: "Sotumar",
+    icon: FaWordpress,
+    slug: "sotumar",
+    description:
+        "Corporate website for a logistics freight company. Streamlined service presentation and contact flow.",
+    description_fr:
+        "Site corporate pour une société de fret maritime. Présentation simplifiée des services et parcours de contact optimisé.",
+    categoryLabel: "Maritime Freight | WordPress",
+    tags: wpTags,
+    links: { github: "#", demo: "https://sotumar.net/" },
+    image: sotumar,
+    hasHeroImage: true,
+    featured: true,
+    category: 2,
+    color: "text-purple-400",
+    cms: "",
+    challenge: {
+      heading: "Creating a digital anchor for a maritime freight operator.",
+      body: [
+        "Sotumar required a website that would position them as a reliable freight partner in a competitive maritime logistics market, reaching commercial clients across the region.",
+        "The site needed to articulate their service range clearly while remaining accessible to a broad range of potential clients.",
+      ],
+    },
+    challenge_fr: {
+      heading: "Créer un ancrage digital pour un opérateur de fret maritime.",
+      body: [
+        "Sotumar avait besoin d'un site positionnant l'entreprise comme un partenaire fret fiable dans un marché logistique maritime concurrentiel, touchant des clients commerciaux dans toute la région.",
+        "Le site devait articuler clairement la gamme de services tout en restant accessible à un large éventail de clients potentiels.",
+      ],
+    },
+    solution: {
+      heading: "A structured WordPress platform built for service clarity and B2B trust.",
+      body: [
+        "Developed a focused WordPress site with clearly delineated service sections, partner-facing messaging, and a contact system designed to qualify leads efficiently.",
+        "Clean layout, professional typography, and a restrained colour palette communicate stability and operational expertise.",
+      ],
+    },
+    solution_fr: {
+      heading: "Une plateforme WordPress structurée pour la clarté des services et la confiance B2B.",
+      body: [
+        "Développement d'un site WordPress ciblé avec des sections de services clairement délimitées, un messaging orienté partenaires et un système de contact conçu pour qualifier efficacement les leads.",
+        "Mise en page épurée, typographie professionnelle et palette chromatique sobre communiquent stabilité et expertise opérationnelle.",
+      ],
+    },
+    stats: [],
+    role: "Full-Stack Developer",
+    year: "2022",
+    status: "Completed",
+  },
+  {
     title: "Marship",
+    icon: FaWordpress,
     slug: "marship",
     description:
       "Website for MARSHIP, a freight forwarding company based in Morocco. Clean, professional corporate presence.",
@@ -633,63 +880,66 @@ export const projects: ProjectEntry[] = [
     status: "Completed",
   },
   {
+    title: "Lascensoriste",
     icon: FaWordpress,
-    title: "CRAFTECH",
-    slug: "craftech",
+    slug: "lascensoriste",
     description:
-      "Website for CRAFTECH, a digital creation agency showcasing its full range of digital solutions—from custom web development to e-commerce and SaaS applications.",
+        "E-commerce website to sell elevator elements. Complete digital identity overhaul focusing on UX and B2B conversion.",
     description_fr:
-      "Site web pour CRAFTECH, agence de création de solutions digitales présentant sa gamme complète — du développement web sur mesure à l'e-commerce et aux applications SaaS.",
-    categoryLabel: "Digital Agency | WordPress",
+        "Site e-commerce pour la vente d'éléments d'ascenseurs. Refonte complète de l'identité digitale axée sur l'UX et la conversion B2B.",
+    categoryLabel: "E-Commerce | WordPress",
     tags: wpTags,
-    links: { github: "#", demo: "http://craftech-digital.com/" },
-    image: craftech,
+    links: { github: "#", demo: "https://lascensoriste.tn/" },
+    image: lascensoriste,
     hasHeroImage: true,
     featured: true,
     category: 2,
     color: "text-purple-400",
-    cms: "",
+    cms: <FaWordpress className="w-4 h-4 text-[#E10098]" />,
     challenge: {
-      heading: "Building a digital agency's showcase that reflects its own expertise.",
+      heading: "Establishing a credible digital presence for a specialist elevator supplier.",
       body: [
-        "CRAFTECH needed a website that didn't just list services but actively demonstrated design capability and technical depth to attract enterprise clients.",
-        "The challenge was to create a platform that would differentiate CRAFTECH from the many generic agency sites in the region.",
+        "The client operated primarily through print and referral channels, with a dated website unable to showcase their product range or capture B2B leads effectively.",
+        "The objective was to transform their online identity into a conversion-focused platform that speaks directly to procurement managers and building contractors.",
       ],
     },
     challenge_fr: {
-      heading: "Construire la vitrine d'une agence digitale à la hauteur de son propre savoir-faire.",
+      heading: "Établir une présence digitale crédible pour un fournisseur spécialisé en ascenseurs.",
       body: [
-        "CRAFTECH avait besoin d'un site qui ne se contente pas de lister des services, mais démontre activement ses capacités design et sa profondeur technique pour attirer des clients entreprise.",
-        "Le défi était de créer une plateforme qui différencie CRAFTECH des nombreux sites d'agences génériques dans la région.",
+        "Le client opérait principalement via des canaux print et le bouche-à-oreille, avec un site obsolète incapable de présenter sa gamme de produits ou de capter efficacement des leads B2B.",
+        "L'objectif était de transformer son identité en ligne en une plateforme axée sur la conversion, s'adressant directement aux responsables achats et aux entrepreneurs du bâtiment.",
       ],
     },
     solution: {
-      heading: "A visual-first WordPress site that leads with results, not just services.",
+      heading: "A WordPress e-commerce site built for B2B trust and catalogue exploration.",
       body: [
-        "Designed a portfolio-forward WordPress site with animated service sections, client case study cards, and a clear conversion funnel leading to a consultation CTA.",
-        "The aesthetic—dark, bold, high-contrast—was intentionally chosen to differentiate CRAFTECH and signal design ambition from the first scroll.",
+        "Developed a custom WordPress theme with WooCommerce integration, featuring filterable product categories and a bulk request-for-quote flow designed for professional buyers.",
+        "A precise, technical visual language—clean typography, structured layout—conveys expertise and builds confidence with the B2B audience.",
       ],
     },
     solution_fr: {
-      heading: "Un site WordPress visuel-first qui met les résultats en avant, pas seulement les services.",
+      heading: "Un site e-commerce WordPress conçu pour la confiance et l'exploration catalogue B2B.",
       body: [
-        "Conception d'un site WordPress centré sur le portfolio, avec des sections de services animées, des cartes d'études de cas clients et un funnel de conversion clair menant à un CTA de consultation.",
-        "L'esthétique — sombre, audacieuse, fort contraste — a été intentionnellement choisie pour différencier CRAFTECH et signaler l'ambition design dès le premier scroll.",
+        "Développement d'un thème WordPress personnalisé avec intégration WooCommerce, comprenant des catégories produits filtrables et un parcours de demande de devis en gros conçu pour les acheteurs professionnels.",
+        "Un langage visuel précis et technique — typographie épurée, mise en page structurée — transmet l'expertise et instaure la confiance auprès de l'audience B2B.",
       ],
     },
-    stats: [],
+    stats: [
+      { value: "3×", label: "Catalogue Reach" },
+      { value: "+40%", label: "Lead Growth" },
+    ],
     role: "Full-Stack Developer",
-    year: "2022",
+    year: "2023",
     status: "Completed",
   },
   {
-    icon: FaWordpress,
     title: "Optic Distribution",
+    icon: FaWordpress,
     slug: "optic-distribution",
     description:
-      "E-commerce boutique for an ophthalmological products distributor featuring real-time currency synchronisation by country, multiple payment gateways, and integrated delivery management.",
+        "E-commerce boutique for an ophthalmological products distributor featuring real-time currency synchronisation by country, multiple payment gateways, and integrated delivery management.",
     description_fr:
-      "Boutique e-commerce pour un distributeur de produits d'ophtalmologie avec synchronisation de devise en temps réel par pays, passerelles de paiement multiples et gestion de livraison intégrée.",
+        "Boutique e-commerce pour un distributeur de produits d'ophtalmologie avec synchronisation de devise en temps réel par pays, passerelles de paiement multiples et gestion de livraison intégrée.",
     categoryLabel: "Medical E-Commerce | WordPress",
     tags: [
       { name: "WordPress", icon: <FaWordpress className="w-4 h-4 text-[#339933]" /> },
@@ -738,111 +988,163 @@ export const projects: ProjectEntry[] = [
     status: "Completed",
   },
   {
+    title: "22 Services",
     icon: FaWordpress,
-    title: "Tuniship",
-    slug: "tuniship",
+    slug: "22-services",
     description:
-      "Corporate website for a freight logistics company enhanced with an integrated pro chatbot for instant client support and an interactive billing simulator for transparent freight cost estimation.",
+        "Corporate website for 22 Services, a digital solutions company presenting its full range of services and expertise to B2B clients.",
     description_fr:
-      "Site corporate pour une société de transport maritime enrichi d'un chatbot pro intégré pour le support client instantané et d'un simulateur de facturation interactif pour une estimation transparente des coûts de fret.",
-    categoryLabel: "Freight Logistics | WordPress",
+        "Site corporate pour 22 Services, société de solutions digitales présentant sa gamme complète de services et son expertise aux clients B2B.",
+    categoryLabel: "Digital Solutions | WordPress",
+    tags: wpTags,
+    links: { github: "#", demo: "#" },
+    image: service22,
+    hasHeroImage: false,
+    featured: true,
+    category: 2,
+    color: "text-purple-400",
+    cms: "",
+    challenge: {
+      heading: "Building a credible digital presence for a growing digital solutions company.",
+      body: [
+        "22 Services needed a professional website that could clearly communicate their service portfolio to business clients and generate qualified inbound leads.",
+        "The objective was a platform that positioned the company as a trusted digital partner—one that decision-makers would choose with confidence over less established competitors.",
+      ],
+    },
+    challenge_fr: {
+      heading: "Établir une présence digitale crédible pour une société de solutions digitales en croissance.",
+      body: [
+        "22 Services avait besoin d'un site professionnel capable de communiquer clairement son portefeuille de services aux clients entreprises et de générer des leads entrants qualifiés.",
+        "L'objectif était une plateforme positionnant l'entreprise comme un partenaire digital de confiance — que les décideurs choisiraient en confiance face à des concurrents moins établis.",
+      ],
+    },
+    solution: {
+      heading: "A service-forward WordPress site built to attract and convert B2B prospects.",
+      body: [
+        "Designed and developed a structured WordPress site with dedicated service pages, client-focused messaging, and clear conversion pathways leading to consultation CTAs.",
+        "The design language—professional and approachable—was chosen to communicate expertise and build trust with decision-makers from the first visit.",
+      ],
+    },
+    solution_fr: {
+      heading: "Un site WordPress orienté services, conçu pour attirer et convertir les prospects B2B.",
+      body: [
+        "Conception et développement d'un site WordPress structuré avec des pages de services dédiées, un messaging orienté client et des parcours de conversion clairs menant à des CTAs de consultation.",
+        "Le langage visuel — professionnel et accessible — a été choisi pour communiquer l'expertise et instaurer la confiance auprès des décideurs dès la première visite.",
+      ],
+    },
+    stats: [],
+    role: "Full-Stack Developer",
+    year: "2024",
+    status: "Completed",
+  },
+  {
+    title: "22SIM",
+    icon: FaWordpress,
+    slug: "22-sim",
+    description:
+        "Presentation website for 22SIM, an e-SIM service provider offering seamless digital connectivity without physical SIM cards.",
+    description_fr:
+        "Site de présentation pour 22SIM, fournisseur de services e-SIM offrant une connectivité digitale transparente sans carte SIM physique.",
+    categoryLabel: "Telecom | WordPress",
+    tags: wpTags,
+    links: { github: "#", demo: "https://22sim.com/" },
+    image: e_sim,
+    hasHeroImage: false,
+    featured: true,
+    category: 2,
+    color: "text-purple-400",
+    cms: "",
+    challenge: {
+      heading: "Communicating the value of eSIM technology to a broad consumer audience.",
+      body: [
+        "The eSIM concept is still novel for many consumers. 22SIM needed a website that clearly explained the technology's benefits—no physical SIM, instant activation, global connectivity—without overwhelming technical jargon.",
+        "The challenge was to design a site that educated, reassured, and converted visitors into customers across a range of digital literacy levels.",
+      ],
+    },
+    challenge_fr: {
+      heading: "Communiquer la valeur de la technologie eSIM à un large public de consommateurs.",
+      body: [
+        "Le concept d'eSIM est encore novateur pour beaucoup de consommateurs. 22SIM avait besoin d'un site expliquant clairement les avantages de la technologie — pas de SIM physique, activation instantanée, connectivité mondiale — sans jargon technique écrasant.",
+        "Le défi était de concevoir un site qui éduque, rassure et convertit les visiteurs en clients, quel que soit leur niveau de maîtrise du digital.",
+      ],
+    },
+    solution: {
+      heading: "A clean, benefit-led WordPress site that simplifies eSIM adoption.",
+      body: [
+        "Built a focused WordPress site centred on benefit-driven messaging: freedom from physical SIM cards, instant setup, and seamless international connectivity. Each page was structured to answer the key objections of hesitant buyers.",
+        "The visual design—modern, light, and approachable—signals tech-forward thinking while remaining fully accessible to non-technical audiences.",
+      ],
+    },
+    solution_fr: {
+      heading: "Un site WordPress épuré, axé sur les bénéfices, qui simplifie l'adoption de l'eSIM.",
+      body: [
+        "Construction d'un site WordPress ciblé centré sur un messaging orienté bénéfices : liberté vis-à-vis des SIM physiques, configuration instantanée et connectivité internationale transparente. Chaque page a été structurée pour répondre aux principales objections des acheteurs hésitants.",
+        "Le design visuel — moderne, épuré et accessible — signale une approche tech-forward tout en restant pleinement compréhensible pour les audiences non techniques.",
+      ],
+    },
+    stats: [],
+    role: "Full-Stack Developer",
+    year: "2024",
+    status: "Completed",
+  },
+  {
+    title: "Assist 22SIM",
+    icon: FaWordpress,
+    slug: "assist-22-sim",
+    description:
+        "Customer support portal for 22SIM featuring filterable help articles connected to an external API and an integrated AI chatbot for instant user assistance.",
+    description_fr:
+        "Portail de support client pour 22SIM avec des articles d'aide filtrables connectés à une API externe et un chatbot IA intégré pour une assistance utilisateur instantanée.",
+    categoryLabel: "Support Portal | WordPress",
     tags: [
       ...wpTags,
+      { name: "REST APIs", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
       { name: "Chatbot", icon: <Server className="w-4 h-4 text-[#00A67E]" /> },
     ],
-    links: { github: "#", demo: "https://tuniship.net/" },
-    image: tuniship,
-    hasHeroImage: true,
+    links: { github: "#", demo: "#" },
+    image: assist,
+    hasHeroImage: false,
     featured: true,
     category: 2,
     color: "text-purple-400",
     cms: "",
     challenge: {
-      heading: "Modernising a freight company's web presence while reducing support friction.",
+      heading: "Scaling customer support for an eSIM provider without scaling the support team.",
       body: [
-        "Tuniship was expanding its freight operations but lacked a digital presence that matched its ambitions. Beyond the basic corporate site, clients needed instant access to freight cost estimates and immediate answers to logistical queries.",
-        "The objective was a professional platform with self-service tools that would reduce inbound sales calls, inspire confidence in logistics partners, and generate qualified leads.",
+        "As 22SIM's user base grew, so did the volume of repetitive support inquiries. The team needed a self-service support hub that could deflect common tickets, surface relevant help articles instantly, and provide 24/7 assistance.",
+        "The solution had to integrate with an existing external knowledge base API while layering an intelligent chatbot to handle queries that articles alone couldn't resolve.",
       ],
     },
     challenge_fr: {
-      heading: "Moderniser la présence web d'une société de fret tout en réduisant les frictions de support.",
+      heading: "Faire évoluer le support client d'un fournisseur eSIM sans augmenter les effectifs.",
       body: [
-        "Tuniship développait ses opérations de fret mais manquait d'une présence digitale à la hauteur de ses ambitions. Au-delà du site corporate de base, les clients avaient besoin d'un accès instantané aux estimations de coûts de fret et de réponses immédiates à leurs questions logistiques.",
-        "L'objectif était une plateforme professionnelle dotée d'outils en libre-service qui réduiraient les appels commerciaux entrants, inspireraient confiance aux partenaires logistiques et généreraient des leads qualifiés.",
+        "Au fur et à mesure que la base d'utilisateurs de 22SIM grandissait, le volume de demandes de support répétitives augmentait aussi. L'équipe avait besoin d'un hub de support en libre-service capable de déflexionner les tickets courants, de faire remonter rapidement les articles pertinents et d'offrir une assistance 24h/24.",
+        "La solution devait s'intégrer à une API de base de connaissances externe existante tout en ajoutant un chatbot intelligent pour traiter les requêtes que les articles seuls ne pouvaient pas résoudre.",
       ],
     },
     solution: {
-      heading: "A WordPress corporate site with an embedded pro chatbot and interactive billing simulator.",
+      heading: "A WordPress support portal with external API-powered articles and an embedded AI chatbot.",
       body: [
-        "Built a structured WordPress site with dedicated service pages and partner-focused messaging. An integrated pro chatbot provides instant answers to common logistics questions—routes, transit times, documentation—reducing the load on the operations team.",
-        "A billing simulator allows clients to estimate freight costs based on cargo parameters directly on the site, turning a common pre-sales inquiry into a self-service conversion tool.",
+        "Built a support portal on WordPress with a filterable article library dynamically populated via an external API—ensuring content stays in sync with the product team's knowledge base without manual duplication.",
+        "An integrated AI chatbot handles real-time user queries, routing complex cases to human agents while resolving the majority of common issues autonomously—significantly reducing support ticket volume.",
       ],
     },
     solution_fr: {
-      heading: "Un site WordPress corporate avec chatbot pro intégré et simulateur de facturation interactif.",
+      heading: "Un portail de support WordPress avec articles alimentés par API externe et chatbot IA intégré.",
       body: [
-        "Construction d'un site WordPress structuré avec des pages de services dédiées et un messaging orienté partenaires. Un chatbot pro intégré fournit des réponses instantanées aux questions logistiques courantes — routes, délais de transit, documentation — réduisant la charge de l'équipe opérationnelle.",
-        "Un simulateur de facturation permet aux clients d'estimer les coûts de fret selon les paramètres de leur cargaison directement sur le site, transformant une question courante de pré-vente en outil de conversion en libre-service.",
+        "Construction d'un portail de support sur WordPress avec une bibliothèque d'articles filtrable alimentée dynamiquement via une API externe — garantissant que le contenu reste synchronisé avec la base de connaissances de l'équipe produit sans duplication manuelle.",
+        "Un chatbot IA intégré traite les requêtes utilisateurs en temps réel, orientant les cas complexes vers des agents humains tout en résolvant la majorité des problèmes courants de manière autonome — réduisant significativement le volume de tickets.",
       ],
     },
     stats: [],
     role: "Full-Stack Developer",
-    year: "2023",
+    year: "2024",
     status: "Completed",
   },
+
   {
-    icon: FaWordpress,
-    title: "Sotumar",
-    slug: "sotumar",
-    description:
-      "Corporate website for a logistics freight company. Streamlined service presentation and contact flow.",
-    description_fr:
-      "Site corporate pour une société de fret maritime. Présentation simplifiée des services et parcours de contact optimisé.",
-    categoryLabel: "Maritime Freight | WordPress",
-    tags: wpTags,
-    links: { github: "#", demo: "https://sotumar.net/" },
-    image: sotumar,
-    hasHeroImage: true,
-    featured: true,
-    category: 2,
-    color: "text-purple-400",
-    cms: "",
-    challenge: {
-      heading: "Creating a digital anchor for a maritime freight operator.",
-      body: [
-        "Sotumar required a website that would position them as a reliable freight partner in a competitive maritime logistics market, reaching commercial clients across the region.",
-        "The site needed to articulate their service range clearly while remaining accessible to a broad range of potential clients.",
-      ],
-    },
-    challenge_fr: {
-      heading: "Créer un ancrage digital pour un opérateur de fret maritime.",
-      body: [
-        "Sotumar avait besoin d'un site positionnant l'entreprise comme un partenaire fret fiable dans un marché logistique maritime concurrentiel, touchant des clients commerciaux dans toute la région.",
-        "Le site devait articuler clairement la gamme de services tout en restant accessible à un large éventail de clients potentiels.",
-      ],
-    },
-    solution: {
-      heading: "A structured WordPress platform built for service clarity and B2B trust.",
-      body: [
-        "Developed a focused WordPress site with clearly delineated service sections, partner-facing messaging, and a contact system designed to qualify leads efficiently.",
-        "Clean layout, professional typography, and a restrained colour palette communicate stability and operational expertise.",
-      ],
-    },
-    solution_fr: {
-      heading: "Une plateforme WordPress structurée pour la clarté des services et la confiance B2B.",
-      body: [
-        "Développement d'un site WordPress ciblé avec des sections de services clairement délimitées, un messaging orienté partenaires et un système de contact conçu pour qualifier efficacement les leads.",
-        "Mise en page épurée, typographie professionnelle et palette chromatique sobre communiquent stabilité et expertise opérationnelle.",
-      ],
-    },
-    stats: [],
-    role: "Full-Stack Developer",
-    year: "2022",
-    status: "Completed",
-  },
-  {
-    icon: FaWordpress,
     title: "Parcus",
+    icon: FaWordpress,
     slug: "parcus",
     description:
       "Website for Parcus, a communication and digital marketing agency showcasing their creative solutions and expertise to attract new clients.",
@@ -891,8 +1193,8 @@ export const projects: ProjectEntry[] = [
     status: "Completed",
   },
   {
-    icon: FaWordpress,
     title: "Botanical",
+    icon: FaWordpress,
     slug: "botanical",
     description:
       "E-commerce website for a Tunisian brand selling natural-based beauty and wellness products.",
@@ -941,8 +1243,8 @@ export const projects: ProjectEntry[] = [
     status: "Completed",
   },
   {
-    icon: FaWordpress,
     title: "Atelier la fabrique",
+    icon: FaWordpress,
     slug: "atelier-la-fabrique",
     description:
       "Website for an architecture studio to present their portfolio and services to potential clients.",
@@ -951,7 +1253,7 @@ export const projects: ProjectEntry[] = [
     categoryLabel: "Architecture | WordPress",
     tags: wpTags,
     links: { github: "#", demo: "https://atelierlafabrique.fr/" },
-    image: no_image,
+    image: atelier,
     hasHeroImage: false,
     featured: true,
     category: 2,
@@ -991,8 +1293,8 @@ export const projects: ProjectEntry[] = [
     status: "Completed",
   },
   {
-    icon: FaWordpress,
     title: "Eyeverda",
+    icon: FaWordpress,
     slug: "eyeverda",
     description:
       "Tunisia's first digital hub dedicated to sustainable innovation and the green economy.",
@@ -1040,208 +1342,5 @@ export const projects: ProjectEntry[] = [
     year: "2023",
     status: "Completed",
   },
-  {
-    icon: FaWordpress,
-    title: "22 Services",
-    slug: "22-services",
-    description:
-      "Corporate website for 22 Services, a digital solutions company presenting its full range of services and expertise to B2B clients.",
-    description_fr:
-      "Site corporate pour 22 Services, société de solutions digitales présentant sa gamme complète de services et son expertise aux clients B2B.",
-    categoryLabel: "Digital Solutions | WordPress",
-    tags: wpTags,
-    links: { github: "#", demo: "#" },
-    image: no_image,
-    hasHeroImage: false,
-    featured: true,
-    category: 2,
-    color: "text-purple-400",
-    cms: "",
-    challenge: {
-      heading: "Building a credible digital presence for a growing digital solutions company.",
-      body: [
-        "22 Services needed a professional website that could clearly communicate their service portfolio to business clients and generate qualified inbound leads.",
-        "The objective was a platform that positioned the company as a trusted digital partner—one that decision-makers would choose with confidence over less established competitors.",
-      ],
-    },
-    challenge_fr: {
-      heading: "Établir une présence digitale crédible pour une société de solutions digitales en croissance.",
-      body: [
-        "22 Services avait besoin d'un site professionnel capable de communiquer clairement son portefeuille de services aux clients entreprises et de générer des leads entrants qualifiés.",
-        "L'objectif était une plateforme positionnant l'entreprise comme un partenaire digital de confiance — que les décideurs choisiraient en confiance face à des concurrents moins établis.",
-      ],
-    },
-    solution: {
-      heading: "A service-forward WordPress site built to attract and convert B2B prospects.",
-      body: [
-        "Designed and developed a structured WordPress site with dedicated service pages, client-focused messaging, and clear conversion pathways leading to consultation CTAs.",
-        "The design language—professional and approachable—was chosen to communicate expertise and build trust with decision-makers from the first visit.",
-      ],
-    },
-    solution_fr: {
-      heading: "Un site WordPress orienté services, conçu pour attirer et convertir les prospects B2B.",
-      body: [
-        "Conception et développement d'un site WordPress structuré avec des pages de services dédiées, un messaging orienté client et des parcours de conversion clairs menant à des CTAs de consultation.",
-        "Le langage visuel — professionnel et accessible — a été choisi pour communiquer l'expertise et instaurer la confiance auprès des décideurs dès la première visite.",
-      ],
-    },
-    stats: [],
-    role: "Full-Stack Developer",
-    year: "2024",
-    status: "Completed",
-  },
-  {
-    icon: FaWordpress,
-    title: "22SIM",
-    slug: "22-sim",
-    description:
-      "Presentation website for 22SIM, an e-SIM service provider offering seamless digital connectivity without physical SIM cards.",
-    description_fr:
-      "Site de présentation pour 22SIM, fournisseur de services e-SIM offrant une connectivité digitale transparente sans carte SIM physique.",
-    categoryLabel: "Telecom | WordPress",
-    tags: wpTags,
-    links: { github: "#", demo: "#" },
-    image: no_image,
-    hasHeroImage: false,
-    featured: true,
-    category: 2,
-    color: "text-purple-400",
-    cms: "",
-    challenge: {
-      heading: "Communicating the value of eSIM technology to a broad consumer audience.",
-      body: [
-        "The eSIM concept is still novel for many consumers. 22SIM needed a website that clearly explained the technology's benefits—no physical SIM, instant activation, global connectivity—without overwhelming technical jargon.",
-        "The challenge was to design a site that educated, reassured, and converted visitors into customers across a range of digital literacy levels.",
-      ],
-    },
-    challenge_fr: {
-      heading: "Communiquer la valeur de la technologie eSIM à un large public de consommateurs.",
-      body: [
-        "Le concept d'eSIM est encore novateur pour beaucoup de consommateurs. 22SIM avait besoin d'un site expliquant clairement les avantages de la technologie — pas de SIM physique, activation instantanée, connectivité mondiale — sans jargon technique écrasant.",
-        "Le défi était de concevoir un site qui éduque, rassure et convertit les visiteurs en clients, quel que soit leur niveau de maîtrise du digital.",
-      ],
-    },
-    solution: {
-      heading: "A clean, benefit-led WordPress site that simplifies eSIM adoption.",
-      body: [
-        "Built a focused WordPress site centred on benefit-driven messaging: freedom from physical SIM cards, instant setup, and seamless international connectivity. Each page was structured to answer the key objections of hesitant buyers.",
-        "The visual design—modern, light, and approachable—signals tech-forward thinking while remaining fully accessible to non-technical audiences.",
-      ],
-    },
-    solution_fr: {
-      heading: "Un site WordPress épuré, axé sur les bénéfices, qui simplifie l'adoption de l'eSIM.",
-      body: [
-        "Construction d'un site WordPress ciblé centré sur un messaging orienté bénéfices : liberté vis-à-vis des SIM physiques, configuration instantanée et connectivité internationale transparente. Chaque page a été structurée pour répondre aux principales objections des acheteurs hésitants.",
-        "Le design visuel — moderne, épuré et accessible — signale une approche tech-forward tout en restant pleinement compréhensible pour les audiences non techniques.",
-      ],
-    },
-    stats: [],
-    role: "Full-Stack Developer",
-    year: "2024",
-    status: "Completed",
-  },
-  {
-    icon: FaWordpress,
-    title: "Assist 22SIM",
-    slug: "assist-22-sim",
-    description:
-      "Customer support portal for 22SIM featuring filterable help articles connected to an external API and an integrated AI chatbot for instant user assistance.",
-    description_fr:
-      "Portail de support client pour 22SIM avec des articles d'aide filtrables connectés à une API externe et un chatbot IA intégré pour une assistance utilisateur instantanée.",
-    categoryLabel: "Support Portal | WordPress",
-    tags: [
-      ...wpTags,
-      { name: "REST APIs", icon: <Server className="w-4 h-4 text-[#FF6C37]" /> },
-      { name: "Chatbot", icon: <Server className="w-4 h-4 text-[#00A67E]" /> },
-    ],
-    links: { github: "#", demo: "#" },
-    image: no_image,
-    hasHeroImage: false,
-    featured: true,
-    category: 2,
-    color: "text-purple-400",
-    cms: "",
-    challenge: {
-      heading: "Scaling customer support for an eSIM provider without scaling the support team.",
-      body: [
-        "As 22SIM's user base grew, so did the volume of repetitive support inquiries. The team needed a self-service support hub that could deflect common tickets, surface relevant help articles instantly, and provide 24/7 assistance.",
-        "The solution had to integrate with an existing external knowledge base API while layering an intelligent chatbot to handle queries that articles alone couldn't resolve.",
-      ],
-    },
-    challenge_fr: {
-      heading: "Faire évoluer le support client d'un fournisseur eSIM sans augmenter les effectifs.",
-      body: [
-        "Au fur et à mesure que la base d'utilisateurs de 22SIM grandissait, le volume de demandes de support répétitives augmentait aussi. L'équipe avait besoin d'un hub de support en libre-service capable de déflexionner les tickets courants, de faire remonter rapidement les articles pertinents et d'offrir une assistance 24h/24.",
-        "La solution devait s'intégrer à une API de base de connaissances externe existante tout en ajoutant un chatbot intelligent pour traiter les requêtes que les articles seuls ne pouvaient pas résoudre.",
-      ],
-    },
-    solution: {
-      heading: "A WordPress support portal with external API-powered articles and an embedded AI chatbot.",
-      body: [
-        "Built a support portal on WordPress with a filterable article library dynamically populated via an external API—ensuring content stays in sync with the product team's knowledge base without manual duplication.",
-        "An integrated AI chatbot handles real-time user queries, routing complex cases to human agents while resolving the majority of common issues autonomously—significantly reducing support ticket volume.",
-      ],
-    },
-    solution_fr: {
-      heading: "Un portail de support WordPress avec articles alimentés par API externe et chatbot IA intégré.",
-      body: [
-        "Construction d'un portail de support sur WordPress avec une bibliothèque d'articles filtrable alimentée dynamiquement via une API externe — garantissant que le contenu reste synchronisé avec la base de connaissances de l'équipe produit sans duplication manuelle.",
-        "Un chatbot IA intégré traite les requêtes utilisateurs en temps réel, orientant les cas complexes vers des agents humains tout en résolvant la majorité des problèmes courants de manière autonome — réduisant significativement le volume de tickets.",
-      ],
-    },
-    stats: [],
-    role: "Full-Stack Developer",
-    year: "2024",
-    status: "Completed",
-  },
-  {
-    icon: FaWordpress,
-    title: "Trovana",
-    slug: "trovana",
-    description:
-      "Corporate website for Trovana, a leading digital solutions provider specializing in e-goods and modern electronic services.",
-    description_fr:
-      "Site corporate pour Trovana, fournisseur de solutions digitales spécialisé dans les biens numériques et les services électroniques modernes.",
-    categoryLabel: "Digital Solutions | WordPress",
-    tags: wpTags,
-    links: { github: "#", demo: "#" },
-    image: no_image,
-    hasHeroImage: false,
-    featured: true,
-    category: 2,
-    color: "text-purple-400",
-    cms: "",
-    challenge: {
-      heading: "Establishing Trovana as a leading digital solutions brand in the e-goods market.",
-      body: [
-        "Trovana operates in the fast-moving e-goods and electronic services space and needed a digital presence that immediately communicated market leadership, trustworthiness, and the breadth of their service catalogue.",
-        "The goal was a site that could serve both B2B partners and individual consumers, positioning Trovana as the definitive platform for modern electronic services.",
-      ],
-    },
-    challenge_fr: {
-      heading: "Positionner Trovana comme leader de solutions digitales sur le marché des biens numériques.",
-      body: [
-        "Trovana opère sur le marché dynamique des biens numériques et des services électroniques et avait besoin d'une présence digitale communiquant immédiatement le leadership, la fiabilité et l'étendue de son catalogue de services.",
-        "L'objectif était un site capable de servir à la fois les partenaires B2B et les consommateurs individuels, positionnant Trovana comme la plateforme de référence pour les services électroniques modernes.",
-      ],
-    },
-    solution: {
-      heading: "A brand-forward WordPress site that leads with Trovana's market positioning.",
-      body: [
-        "Designed a bold, conversion-optimised WordPress site structured around Trovana's core service categories—e-goods, digital vouchers, and electronic services—with clear pathways for both business and consumer visitors.",
-        "The visual identity—dynamic, modern, high-energy—signals market leadership and differentiates Trovana in a category where trust and immediacy are the decisive purchase factors.",
-      ],
-    },
-    solution_fr: {
-      heading: "Un site WordPress centré sur la marque qui affirme le positionnement de marché de Trovana.",
-      body: [
-        "Conception d'un site WordPress audacieux et optimisé pour la conversion, structuré autour des catégories de services phares de Trovana — biens numériques, vouchers digitaux et services électroniques — avec des parcours clairs pour les visiteurs B2B et consommateurs.",
-        "L'identité visuelle — dynamique, moderne, haute énergie — signale le leadership marché et différencie Trovana dans une catégorie où la confiance et l'immédiateté sont les facteurs d'achat décisifs.",
-      ],
-    },
-    stats: [],
-    role: "Full-Stack Developer",
-    year: "2024",
-    status: "Completed",
-  },
+
 ];

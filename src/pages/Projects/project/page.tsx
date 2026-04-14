@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Link } from "react-router";
-import { useEffect } from "react";
-import { ExternalLink, ArrowRight, ArrowLeft } from "lucide-react";
+import {useEffect, useState} from "react";
+import { ExternalLink, ArrowRight, ArrowLeft, ZoomIn, X } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
@@ -53,6 +53,8 @@ export default function ProjectDetail() {
   const isDark = theme === "dark";
   const tx = translations[lang];
 
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+
   const idx = projects.findIndex((p) => p.slug === slug);
   const project = idx !== -1 ? projects[idx] : null;
   const nextProject = project ? projects[(idx + 1) % projects.length] : null;
@@ -70,6 +72,17 @@ export default function ProjectDetail() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
+
+  useEffect(() => {
+    if (!lightboxSrc) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightboxSrc(null); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [lightboxSrc]);
 
   if (!project || !nextProject) {
     return (
@@ -157,7 +170,7 @@ export default function ProjectDetail() {
                   "inline-block py-1 px-4 mb-6 font-['Inter'] text-xs uppercase tracking-[0.2em] rounded-full",
                   isDark
                     ? "bg-[#272a2e] text-[#71d5e4]"
-                    : "bg-teal-100 text-teal-700"
+                    : "bg-[#d6baff] text-gray-700"
                 )}
               >
                 {project.categoryLabel}
@@ -364,7 +377,7 @@ export default function ProjectDetail() {
                             href={project.links.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group flex items-center justify-between bg-gradient-to-br from-[#d6baff] to-[#47088f] text-[#280057] p-4 rounded-lg font-['Space_Grotesk'] font-bold transition-all hover:translate-x-1"
+                            className="group flex items-center justify-between bg-gradient-to-br from-violet-500 to-violet-800 text-white shadow-violet-500/20 p-4 rounded-lg font-['Space_Grotesk'] font-bold transition-all hover:translate-x-1"
                           >
                             <div className="flex items-center gap-3">
                               <ExternalLink size={18} />
@@ -449,8 +462,9 @@ export default function ProjectDetail() {
           </div>
         </section>
 
+
         {/* ── Gallery ── */}
-        {project.hasHeroImage && (
+        {project.image1 != null && (
           <section className={cn("py-24", isDark ? "bg-[#191c20]" : "bg-gray-50")}>
             <div className="max-w-7xl mx-auto px-8">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -461,11 +475,20 @@ export default function ProjectDetail() {
                     isDark ? "bg-[#1d2024]" : "bg-gray-100"
                   )}
                 >
-                  <img
-                    src={project.image1 ?? project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 cursor-zoom-in aspect-[4/3]"
-                  />
+                  <button
+                      type="button"
+                      className="group relative w-full h-full block"
+                      onClick={() => setLightboxSrc(project.image1 ?? project.image)}
+                  >
+                    <img
+                        src={project.image1 ?? project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 aspect-[4/3]"
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                      <ZoomIn size={36} className="text-white drop-shadow-lg" />
+                    </span>
+                  </button>
                 </div>
                 {/* Sidebar: 2 crops */}
                 <div className="md:col-span-4 flex flex-col gap-6">
@@ -475,11 +498,20 @@ export default function ProjectDetail() {
                       isDark ? "bg-[#1d2024]" : "bg-gray-100"
                     )}
                   >
-                    <img
-                      src={project.image2 ?? project.image}
-                      alt={`${project.title} detail`}
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 cursor-zoom-in min-h-[160px]"
-                    />
+                    <button
+                        type="button"
+                        className="group relative w-full h-full block"
+                        onClick={() => setLightboxSrc(project.image2 ?? project.image)}
+                    >
+                      <img
+                          src={project.image2 ?? project.image}
+                          alt={`${project.title} detail`}
+                          className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 min-h-[160px]"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                        <ZoomIn size={28} className="text-white drop-shadow-lg" />
+                      </span>
+                    </button>
                   </div>
                   <div
                     className={cn(
@@ -487,29 +519,49 @@ export default function ProjectDetail() {
                       isDark ? "bg-[#1d2024]" : "bg-gray-100"
                     )}
                   >
-                    <img
-                      src={project.image3 ?? project.image}
-                      alt={`${project.title} view`}
-                      className="w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-700 cursor-zoom-in min-h-[160px]"
-                    />
+                    <button
+                        type="button"
+                        className="group relative w-full h-full block"
+                        onClick={() => setLightboxSrc(project.image3 ?? project.image)}
+                    >
+                      <img
+                          src={project.image3 ?? project.image}
+                          alt={`${project.title} view`}
+                          className="w-full h-full object-cover object-bottom hover:scale-105 transition-transform duration-700 min-h-[160px]"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                        <ZoomIn size={28} className="text-white drop-shadow-lg" />
+                      </span>
+                    </button>
                   </div>
                 </div>
-                {/* Panoramic bottom */}
-                <div
-                  className={cn(
-                    "md:col-span-12 overflow-hidden rounded-xl aspect-[21/9]",
-                    isDark ? "bg-[#1d2024]" : "bg-gray-100"
-                  )}
-                >
-                  <img
-                    src={project.image1 ?? project.image}
-                    alt={`${project.title} full view`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-zoom-in"
-                  />
-                </div>
+
               </div>
             </div>
           </section>
+        )}
+
+        {/* ── Lightbox ── */}
+        {lightboxSrc && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            onClick={() => setLightboxSrc(null)}
+          >
+            <button
+              type="button"
+              onClick={() => setLightboxSrc(null)}
+              className="absolute top-5 right-5 text-white/70 hover:text-white transition-colors"
+              aria-label="Close lightbox"
+            >
+              <X size={32} />
+            </button>
+            <img
+              src={lightboxSrc}
+              alt="Gallery full view"
+              className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
         )}
 
         {/* ── Next Project ── */}

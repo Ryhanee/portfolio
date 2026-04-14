@@ -1,7 +1,7 @@
 import { useTheme } from "@/provider/page";
 import { useLang } from "@/provider/lang";
 import { cn } from "@/lib/utils";
-import { Sparkles, Terminal, MousePointerClick } from "lucide-react";
+import {LaptopMinimalCheck, ShoppingCart, Braces} from "lucide-react";
 import type { LucideProps } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Skills } from "../../components/ui/skills"
@@ -15,9 +15,10 @@ interface CardIcon {
 }
 
 const CARD_ICONS: CardIcon[] = [
-  { Icon: Sparkles, darkColor: "text-[#71d5e4]", lightColor: "text-[#1A3C8B]" },
-  { Icon: Terminal, darkColor: "text-[#d6baff]", lightColor: "text-violet-600" },
-  { Icon: MousePointerClick, darkColor: "text-[#b2c5ff]", lightColor: "text-blue-600" },
+  { Icon: LaptopMinimalCheck, darkColor: "text-[#71d5e4]", lightColor: "text-[#1A3C8B]" },
+  { Icon: ShoppingCart, darkColor: "text-[#b2c5ff]", lightColor: "text-blue-600" },
+  { Icon: Braces, darkColor: "text-[#d6baff]", lightColor: "text-violet-600" },
+
 ];
 
 const translations = {
